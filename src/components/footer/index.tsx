@@ -13,10 +13,13 @@ import instagram from '../../asset/images/footer-instagram.png'
 const useStyles = makeStyles({
   container_footer: {
     padding: '0 130px',
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    marginTop: '3rem',
+    // position: 'fixed',
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
+    // zIndex: 1000,
+    backgroundColor: 'white',
     '&>:nth-child(1)': {
       borderBottom: '1px solid #9CA3AF',
       '&>div:nth-child(1)': {

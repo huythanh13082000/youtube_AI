@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
-
-const BaseLayout = () => {
+interface Props {
+  children: ReactNode
+}
+const BaseLayout: React.FC<Props> = ({children}) => {
   return (
     <div>
       <Header />
+      {children}
       <Footer />
     </div>
   )

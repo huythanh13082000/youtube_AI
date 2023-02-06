@@ -6,6 +6,7 @@ import {store} from './app/store'
 import reportWebVitals from './reportWebVitals'
 import './index.scss'
 import BaseLayout from './layouts/base'
+import Router from './router'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -15,9 +16,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         {/* <CustomizedSnackbars /> */}
-        <BaseLayout />
-        {/* <Router /> */}
-        {/* </BaseLayout> */}
+        <BaseLayout>
+          <Router />
+        </BaseLayout>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
