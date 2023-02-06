@@ -1,6 +1,5 @@
 import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined'
 import {makeStyles} from '@mui/styles'
-import multiscreen from '../../asset/images/multiscreen.png'
 
 const useStyles = makeStyles({
   container_card_service: {
@@ -11,7 +10,6 @@ const useStyles = makeStyles({
     background: '#FFFFFF',
     boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
     borderRadius: '10px',
-
     '&>div:nth-child(1)': {
       display: 'flex',
       justifyContent: 'center',
@@ -40,28 +38,37 @@ const useStyles = makeStyles({
       gap: '8px',
       width: '60%',
       height: '44px',
-      background: '#2C97EB',
       borderRadius: '4px',
       fontWeight: 500,
       fontSize: '16px',
       lineHeight: '24px',
       alignItems: 'center',
-      color: '#FFFFFF',
+      color: '#2C97EB',
       justifyContent: 'center',
       margin: '0 auto',
+      border: '1px solid #2C97EB',
+      cursor: 'pointer',
+    },
+    '&>span:nth-child(4):hover': {
+      color: '#FFFFFF',
+      background: '#2C97EB',
     },
   },
 })
 
-const CardService = () => {
+const CardService = (props: {
+  url: string
+  name: string
+  description: string
+}) => {
   const classes = useStyles()
   return (
     <div className={classes.container_card_service}>
       <div>
-        <img src={multiscreen} alt='multiscreen' />
+        <img src={props.url} alt={props.url} />
       </div>
-      <p>반응형 웹</p>
-      <p>디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.</p>
+      <p>{props.name} </p>
+      <p>{props.description}</p>
       <span>
         프로젝트 생성{' '}
         <ArrowRightAltOutlinedIcon style={{width: '15%', margin: '0'}} />

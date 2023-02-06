@@ -23,6 +23,7 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         color: '#FFFFFF',
+        cursor: 'pointer',
       },
       '&>:nth-child(2)': {
         display: 'flex',

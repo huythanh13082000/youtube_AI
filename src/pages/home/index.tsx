@@ -5,6 +5,8 @@ import homeCircleTopRight from '../../asset/images/home-circle-top-right.png'
 import homeRobot from '../../asset/images/home-robot.png'
 import homeScrollDown from '../../asset/images/home-scroll-down.png'
 import CardService from '../../components/card_service'
+import CardStrength from '../../components/card_strength'
+import {LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
 
 const useStyles = makeStyles({
   home_container: {
@@ -48,6 +50,7 @@ const useStyles = makeStyles({
             color: '#FFFFFF',
             fontWeight: 500,
             fontSize: '20px',
+            cursor: 'pointer',
             '&>img': {
               width: '36px',
               height: '36px',
@@ -108,7 +111,8 @@ const useStyles = makeStyles({
       },
     },
     '&>div:nth-child(2)': {
-      marginTop: '150px',
+      paddingTop: '150px',
+      background: '#F9FAFB',
       '&>p:nth-child(1)': {
         fontFamily: 'Anton',
         fontWeight: '400',
@@ -145,16 +149,62 @@ const useStyles = makeStyles({
         textAlign: 'center',
         color: '#4B5563',
         margin: 0,
-        marginBottom: '30px',
       },
     },
     '&>div:nth-child(3)': {
-      padding: '0 120px',
+      padding: '0 120px 60px 120px',
       display: 'flex',
       boxSizing: 'border-box',
+      background: '#F9FAFB',
     },
     '&>div:nth-child(4)': {
-      background: 'black',
+      background: 'white',
+      marginTop: '60px',
+      '&>p:nth-child(1)': {
+        fontFamily: 'Anton',
+        fontWeight: '400',
+        fontSize: '20px',
+        lineHeight: '30px',
+        textAlign: 'center',
+        background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        textFillColor: 'transparent',
+        margin: '0',
+      },
+      '&>p:nth-child(2)': {
+        width: '106px',
+        height: '10px',
+        margin: '0 auto',
+        background:
+          'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+        filter: 'blur(2px)',
+      },
+      '&>p:nth-child(3)': {
+        fontWeight: 700,
+        fontSize: '44px',
+        lineHeight: '66px',
+        textAlign: 'center',
+        color: '#000000',
+        margin: '10px',
+      },
+      '&>p:nth-child(4)': {
+        fontWeight: 500,
+        fontSize: '20px',
+        lineHeight: '30px',
+        textAlign: 'center',
+        color: '#4B5563',
+        margin: 0,
+        paddingBottom: '30px',
+      },
+    },
+    '&>div:nth-child(5)': {
+      padding: '0 180px',
+      display: 'flex',
+      flexWrap: 'wrap',
+      boxSizing: 'border-box',
+      justifyContent: 'space-between',
     },
   },
 })
@@ -206,10 +256,20 @@ const Home = () => {
         <p>쉬우면서도 딱 맞는 기능과 감각적인 디자인</p>
       </div>
       <div>
-        <CardService />
-        <CardService />
-        <CardService />
-        <CardService />
+        {LIST_DATA_SERVICE.map((item) => {
+          return <CardService {...item} />
+        })}
+      </div>
+      <div>
+        <p>Strengths</p>
+        <p></p>
+        <p>지엠포컴퍼니의 강점</p>
+        <p>우리의 전문성, 나는 각 프로젝트를 통해 보여줄 수 있습니다</p>
+      </div>
+      <div>
+        {LIST_DATA_STRENGTH.map((item) => {
+          return <CardStrength {...item} />
+        })}
       </div>
     </div>
   )
