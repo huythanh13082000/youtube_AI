@@ -38,7 +38,7 @@ const useStyles = makeStyles({
       display: 'flex',
       padding: '10px 16px',
       gap: '8px',
-      width: '152px',
+      width: '60%',
       height: '44px',
       background: '#2C97EB',
       borderRadius: '4px',
@@ -63,7 +63,8 @@ const CardService = () => {
       <p>반응형 웹</p>
       <p>디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.</p>
       <span>
-        프로젝트 생성 <ArrowRightAltOutlinedIcon style={{fontSize: '50px'}} />
+        프로젝트 생성{' '}
+        <ArrowRightAltOutlinedIcon style={{width: '15%', margin: '0'}} />
       </span>
     </div>
   )
