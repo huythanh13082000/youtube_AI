@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     background: '#FFFFFF',
     border: '1px solid #9CA3AF',
     borderRadius: '4px',
-    margin: '12px 0',
+    margin: '1% 0',
     '&>img:nth-child(1)': {
       marginRight: '1rem',
       width: '60px',

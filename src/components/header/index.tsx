@@ -2,7 +2,11 @@ import {makeStyles} from '@mui/styles'
 
 const useStyles = makeStyles({
   container_header: {
-    background: '#006DFE',
+    position: 'absolute',
+    zIndex: 100,
+    top: 0,
+    left: 0,
+    right: 0,
     color: 'white',
     height: 120,
     padding: '0 130px',

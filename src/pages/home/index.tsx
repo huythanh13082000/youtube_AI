@@ -4,9 +4,13 @@ import background from '../../asset/images/home-background.png'
 import homeCircleTopRight from '../../asset/images/home-circle-top-right.png'
 import homeRobot from '../../asset/images/home-robot.png'
 import homeScrollDown from '../../asset/images/home-scroll-down.png'
+import backgroundWord from '../../asset/images/background_word.png'
+import users from '../../asset/images/users.png'
 import CardService from '../../components/card_service'
 import CardStrength from '../../components/card_strength'
 import {LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
+import {Slideshow} from '../../components/slide'
+import CardSuccessCase from '../../components/card_success_case'
 
 const useStyles = makeStyles({
   home_container: {
@@ -17,7 +21,7 @@ const useStyles = makeStyles({
       '&>div:nth-child(1)': {
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '40px 130px',
+        padding: '160px 130px 40px 130px',
         '&>div:nth-child(1)': {
           width: '40%',
           '&>p:nth-child(1)': {
@@ -113,6 +117,7 @@ const useStyles = makeStyles({
     '&>div:nth-child(2)': {
       paddingTop: '150px',
       background: '#F9FAFB',
+      paddingBottom: '80px',
       '&>p:nth-child(1)': {
         fontFamily: 'Anton',
         fontWeight: '400',
@@ -206,6 +211,115 @@ const useStyles = makeStyles({
       boxSizing: 'border-box',
       justifyContent: 'space-between',
     },
+    '&>div:nth-child(6)': {
+      boxSizing: 'border-box',
+      height: '673px',
+      background: `url(${backgroundWord})`,
+      backgroundSize: 'cover',
+      padding: '0 130px',
+      display: 'flex',
+      margin: '60px 0 0 0',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      '&>div:nth-child(1)': {
+        width: '35%',
+        '&>p:nth-child(1)': {
+          fontFamily: 'Anton',
+          fontWeight: '400',
+          fontSize: '20px',
+          lineHeight: '30px',
+          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+          margin: 0,
+        },
+        '&>p:nth-child(2)': {
+          width: '75px',
+          height: '10px',
+          margin: 0,
+          background:
+            'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+          filter: 'blur(2px)',
+        },
+        '&>p:nth-child(3)': {
+          fontWeight: 700,
+          fontSize: '32px',
+          lineHeight: '48px',
+          display: 'flex',
+          alignItems: 'center',
+          color: '#000000',
+          margin: '16px 0',
+        },
+        '&>p:nth-child(4)': {
+          fontStyle: 'normal',
+          fontWeight: '500',
+          fontSize: '20px',
+          lineHeight: '160%',
+          display: 'flex',
+          alignItems: 'center',
+          color: '#1F2937',
+        },
+      },
+      '&>div:nth-child(2)': {
+        height: '100%',
+        width: '60%',
+        background: `url(${users})`,
+        backgroundSize: 'cover',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
+    '&>div:nth-child(7)': {
+      background: '#EDF2FF',
+      padding: '60px 130px 80px 130px',
+      '&>div:nth-child(1)': {
+        '&>p:nth-child(1)': {
+          fontFamily: 'Anton',
+          fontWeight: '400',
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+          margin: '0',
+        },
+        '&>p:nth-child(2)': {
+          width: '106px',
+          height: '10px',
+          margin: '0 auto',
+          background:
+            'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+          filter: 'blur(2px)',
+        },
+        '&>p:nth-child(3)': {
+          fontWeight: 700,
+          fontSize: '44px',
+          lineHeight: '66px',
+          textAlign: 'center',
+          color: '#000000',
+          margin: '10px',
+        },
+        '&>p:nth-child(4)': {
+          fontWeight: 500,
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          color: '#4B5563',
+          margin: 0,
+        },
+      },
+      '&>div:nth-child(2)': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+      },
+    },
   },
 })
 
@@ -270,6 +384,36 @@ const Home = () => {
         {LIST_DATA_STRENGTH.map((item) => {
           return <CardStrength {...item} />
         })}
+      </div>
+      <div>
+        <div>
+          <p>Welcome</p>
+          <p></p>
+          <p>고객이 우리에 대해 뭐라고 말합니까?</p>
+          <p>
+            우리의 고객은 전 세계에서 왔으며 이것이 그들이 우리와 함께 일할 때
+            느끼는 것입니다
+          </p>
+        </div>
+        <div>
+          <Slideshow />
+        </div>
+      </div>
+      <div>
+        <div>
+          <p>Success Case</p>
+          <p></p>
+          <p>우리의 인기 프로젝트 중 일부</p>
+          <p>산업, 분야 및 주제가 다양해졌습니다.</p>
+        </div>
+        <div>
+          <CardSuccessCase />
+          <CardSuccessCase />
+          <CardSuccessCase />
+          <CardSuccessCase />
+          <CardSuccessCase />
+          <CardSuccessCase />
+        </div>
       </div>
     </div>
   )
