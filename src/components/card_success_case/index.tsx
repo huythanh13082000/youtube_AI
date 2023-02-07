@@ -1,6 +1,7 @@
 import {makeStyles} from '@material-ui/core'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
-import React from 'react'
+import React, {useState} from 'react'
+import {PortfolioDetail} from '../../pages/portfolio/portfolio_detail'
 
 const useStyles = makeStyles({
   container_card_success_case: {
@@ -53,6 +54,7 @@ const useStyles = makeStyles({
 
 const CardSuccessCase = () => {
   const classes = useStyles()
+  const [open, setOpen] = useState(false)
   return (
     <div className={classes.container_card_success_case}>
       <img src='' alt='' />
@@ -62,9 +64,10 @@ const CardSuccessCase = () => {
         인플루언서 마케팅 플랫폼 프로젝트는 그린앱의 산물입니다.인플루언서
         마케팅 플랫폼 프로젝트는 그린앱의 산물입니다.
       </p>
-      <span>
+      <span onClick={() => setOpen(true)}>
         View Detail <ArrowRightAltIcon />
       </span>
+      <PortfolioDetail open={open} setOpen={() => setOpen(false)} />
     </div>
   )
 }

@@ -1,4 +1,6 @@
 import {makeStyles} from '@mui/styles'
+import {useLocation, useNavigate} from 'react-router-dom'
+import {ROUTE} from '../../router/routes'
 
 const useStyles = makeStyles({
   container_header: {
@@ -36,10 +38,14 @@ const useStyles = makeStyles({
         listStyle: 'none',
         justifyContent: 'space-between',
         '&>li': {
-          fontWeight: 500,
+          fontWeight: 300,
           fontSize: '18px',
           display: 'flex',
-          color: '#FFFFFF',
+          color: 'white',
+          cursor: 'pointer',
+        },
+        '&>li:hover': {
+          fontWeight: 700,
         },
       },
       '&>:nth-child(3)': {
@@ -60,15 +66,48 @@ const useStyles = makeStyles({
 
 const Header = () => {
   const classes = useStyles()
+  const location = useLocation()
+  const navigate = useNavigate()
+  console.log(location)
   return (
     <div className={classes.container_header}>
       <div>
         <span>Greenapp</span>
         <ul>
-          <li>회사소개</li>
-          <li>포트폴리오</li>
-          <li>견적계산</li>
-          <li>개발문의</li>
+          <li
+            style={{
+              fontWeight: location.pathname === '/' ? 700 : 400,
+            }}
+            onClick={() => navigate(ROUTE.HOME)}
+          >
+            회사소개
+          </li>
+          <li
+            style={{
+              fontWeight: location.pathname === '/portfolio' ? 700 : 400,
+            }}
+            onClick={() => navigate(ROUTE.PORTFOLIO)}
+          >
+            포트폴리오
+          </li>
+          <li
+            style={{
+              fontWeight:
+                location.pathname === '/estimate_calculation' ? 700 : 400,
+            }}
+            onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}
+          >
+            견적계산
+          </li>
+          <li
+            style={{
+              fontWeight:
+                location.pathname === '/development_inquiry' ? 700 : 400,
+            }}
+            onClick={() => navigate(ROUTE.DEVELOPMENT_INQUIRY)}
+          >
+            개발문의
+          </li>
         </ul>
         <span>프로젝트 생성</span>
       </div>
