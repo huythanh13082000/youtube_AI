@@ -3,25 +3,26 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel,
   makeStyles,
   Paper,
   Tab,
   Tabs,
-  Theme,
-  createStyles,
 } from '@material-ui/core'
-import React from 'react'
-import estimateCalculationBackground from '../../asset/images/estimate_calculation_background.png'
-import CardSuccessCase from '../../components/card_success_case'
-import {LIST_DATA_SERVICE} from '../../constants'
 import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import React from 'react'
 import sumIcon from '../../asset/images/+.png'
 import minimizeIcon from '../../asset/images/-.png'
+import estimateCalculationBackground from '../../asset/images/estimate_calculation_background.png'
+import {LIST_DATA_SERVICE} from '../../constants'
+import CloseIcon from '@material-ui/icons/Close'
+
+import reviewLogin from '../../asset/images/review-login.png'
+import reviewProfile from '../../asset/images/review-profile.png'
+import reviewAction from '../../asset/images/review-action.png'
 
 const useStyles = makeStyles({
   container_portfolio: {
@@ -107,39 +108,62 @@ const useStyles = makeStyles({
           boxShadow: 'none',
         },
         '&>div': {
-          display: 'flex',
-          justifyContent: 'space-between',
+          '&>p': {
+            fontWeight: '500',
+            fontSize: '18px',
+            lineHeight: '27px',
+            color: '#000000',
+          },
           '&>span': {
             border: '1px solid  #9CA3AF',
-            padding: '6px',
+            fontWeight: 500,
+            fontSize: '18px',
+            display: 'flex',
+            alignItems: 'center',
+          },
+        },
+        '&>div:nth-child(2)': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          margin: '2rem 0',
+          '&>span': {
+            border: '1px solid  #9CA3AF',
             fontWeight: 500,
             fontSize: '18px',
             display: 'flex',
             alignItems: 'center',
             '&>span': {
-              // border: '1px solid  #9CA3AF',
-              // padding: '6px',
               margin: '0 6px',
             },
           },
         },
-        // '& .MuiAccordionSummary-root': {
-        //   borderBottom: '1px solid #9CA3AF',
-        // },
-        // '& .Mui-expanded:before': {
-        //   opacity: 0,
-        // },
       },
       '&>div:nth-child(3)': {
         boxSizing: 'border-box',
         width: '28%',
         padding: '30px 4%',
         background: '#FFFFFF',
-        '&>p': {
+        '&>p:nth-child(1)': {
           fontWeight: 700,
           fontSize: '20px',
           lineHeight: '30px',
           color: '#000000',
+        },
+        '&>p': {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          '&>span:nth-child(2)': {
+            display: 'flex',
+            alignItems: 'center',
+            color: '#EF4444',
+            background: '#FEF2F2',
+            borderRadius: '100px',
+            padding: '6px 16px',
+          },
+        },
+        '&>img': {
+          width: '100%',
         },
       },
     },
@@ -294,16 +318,18 @@ const EstimateCalculation = () => {
         <div>
           <p>Page & Future</p>
           <div>
-            Flash creen
+            <p style={{margin: 0}}>Flash creen</p>
             <span>
               <img
-                style={{width: '14px', border: '1px solid #9CA3AF'}}
+                style={{width: '14px', padding: '0 6px'}}
                 src={minimizeIcon}
                 alt=''
               />
+              <div style={{height: '100%', border: '1px solid #9CA3AF'}}></div>
               <span>0</span>
+              <div style={{height: '100%', border: '1px solid #9CA3AF'}}></div>
               <img
-                style={{width: '14px', border: '1px solid #9CA3AF'}}
+                style={{width: '14px', padding: '0 6px'}}
                 src={sumIcon}
                 alt=''
               />
@@ -563,6 +589,27 @@ const EstimateCalculation = () => {
         </div>
         <div>
           <p>Review</p>
+          <p>
+            <span>1.로그인 및 프로필 화면</span>
+            <span>
+              <CloseIcon /> 제거됨
+            </span>
+          </p>
+          <img src={reviewLogin} alt='' />
+          <p>
+            <span>1.로그인 및 프로필 화면</span>
+            <span>
+              <CloseIcon /> 제거됨
+            </span>
+          </p>
+          <img src={reviewProfile} alt='' />
+          <p>
+            <span>1.로그인 및 프로필 화면</span>
+            <span>
+              <CloseIcon /> 제거됨
+            </span>
+          </p>
+          <img src={reviewAction} alt='' />
         </div>
       </div>
     </div>
