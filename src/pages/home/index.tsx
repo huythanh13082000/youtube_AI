@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/styles'
-
+import React, {useEffect} from 'react'
 import background from '../../asset/images/home-background.png'
 import homeCircleTopRight from '../../asset/images/home-circle-top-right.png'
 import homeRobot from '../../asset/images/home-robot.png'
@@ -320,11 +320,37 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
       },
     },
+    '@media (min-width: 780px)': {
+      '&>div:nth-child(1)': {
+        padding: '5rem',
+        '&>div:nth-child(1)': {
+          padding: '1rem',
+        },
+      },
+    },
   },
 })
 
 const Home = () => {
-  const classes = useStyles()
+  let classes: any = useStyles()
+  const useViewport = () => {
+    const [width, setWidth] = React.useState(window.innerWidth)
+
+    React.useEffect(() => {
+      const handleWindowResize = () => setWidth(window.innerWidth)
+      window.addEventListener('resize', handleWindowResize)
+      return () => window.removeEventListener('resize', handleWindowResize)
+    }, [])
+
+    return {width}
+  }
+  // const viewPort = useViewport()
+  // console.log(23112123, viewPort.width)
+  // if(viewPort.width <= 1024){
+  //   classes = useStylesMobile()
+  // }
+  // const isMobile = viewPort.width <= 1024
+
   return (
     <div className={classes.home_container}>
       <div>
