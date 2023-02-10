@@ -50,6 +50,18 @@ const useStyles = makeStyles({
       color: '#2C97EB',
     },
   },
+  '@media (max-width: 740px)': {
+    container_card_success_case: {
+      width: '100%',
+      textAlign: 'center',
+      background: '#FFFFFF',
+      padding: '16px',
+      boxSizing: 'border-box',
+      boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
+      borderRadius: '10px',
+      margin: '1% 0',
+    },
+  },
 })
 
 const CardSuccessCase = () => {

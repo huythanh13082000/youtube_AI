@@ -320,37 +320,218 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
       },
     },
-    '@media (min-width: 780px)': {
+  },
+  '@media (max-width: 740px)': {
+    home_container: {
       '&>div:nth-child(1)': {
-        padding: '5rem',
         '&>div:nth-child(1)': {
-          padding: '1rem',
+          display: 'inherit',
+          padding: '64px 32px',
+          '&>div:nth-child(1)': {
+            width: '100%',
+            '&>p:nth-child(1)': {
+              fontWeight: 700,
+              fontSize: '28px',
+              lineHeight: '42px',
+              color: '#FFFFFF',
+              textAlign: 'center',
+            },
+            '&>p:nth-child(2)': {
+              fontWeight: 500,
+              fontSize: '18px',
+              lineHeight: '24px',
+              textAlign: 'center',
+              color: '#FFFFFF',
+            },
+            '&>span:nth-child(3)': {
+              width: '152px',
+              height: '40px',
+              margin: '0 auto',
+              fontSize: '14px',
+              padding: '0 0.5rem',
+              boxSizing: 'border-box',
+              '&>img': {
+                width: '28px',
+                height: '28px',
+                margin: 0,
+              },
+            },
+          },
+          '&>div:nth-child(2)': {
+            width: '100%',
+          },
+        },
+        '&>:nth-child(2)': {
+          display: 'none',
+        },
+        '&>div:nth-child(3)': {
+          boxSizing: 'border-box',
+          padding: '32px 120px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '10px',
+          width: 'calc(100% - 32px)',
+          background: '#FFFFFF',
+          boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
+          borderRadius: '24px',
+          position: 'absolute',
+          bottom: '-80px',
+          left: '16px',
+          '&>div': {
+            '&>p': {
+              fontFamily: 'Anton',
+              fontWeight: 400,
+              fontSize: '24px',
+              lineHeight: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              textAlign: 'center',
+              color: '#000000',
+              marginBottom: '10px',
+              marginTop: '0px',
+            },
+            '&>span': {
+              fontWeight: 400,
+              fontSize: '14px',
+              lineHeight: '21px',
+              display: 'flex',
+              alignItems: 'center',
+              textAlign: 'center',
+              color: '#1F2937',
+            },
+          },
+        },
+      },
+      '&>div:nth-child(2)': {},
+      '&>div:nth-child(3)': {flexWrap: 'wrap', padding: '0 16px 60px 16px'},
+      '&>div:nth-child(4)': {},
+      '&>div:nth-child(5)': {display: 'wrap', padding: '0 16px'},
+      '&>div:nth-child(6)': {
+        boxSizing: 'border-box',
+        height: '673px',
+        background: `url(${backgroundWord})`,
+        backgroundSize: 'cover',
+        padding: '0 64px',
+        display: 'inherit',
+        margin: '60px 0 0 0',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        '&>div:nth-child(1)': {
+          width: '100%',
+          '&>p:nth-child(1)': {
+            fontFamily: 'Anton',
+            fontWeight: '400',
+            fontSize: '20px',
+            lineHeight: '30px',
+            background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            margin: 0,
+            textAlign: 'center',
+          },
+          '&>p:nth-child(2)': {
+            width: '75px',
+            height: '10px',
+            margin: '0 auto',
+            background:
+              'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+            filter: 'blur(2px)',
+          },
+          '&>p:nth-child(3)': {
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '42px',
+            textAlign: 'center',
+            color: '#000000',
+            margin: '16px 0',
+          },
+          '&>p:nth-child(4)': {
+            fontStyle: 'normal',
+            fontWeight: '500',
+            fontSize: '16px',
+            lineHeight: '24px',
+            textAlign: 'center',
+            color: '#1F2937',
+          },
+        },
+        '&>div:nth-child(2)': {
+          height: '80%',
+          width: '100%',
+          background: `url(${users})`,
+          backgroundSize: 'cover',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+      },
+      '&>div:nth-child(7)': {
+        display: 'wrap',
+        padding: '1rem 16px',
+        '&>div:nth-child(1)': {
+          '&>p:nth-child(1)': {
+            fontFamily: 'Anton',
+            fontWeight: '400',
+            fontSize: '14px',
+            lineHeight: '21px',
+            textAlign: 'center',
+            background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            margin: '0',
+          },
+          '&>p:nth-child(2)': {
+            width: '80px',
+            height: '5px',
+            margin: '0 auto',
+            background:
+              'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+            filter: 'blur(2px)',
+          },
+          '&>p:nth-child(3)': {
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '42px',
+            textAlign: 'center',
+            color: '#000000',
+            margin: '10px',
+          },
+          '&>p:nth-child(4)': {
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '24px',
+            textAlign: 'center',
+            color: '#4B5563',
+            margin: 0,
+          },
+        },
+        '&>div:nth-child(2)': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
         },
       },
     },
   },
+
+  // '@media (min-width: 740px) and (max-width: 1024px)': {
+  //   container_header: {
+  //     '&>div:nth-child(1)': {
+  //       // display: 'none',
+  //       '&>div:nth-child(1)': {
+  //         padding: '1rem',
+  //       },
+  //     },
+  //   },
+  // },
 })
 
 const Home = () => {
   let classes: any = useStyles()
-  const useViewport = () => {
-    const [width, setWidth] = React.useState(window.innerWidth)
-
-    React.useEffect(() => {
-      const handleWindowResize = () => setWidth(window.innerWidth)
-      window.addEventListener('resize', handleWindowResize)
-      return () => window.removeEventListener('resize', handleWindowResize)
-    }, [])
-
-    return {width}
-  }
-  // const viewPort = useViewport()
-  // console.log(23112123, viewPort.width)
-  // if(viewPort.width <= 1024){
-  //   classes = useStylesMobile()
-  // }
-  // const isMobile = viewPort.width <= 1024
-
   return (
     <div className={classes.home_container}>
       <div>

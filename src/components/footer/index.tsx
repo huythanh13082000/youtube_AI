@@ -14,11 +14,6 @@ const useStyles = makeStyles({
   container_footer: {
     padding: '0 130px',
     marginTop: '3rem',
-    // position: 'fixed',
-    // bottom: 0,
-    // left: 0,
-    // right: 0,
-    // zIndex: 1000,
     backgroundColor: 'white',
     '&>:nth-child(1)': {
       borderBottom: '1px solid #9CA3AF',
@@ -134,6 +129,24 @@ const useStyles = makeStyles({
           height: '24px',
           margin: '0 10px',
         },
+      },
+    },
+  },
+  '@media (max-width: 740px)': {
+    container_footer: {
+      padding: '0 16px',
+      '&>div:nth-child(1)': {
+        display: 'inherit',
+        '&>div': {
+          maxWidth: '100%',
+        },
+        '&>div:nth-child(2)': {
+          margin: '1rem 0',
+        },
+      },
+      '&>div:nth-child(2)': {
+        display: 'inherit',
+        textAlign: 'center',
       },
     },
   },

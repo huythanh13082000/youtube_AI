@@ -54,6 +54,17 @@ const useStyles = makeStyles({
       background: '#2C97EB',
     },
   },
+  '@media (max-width: 740px)': {
+    container_card_service: {
+      margin: '1rem',
+      padding: '1rem',
+      gap: '10px',
+      width: '100%',
+      background: '#FFFFFF',
+      boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
+      borderRadius: '10px',
+    },
+  },
 })
 
 const CardService = (props: {

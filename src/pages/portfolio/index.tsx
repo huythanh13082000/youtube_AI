@@ -62,6 +62,26 @@ const useStyles = makeStyles({
       padding: '60px 130px 80px 130px',
     },
   },
+  '@media (max-width: 740px)': {
+    container_portfolio: {
+      '&>div:nth-child(1)': {
+        background: `url(${background})`,
+        backgroundSize: 'cover',
+        position: 'relative',
+        height: '350px',
+      },
+      '&>div:nth-child(2)': {
+        padding: '16px',
+      },
+      '&>div:nth-child(3)': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        background: '#F9FAFB',
+        padding: '30px 16px 30px 16px',
+      },
+    },
+  },
 })
 
 const Portfolio = () => {

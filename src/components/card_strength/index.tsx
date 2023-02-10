@@ -35,6 +35,19 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (max-width: 740px)': {
+    container_card_strength: {
+      padding: '16px',
+      display: 'flex',
+      width: '100%',
+      boxSizing: 'border-box',
+      alignItems: 'center',
+      background: '#FFFFFF',
+      border: '1px solid #9CA3AF',
+      borderRadius: '4px',
+      margin: '1% 0',
+    },
+  },
 })
 
 const CardStrength = (props: {

@@ -1,6 +1,9 @@
+import React, {useState} from 'react'
 import {makeStyles} from '@mui/styles'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {ROUTE} from '../../router/routes'
+import menu from '../../asset/images/menu.png'
+import DialogMenuHeader from './dialog'
 
 const useStyles = makeStyles({
   container_header: {
@@ -61,6 +64,50 @@ const useStyles = makeStyles({
         color: '#000000',
       },
     },
+    '&>:nth-child(2)': {
+      display: 'none',
+    },
+  },
+
+  '@media (max-width: 740px)': {
+    container_header: {
+      padding: '0 16px',
+      '&>div:nth-child(1)': {
+        display: 'none',
+      },
+      '&>div:nth-child(2)': {
+        display: 'flex',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        '&>:nth-child(1)': {
+          fontFamily: 'Anton',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          fontSize: '24px',
+          lineHeight: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          color: '#FFFFFF',
+          cursor: 'pointer',
+        },
+        '&>img:nth-child(2)': {
+          width: '24px',
+          height: '24px',
+        },
+      },
+    },
+  },
+
+  '@media (min-width: 740px) and (max-width: 1024px)': {
+    container_header: {
+      '&>div:nth-child(1)': {
+        // display: 'none',
+        '&>div:nth-child(1)': {
+          padding: '1rem',
+        },
+      },
+    },
   },
 })
 
@@ -68,6 +115,7 @@ const Header = () => {
   const classes = useStyles()
   const location = useLocation()
   const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
   console.log(location)
   return (
     <div className={classes.container_header}>
@@ -111,6 +159,11 @@ const Header = () => {
         </ul>
         <span>프로젝트 생성</span>
       </div>
+      <div>
+        <span>Greenapp</span>
+        <img src={menu} alt='' onClick={() => setOpen(true)} />
+      </div>
+      <DialogMenuHeader open={open} setOpen={() => setOpen(false)} />
     </div>
   )
 }
