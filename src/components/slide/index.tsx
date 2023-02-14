@@ -80,6 +80,58 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (max-width: 740px)': {
+    slide_container: {
+      width: '70%',
+      padding: '16px 0 0 50px',
+      gap: '10px',
+      background: '#FFFFFF',
+      boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.2)',
+      borderRadius: '8px',
+      position: 'relative',
+      '&>p:nth-child(2)': {
+        fontWeight: 400,
+        fontSize: '15px',
+        lineHeight: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        color: '#2C2C2C',
+      },
+      '&>p:nth-child(3)': {
+        fontWeight: 700,
+        fontSize: '15px',
+        lineHeight: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        color: '#000000',
+        '&>span': {
+          '&>img': {
+            width: '32px',
+            height: '32px',
+          },
+        },
+      },
+      '&>img:nth-child(4)': {
+        width: '64px',
+        height: '64px',
+        position: 'absolute',
+        borderRadius: '50%',
+        objectFit: 'cover',
+        top: 'calc(50% - 32px)',
+        left: '-32px',
+      },
+      '&>div:nth-child(5)': {
+        position: 'absolute',
+        bottom: '-34px',
+        left: 'calc(50% - 70px)',
+        '&>img': {
+          width: '50px',
+          height: '50px',
+          margin: '0 10px',
+        },
+      },
+    },
+  },
 })
 
 export const Slideshow = () => {

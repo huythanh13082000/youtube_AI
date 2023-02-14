@@ -180,7 +180,7 @@ const useStyles = makeStyles({
         background: `url(${estimateCalculationBackground})`,
         backgroundSize: 'cover',
         position: 'relative',
-        height: '800px',
+        height: '550px',
         '&>div:nth-child(1)': {
           position: 'absolute',
           top: '40%',

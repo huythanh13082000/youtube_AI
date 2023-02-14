@@ -368,7 +368,7 @@ const useStyles = makeStyles({
         },
         '&>div:nth-child(3)': {
           boxSizing: 'border-box',
-          padding: '32px 120px',
+          padding: '32px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -414,7 +414,7 @@ const useStyles = makeStyles({
         height: '673px',
         background: `url(${backgroundWord})`,
         backgroundSize: 'cover',
-        padding: '0 64px',
+        padding: 0,
         display: 'inherit',
         margin: '60px 0 0 0',
         justifyContent: 'space-between',
