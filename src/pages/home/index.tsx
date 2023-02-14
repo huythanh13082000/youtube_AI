@@ -430,6 +430,7 @@ const useStyles = makeStyles({
       },
       '&>div:nth-child(3)': {flexWrap: 'wrap', padding: '0 16px 16px 16px'},
       '&>div:nth-child(4)': {
+        padding: '0 16px',
         '&>p:nth-child(3)': {
           fontWeight: 700,
           fontSize: '28px',
@@ -457,7 +458,7 @@ const useStyles = makeStyles({
         height: '673px',
         background: `url(${backgroundWord})`,
         backgroundSize: 'cover',
-        padding: '16px 0',
+        padding: '16px 16px 0 16px',
         display: 'inherit',
         margin: '60px 0 0 0',
         justifyContent: 'space-between',

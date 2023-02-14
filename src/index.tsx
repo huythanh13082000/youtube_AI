@@ -15,7 +15,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <CustomizedSnackbars /> */}
         <BaseLayout>
           <Router />
         </BaseLayout>

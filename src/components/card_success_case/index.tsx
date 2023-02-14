@@ -52,7 +52,7 @@ const useStyles = makeStyles({
   },
   '@media (max-width: 740px)': {
     container_card_success_case: {
-      width: '100%',
+      width: '48%',
       textAlign: 'center',
       background: '#FFFFFF',
       padding: '16px',
@@ -60,6 +60,42 @@ const useStyles = makeStyles({
       boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
       borderRadius: '10px',
       margin: '1% 0',
+      '&>img': {
+        borderRadius: '12px',
+        width: '60px',
+        height: '60px',
+      },
+      '&>p:nth-child(2)': {
+        fontWeight: 700,
+        fontSize: '18px',
+        lineHeight: '24px',
+        color: '#111827',
+        margin: '5px',
+      },
+      '&>p:nth-child(3)': {
+        fontWeight: 500,
+        fontSize: '14px',
+        lineHeight: '21px',
+        color: '#D97706',
+        margin: '5px',
+        
+      },
+      '&>p:nth-child(4)': {
+        display: 'none',
+      },
+      '&>span:nth-child(5)': {
+        fontWeight: 500,
+        fontSize: '14px',
+        lineHeight: '21px',
+        color: '#9CA3AF',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+      },
+      '&>span:nth-child(5):hover': {
+        color: '#2C97EB',
+      },
     },
   },
 })
