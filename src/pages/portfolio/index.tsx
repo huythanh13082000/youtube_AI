@@ -69,6 +69,24 @@ const useStyles = makeStyles({
         backgroundSize: 'cover',
         position: 'relative',
         height: '350px',
+        '&>div:nth-child(1)': {
+          position: 'absolute',
+          top: '40%',
+          width: '100%',
+          '&>p': {
+            textAlign: 'center',
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '42px',
+            color: '#FFFFFF',
+            margin: '5px 0',
+          },
+          '&>p:nth-child(2)': {
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '24px',
+          },
+        },
       },
       '&>div:nth-child(2)': {
         padding: '16px',
