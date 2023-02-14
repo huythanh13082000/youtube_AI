@@ -65,6 +65,12 @@ const useStyles = makeStyles({
           fontWeight: 500,
           fontSize: '24px',
           lineHeight: '36px',
+          '&>div': {
+            '&>img': {
+              width: '60px',
+              height: '60px',
+            },
+          },
         },
       },
       '& .MuiTab-textColorPrimary.Mui-selected': {
@@ -168,6 +174,162 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (max-width: 740px)': {
+    container_portfolio: {
+      '&>div:nth-child(1)': {
+        background: `url(${estimateCalculationBackground})`,
+        backgroundSize: 'cover',
+        position: 'relative',
+        height: '800px',
+        '&>div:nth-child(1)': {
+          position: 'absolute',
+          top: '40%',
+          width: '100%',
+          '&>p': {
+            textAlign: 'center',
+            fontWeight: 700,
+            fontSize: '44px',
+            lineHeight: '66px',
+            color: '#FFFFFF',
+            margin: '5px 0',
+          },
+          '&>p:nth-child(2)': {
+            fontWeight: 500,
+            fontSize: '20px',
+            lineHeight: '30px',
+          },
+        },
+      },
+      '&>div:nth-child(2)': {
+        padding: '1rem 0',
+        boxShadow: '0px 2px 16px rgba(78, 78, 78, 0.16)',
+        '& .MuiPaper-elevation1': {
+          boxShadow: 'none',
+        },
+        '& .MuiTabs-flexContainer': {
+          justifyContent: 'center',
+          padding: '12px 0',
+          '& .MuiTab-wrapper': {
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            fontSize: '24px',
+            lineHeight: '36px',
+            '&>div': {
+              '&>img': {
+                width: '40px',
+                height: '40px',
+              },
+              '&>p': {
+                fontSize: '16px',
+                lineHeight: '24px',
+                color: '#9CA3AF',
+              },
+            },
+          },
+        },
+        '& .MuiTab-textColorPrimary.Mui-selected': {
+          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+          WebkitBackgroundClip: 'text',
+          webkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+        },
+      },
+      '&>div:nth-child(3)': {
+        display: 'inherit',
+        justifyContent: 'space-between',
+        background: '#F9FAFB',
+        padding: '1rem',
+        '&>div:nth-child(1)': {
+          boxSizing: 'border-box',
+          width: '100%',
+          padding: '30px 4%',
+          background: '#FFFFFF',
+          borderRadius: '4px',
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '16px',
+            lineHeight: '30px',
+            color: '#000000',
+          },
+        },
+        '&>div:nth-child(2)': {
+          boxSizing: 'border-box',
+          width: '100%',
+          padding: '1rem',
+          background: '#FFFFFF',
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '16px',
+            lineHeight: '30px',
+            color: '#000000',
+          },
+          '& .MuiPaper-elevation1': {
+            boxShadow: 'none',
+          },
+          '&>div': {
+            '&>p': {
+              fontWeight: '500',
+              fontSize: '16px',
+              lineHeight: '24px',
+              color: '#000000',
+            },
+            '&>span': {
+              border: '1px solid  #9CA3AF',
+              fontWeight: 500,
+              fontSize: '16px',
+              display: 'flex',
+              alignItems: 'center',
+            },
+          },
+          '&>div:nth-child(2)': {
+            display: 'flex',
+            justifyContent: 'space-between',
+            margin: '2rem 0',
+            '&>span': {
+              border: '1px solid  #9CA3AF',
+              fontWeight: 500,
+              fontSize: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              '&>span': {
+                margin: '0 6px',
+              },
+            },
+          },
+        },
+        '&>div:nth-child(3)': {
+          boxSizing: 'border-box',
+          width: '100%',
+          padding: '30px 4%',
+          background: '#FFFFFF',
+          '&>p:nth-child(1)': {
+            fontWeight: 700,
+            fontSize: '16px',
+            lineHeight: '30px',
+            color: '#000000',
+          },
+          '&>p': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            '&>span:nth-child(2)': {
+              display: 'flex',
+              alignItems: 'center',
+              color: '#EF4444',
+              background: '#FEF2F2',
+              borderRadius: '100px',
+              padding: '6px 16px',
+            },
+          },
+          '&>img': {
+            width: '100%',
+          },
+        },
+      },
+    },
+  },
 })
 
 const EstimateCalculation = () => {
@@ -205,7 +367,7 @@ const EstimateCalculation = () => {
                     <img
                       src={item.url}
                       alt=''
-                      style={{width: '60px', height: '60px'}}
+                      // style={{width: '60px', height: '60px'}}
                     />
                     <p style={{margin: '0'}}>{item.name}</p>
                   </div>

@@ -45,6 +45,54 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (max-width: 740px)': {
+    container_portfolio_detail: {
+      padding: '44px 16px 40px',
+      boxSizing: 'border-box',
+      '&>div:nth-child(1)': {
+        display: 'flex',
+        position: 'relative',
+        '&>img:nth-child(1)': {
+          width: '80px',
+          height: '80px',
+          borderRadius: '10px',
+          marginRight: '16px',
+        },
+        '&>div:nth-child(2)': {
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '42px',
+            margin: '0',
+          },
+          '&>p:nth-child(2)': {
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '24px',
+            color: '#D97706',
+          },
+        },
+        '&>span:nth-child(3)': {
+          position: 'absolute',
+          top: '-32px',
+          right: '-7px',
+          '&>svg': {
+            width: '30px',
+          },
+        },
+        '&>p': {
+          fontWeight: 500,
+          fontSize: '18px',
+          lineHeight: '27px',
+          color: '#4B5563',
+        },
+        '&>img': {
+          width: '100%',
+          objectFit: 'cover',
+        },
+      },
+    },
+  },
 })
 
 export const PortfolioDetail = (props: {
@@ -81,6 +129,7 @@ export const PortfolioDetail = (props: {
         <p>고객님은 광고효과를 위해 사이드서버랜더링</p>
         <p>방식을 채택하여 제작하였습니다</p>
         <img
+          style={{width: '100%'}}
           src='https://cdn.tgdd.vn/2020/08/content/cach-dung-google-translate-dich-van-ban-hinh-anh-giong-noi-thumb-800x450.jpg'
           alt=''
         />

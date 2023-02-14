@@ -8,9 +8,11 @@ import backgroundWord from '../../asset/images/background_word.png'
 import users from '../../asset/images/users.png'
 import CardService from '../../components/card_service'
 import CardStrength from '../../components/card_strength'
-import {LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
+import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
 import {Slideshow} from '../../components/slide'
 import CardSuccessCase from '../../components/card_success_case'
+import axios from 'axios'
+import {PORTFOLIO} from '../../apis/urlConfig'
 
 const useStyles = makeStyles({
   home_container: {
@@ -532,6 +534,13 @@ const useStyles = makeStyles({
 
 const Home = () => {
   let classes: any = useStyles()
+  useEffect(() => {
+    const getListPortfolio = async () => {
+      const data = await axios.get(`${BASE_URL}${PORTFOLIO}`)
+      console.log(111, data)
+    }
+    getListPortfolio()
+  }, [])
   return (
     <div className={classes.home_container}>
       <div>

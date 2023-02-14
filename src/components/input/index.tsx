@@ -11,7 +11,7 @@ const useStyles = makeStyles({
       fontWeight: '500',
       fontSize: '18px',
       lineHeight: '27px',
-      color: '#1F293',
+      color: '#111827',
       '&>span': {
         color: '#2C97EB',
       },
@@ -26,6 +26,32 @@ const useStyles = makeStyles({
       boxSizing: 'border-box',
     },
   },
+  '@media (max-width: 740px)': {
+    container_input_base: {
+      width: '100%',
+      '&>label': {
+        display: 'inline-block',
+        marginBottom: '10px',
+        marginTop: '10px',
+        fontWeight: '500',
+        fontSize: '16px',
+        lineHeight: '24px',
+        color: '#111827',
+        '&>span': {
+          color: '#2C97EB',
+        },
+      },
+      '&>input': {
+        width: '100%',
+        height: '42px',
+        fontFamily: 'Pretendard',
+        paddingLeft: '10px',
+        border: '1px solid #9CA3AF',
+        borderRadius: '4px',
+        boxSizing: 'border-box',
+      },
+    },
+  },
 })
 
 const InputBase = (props: {
@@ -34,6 +60,8 @@ const InputBase = (props: {
   require?: boolean
   onChange: (event: any) => void
   type?: 'text' | 'number'
+  disable?: boolean
+  value?: string|number
 }) => {
   const classes = useStyles()
   return (
@@ -43,6 +71,7 @@ const InputBase = (props: {
       </label>
       <br />
       <input
+        value={props.value}
         type={props.type ? props.type : 'text'}
         id={props.label}
         placeholder={props.placeholder}
