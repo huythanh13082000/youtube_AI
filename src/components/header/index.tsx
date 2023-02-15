@@ -116,7 +116,6 @@ const Header = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
-  console.log(location)
   return (
     <div className={classes.container_header}>
       <div>

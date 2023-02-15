@@ -1,8 +1,8 @@
 import {makeStyles} from '@material-ui/core'
-import React, {ChangeEventHandler, useRef} from 'react'
+import CloseIcon from '@material-ui/icons/Close'
+import {useRef} from 'react'
 import excel from '../../asset/images/excel.png'
 import pdf from '../../asset/images/pdf.png'
-import CloseIcon from '@material-ui/icons/Close'
 
 const useStyles = makeStyles({
   container_upload_file: {
@@ -97,6 +97,32 @@ const useStyles = makeStyles({
         borderRadius: '4px',
         boxSizing: 'border-box',
       },
+      '&>div': {
+        width: 'calc(100% - 66px)',
+        display: 'flex',
+        position: 'absolute',
+        flexWrap: 'wrap',
+        top: '50px',
+        left: '3px',
+        '&>span': {
+          background: '#F3F4F6',
+          borderRadius: '4px',
+          padding: '4px 12px',
+          display: 'flex',
+          alignItems: 'center',
+          margin: '1px 2px',
+          '&>img': {
+            width: '18px',
+            height: '18px',
+          },
+          '&>span': {
+            fontWeight: 400,
+            fontSize: '14px',
+            lineHeight: '20px',
+            color: '#374151',
+          },
+        },
+      },
     },
   },
 })
@@ -110,7 +136,6 @@ const UploadFile = (props: {
   const classes = useStyles()
   const refInput = useRef<HTMLInputElement>(null)
   const handleChange = (e: any) => {
-    console.log(4444, e.target.files)
     const data = [...e.target.files]
     props.file &&
       props.setFile([
@@ -121,7 +146,6 @@ const UploadFile = (props: {
       ])
   }
   const deleteFile = (e: number) => {
-    console.log(345, e)
     if (props.file)
       props.setFile([...props.file?.filter((item) => item.lastModified !== e)])
   }
@@ -151,12 +175,6 @@ const UploadFile = (props: {
             </div>
           </span>
         ))}
-
-        {/* <span>
-          <img src={excel} alt='' />
-          <span>모델 목록목...</span>
-          <CloseIcon />
-        </span> */}
       </div>
     </div>
   )

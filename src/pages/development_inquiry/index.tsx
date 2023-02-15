@@ -2,21 +2,18 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  makeStyles,
-  Radio,
-  RadioGroup,
-  TextareaAutosize,
+  makeStyles, TextareaAutosize
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import React, {useState} from 'react'
-import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
+import { useState } from 'react'
+import { ORDER_PROJECT, UPLOAD_fILES } from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import {BASE_URL} from '../../constants'
-import {OrderProjectType} from '../../types/orderProject.type'
+import { BASE_URL } from '../../constants'
+import { OrderProjectType } from '../../types/orderProject.type'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -191,10 +188,26 @@ const DevelopmentInquiry = () => {
     if (res.data.code === 0) {
       setOpen(true)
       setSnackbar({content: 'success', type: 'success'})
+      resetForm()
     } else {
       setOpen(true)
       setSnackbar({content: 'error', type: 'error'})
     }
+  }
+  const resetForm = () => {
+    setData({
+      platform: 'NOTHING',
+      companyName: '',
+      customerName: '',
+      email: '',
+      governmentSupport: false,
+      phone: '',
+      position: '',
+      projectName: '',
+      description: '',
+      presenter: '',
+      planFile: [],
+    })
   }
 
   return (

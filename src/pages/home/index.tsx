@@ -590,9 +590,7 @@ const Home = () => {
       const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
         params: {sort: 'DESC'},
       })
-      console.log(data)
       if (data.data.code === 0) {
-        console.log(1111, data.data.data.listPortfolios)
         setListPortfolio([...data.data.data.listPortfolios])
       } else console.log(111, data)
     }
