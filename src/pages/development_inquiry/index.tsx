@@ -2,18 +2,19 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  makeStyles, TextareaAutosize
+  makeStyles,
+  TextareaAutosize,
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import { useState } from 'react'
-import { ORDER_PROJECT, UPLOAD_fILES } from '../../apis/urlConfig'
+import {useState} from 'react'
+import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import { BASE_URL } from '../../constants'
-import { OrderProjectType } from '../../types/orderProject.type'
+import {BASE_URL} from '../../constants'
+import {OrderProjectType} from '../../types/orderProject.type'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -207,6 +208,7 @@ const DevelopmentInquiry = () => {
       description: '',
       presenter: '',
       planFile: [],
+      maximumBudget: 0,
     })
   }
 
