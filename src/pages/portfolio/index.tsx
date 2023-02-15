@@ -93,7 +93,19 @@ const useStyles = makeStyles({
         },
       },
       '&>div:nth-child(2)': {
-        padding: '16px',
+        padding: '16px 0 ',
+        '& .MuiTabs-flexContainer': {
+          justifyContent: 'center',
+          padding: '0',
+          overflow: 'auto',
+          '& .MuiTab-wrapper': {
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '25px',
+          },
+        },
       },
       '&>div:nth-child(3)': {
         display: 'flex',
@@ -108,7 +120,7 @@ const useStyles = makeStyles({
 
 const Portfolio = () => {
   const classes = useStyles()
-  const [value, setValue] = React.useState(2)
+  const [value, setValue] = React.useState(0)
 
   const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
   useEffect(() => {
@@ -145,14 +157,11 @@ const Portfolio = () => {
             aria-label='disabled tabs example'
           >
             <Tab label='과학 기술' />
-            <Tab label='쇼핑' disabled />
-            <Tab label='자동차' disabled />
-            <Tab label='여행하다' disabled />
-            <Tab label='패션' disabled />
-            <Tab label='마케팅' disabled />
-            <Tab label='마케팅' disabled />
-            <Tab label='마케팅' disabled />
-            <Tab label='마케팅' disabled />
+            <Tab label='쇼핑' />
+            {/* <Tab label='자동차' disabled /> */}
+            <Tab label='여행하다' />
+            <Tab label='패션' />
+            <Tab label='마케팅' />
           </Tabs>
         </Paper>
       </div>
