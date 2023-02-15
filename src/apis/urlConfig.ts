@@ -13,3 +13,5 @@ export const PORTFOLIO = '/portfolio'
 //order_project
 
 export const ORDER_PROJECT = '/order-project'
+
+export const UPLOAD_fILES = '/system/multiple-file'

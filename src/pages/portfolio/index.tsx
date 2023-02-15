@@ -1,7 +1,11 @@
 import {makeStyles, Paper, Tab, Tabs} from '@material-ui/core'
-import React from 'react'
+import axios from 'axios'
+import React, {useState, useEffect} from 'react'
+import {PORTFOLIO} from '../../apis/urlConfig'
 import background from '../../asset/images/portfolio_background.png'
 import CardSuccessCase from '../../components/card_success_case'
+import {BASE_URL} from '../../constants'
+import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
   container_portfolio: {
@@ -106,6 +110,20 @@ const Portfolio = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(2)
 
+  const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
+  useEffect(() => {
+    const getListPortfolio = async () => {
+      const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
+        params: {sort: 'DESC'},
+      })
+      console.log(data)
+      if (data.data.code === 0) {
+        console.log(1111, data.data.data.listPortfolios)
+        setListPortfolio([...data.data.data.listPortfolios])
+      } else console.log(111, data)
+    }
+    getListPortfolio()
+  }, [])
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
   }
@@ -127,24 +145,21 @@ const Portfolio = () => {
             aria-label='disabled tabs example'
           >
             <Tab label='과학 기술' />
-            <Tab label='쇼핑' />
-            <Tab label='자동차' />
-            <Tab label='여행하다  ' />
-            <Tab label='패션' />
-            <Tab label='마케팅' />
-            <Tab label='마케팅' />
-            <Tab label='마케팅' />
-            <Tab label='마케팅' />
+            <Tab label='쇼핑' disabled />
+            <Tab label='자동차' disabled />
+            <Tab label='여행하다' disabled />
+            <Tab label='패션' disabled />
+            <Tab label='마케팅' disabled />
+            <Tab label='마케팅' disabled />
+            <Tab label='마케팅' disabled />
+            <Tab label='마케팅' disabled />
           </Tabs>
         </Paper>
       </div>
       <div>
-        {/* <CardSuccessCase />
-        <CardSuccessCase />
-        <CardSuccessCase />
-        <CardSuccessCase />
-        <CardSuccessCase />
-        <CardSuccessCase /> */}
+        {listPortfolio.map((item) => (
+          <CardSuccessCase data={item} key={item.portfolio_id} />
+        ))}
       </div>
     </div>
   )

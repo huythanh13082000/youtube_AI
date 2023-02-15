@@ -11,9 +11,10 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
 import React, {useState} from 'react'
-import {ORDER_PROJECT} from '../../apis/urlConfig'
+import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import CustomizedSnackbars from '../../components/snackbar'
+import UploadFile from '../../components/upload_file'
 import {BASE_URL} from '../../constants'
 import {OrderProjectType} from '../../types/orderProject.type'
 
@@ -64,7 +65,6 @@ const useStyles = makeStyles({
       '&>button': {
         width: '100%',
         height: '48px',
-        background: '#2C97EB',
         borderRadius: '5px',
         fontWeight: 700,
         fontSize: '16px',
@@ -132,7 +132,6 @@ const useStyles = makeStyles({
         '&>button': {
           width: '100%',
           height: '48px',
-          background: '#2C97EB',
           borderRadius: '5px',
           fontWeight: 700,
           fontSize: '16px',
@@ -168,6 +167,7 @@ const DevelopmentInquiry = () => {
     projectName: '',
     description: '',
     presenter: '',
+    planFile: [],
   })
   const [snackbar, setSnackbar] = useState<{
     content: string
@@ -176,7 +176,18 @@ const DevelopmentInquiry = () => {
   const [open, setOpen] = useState<boolean>(false)
 
   const handleCreateOrderProject = async () => {
-    const res = await axios.post(`${BASE_URL}${ORDER_PROJECT}`, data)
+    const formdataFile = new FormData()
+    data.planFile?.forEach((item) => {
+      formdataFile.append('files', item)
+    })
+    const resUploadFiles = await axios.post(
+      `${BASE_URL}${UPLOAD_fILES}`,
+      formdataFile
+    )
+    const res = await axios.post(`${BASE_URL}${ORDER_PROJECT}`, {
+      ...data,
+      planFile: resUploadFiles.data.data,
+    })
     if (res.data.code === 0) {
       setOpen(true)
       setSnackbar({content: 'success', type: 'success'})
@@ -197,13 +208,15 @@ const DevelopmentInquiry = () => {
             label='프로젝트명'
             value={data.projectName}
             onChange={(e) => setData({...data, projectName: e})}
+            require
           />
-          <div style={{width: '32px'}}></div>
-          <InputBase
-            value={data.projectName}
-            onChange={(e) => setData({...data, projectName: e})}
-            placeholder='화면기획서'
-            label='파일 선택'
+        </div>
+        <div>
+          <UploadFile
+            label='화면기획서'
+            placeholder='파일 선택 (.pdf, .csv)'
+            setFile={(e) => setData({...data, planFile: e})}
+            file={data.planFile as any[]}
           />
         </div>
         <div style={{display: 'inherit'}}>
@@ -231,6 +244,7 @@ const DevelopmentInquiry = () => {
             placeholder='최대 예상'
             label='최대 예상'
             type='number'
+            require
           />
         </div>
         <div>
@@ -320,6 +334,7 @@ const DevelopmentInquiry = () => {
             value={data.companyName}
             placeholder='프로젝트명'
             label='회사이름 '
+            require
           />
           <div style={{width: '32px'}}></div>
           <InputBase
@@ -327,6 +342,7 @@ const DevelopmentInquiry = () => {
             value={data.position}
             placeholder='직위를 입력하세요'
             label='직책'
+            require
           />
         </div>
         <div>
@@ -352,12 +368,26 @@ const DevelopmentInquiry = () => {
             value={data.presenter}
             placeholder='들어 오세요 '
             label='추천인 또는 인썸니아를 알게 된 경로'
+            require
           />
         </div>
         <Button
           variant='contained'
           color='primary'
           onClick={handleCreateOrderProject}
+          disabled={
+            !data.projectName ||
+            !data.maximumBudget ||
+            !data.customerName ||
+            !data.companyName ||
+            !data.position ||
+            !data.email ||
+            !data.presenter ||
+            !data.phone ||
+            !data.platform
+              ? true
+              : false
+          }
         >
           제출하기
         </Button>
