@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/styles'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import background from '../../asset/images/home-background.png'
 import homeCircleTopRight from '../../asset/images/home-circle-top-right.png'
 import homeRobot from '../../asset/images/home-robot.png'
@@ -13,6 +13,7 @@ import {Slideshow} from '../../components/slide'
 import CardSuccessCase from '../../components/card_success_case'
 import axios from 'axios'
 import {PORTFOLIO} from '../../apis/urlConfig'
+import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
   home_container: {
@@ -318,8 +319,8 @@ const useStyles = makeStyles({
       },
       '&>div:nth-child(2)': {
         display: 'flex',
-        justifyContent: 'space-between',
         flexWrap: 'wrap',
+        boxSizing: 'border-box',
       },
     },
   },
@@ -561,8 +562,9 @@ const useStyles = makeStyles({
         },
         '&>div:nth-child(2)': {
           display: 'flex',
-          justifyContent: 'space-between',
+          // justifyContent: 'space-between',
           flexWrap: 'wrap',
+          boxSizing: 'border-box',
         },
       },
     },
@@ -582,10 +584,17 @@ const useStyles = makeStyles({
 
 const Home = () => {
   let classes: any = useStyles()
+  const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
   useEffect(() => {
     const getListPortfolio = async () => {
-      const data = await axios.get(`${BASE_URL}${PORTFOLIO}`)
-      console.log(111, data)
+      const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
+        params: {sort: 'DESC'},
+      })
+      console.log(data)
+      if (data.data.code === 0) {
+        console.log(1111, data.data.data.listPortfolios)
+        setListPortfolio([...data.data.data.listPortfolios])
+      } else console.log(111, data)
     }
     getListPortfolio()
   }, [])
@@ -671,12 +680,15 @@ const Home = () => {
           <p>산업, 분야 및 주제가 다양해졌습니다.</p>
         </div>
         <div>
+          {listPortfolio.map((item) => (
+            <CardSuccessCase data={item} key={item.portfolio_id} />
+          ))}
+
+          {/* <CardSuccessCase />
           <CardSuccessCase />
           <CardSuccessCase />
           <CardSuccessCase />
-          <CardSuccessCase />
-          <CardSuccessCase />
-          <CardSuccessCase />
+          <CardSuccessCase /> */}
         </div>
       </div>
     </div>

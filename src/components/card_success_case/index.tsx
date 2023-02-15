@@ -1,7 +1,9 @@
 import {makeStyles} from '@material-ui/core'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 import React, {useState} from 'react'
+import {BASE_URL} from '../../constants'
 import {PortfolioDetail} from '../../pages/portfolio/portfolio_detail'
+import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
   container_card_success_case: {
@@ -12,7 +14,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
     borderRadius: '10px',
-    margin: '1% 0',
+    margin: '0.66%',
     '&>img': {
       borderRadius: '12px',
       width: '80px',
@@ -59,7 +61,7 @@ const useStyles = makeStyles({
       boxSizing: 'border-box',
       boxShadow: '0px 4px 20px rgba(0, 102, 255, 0.25)',
       borderRadius: '10px',
-      margin: '1% 0',
+      margin: '0.66%',
       '&>img': {
         borderRadius: '12px',
         width: '60px',
@@ -78,7 +80,6 @@ const useStyles = makeStyles({
         lineHeight: '21px',
         color: '#D97706',
         margin: '5px',
-        
       },
       '&>p:nth-child(4)': {
         display: 'none',
@@ -100,22 +101,23 @@ const useStyles = makeStyles({
   },
 })
 
-const CardSuccessCase = () => {
+const CardSuccessCase = (props: {data: PortfolioType}) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   return (
     <div className={classes.container_card_success_case}>
-      <img src='' alt='' />
-      <p>리뷰팡팡</p>
-      <p>Web/ Android/ IOS</p>
-      <p>
-        인플루언서 마케팅 플랫폼 프로젝트는 그린앱의 산물입니다.인플루언서
-        마케팅 플랫폼 프로젝트는 그린앱의 산물입니다.
-      </p>
+      <img src={`${BASE_URL}/${props.data.logo}`} alt='' />
+      <p>{props.data.title}</p>
+      <p>{props.data.programming_language}</p>
+      <p>{props.data.description}</p>
       <span onClick={() => setOpen(true)}>
         View Detail <ArrowRightAltIcon />
       </span>
-      <PortfolioDetail open={open} setOpen={() => setOpen(false)} />
+      <PortfolioDetail
+        open={open}
+        setOpen={() => setOpen(false)}
+        data={props.data}
+      />
     </div>
   )
 }

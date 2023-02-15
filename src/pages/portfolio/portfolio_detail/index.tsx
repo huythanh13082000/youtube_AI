@@ -1,6 +1,8 @@
 import {makeStyles} from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import CancelIcon from '@material-ui/icons/Cancel'
+import {BASE_URL} from '../../../constants'
+import {PortfolioType} from '../../../types/portfolio.type'
 
 const useStyles = makeStyles({
   container_portfolio_detail: {
@@ -104,6 +106,7 @@ const useStyles = makeStyles({
 export const PortfolioDetail = (props: {
   open: boolean
   setOpen: () => void
+  data: PortfolioType
 }) => {
   const classes = useStyles()
   const handleClose = () => {
@@ -120,25 +123,23 @@ export const PortfolioDetail = (props: {
     >
       <div className={classes.container_portfolio_detail}>
         <div>
-          <img src='' alt='' />
+          <img src={`${BASE_URL}/${props.data.logo}`} alt='' />
           <div>
-            <p>부경샵</p>
-            <p>Android/ IOS</p>
+            <p>{props.data.title}</p>
+            <p>{props.data.programming_language}</p>
           </div>
           <span onClick={() => handleClose()}>
             <CancelIcon style={{fontSize: '40px'}} />
           </span>
         </div>
-        <p>이앱은 무무슨 앱입니다</p>
-        <p>프로젝트 기간은 6개월</p>
-        <p>비용은 3000만원으로 제작되었습니다</p>
-        <p>고객님은 광고효과를 위해 사이드서버랜더링</p>
-        <p>방식을 채택하여 제작하였습니다</p>
-        <img
-          style={{width: '100%'}}
-          src='https://cdn.tgdd.vn/2020/08/content/cach-dung-google-translate-dich-van-ban-hinh-anh-giong-noi-thumb-800x450.jpg'
-          alt=''
-        />
+        <p>{props.data.description}</p>
+        {(props.data.images as string[]).map((item) => (
+          <img
+            style={{width: '100%'}}
+            src={`${BASE_URL}/${item}`}
+            alt=''
+          />
+        ))}
       </div>
     </Dialog>
   )

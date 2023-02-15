@@ -139,12 +139,12 @@ const Portfolio = () => {
         </Paper>
       </div>
       <div>
+        {/* <CardSuccessCase />
         <CardSuccessCase />
         <CardSuccessCase />
         <CardSuccessCase />
         <CardSuccessCase />
-        <CardSuccessCase />
-        <CardSuccessCase />
+        <CardSuccessCase /> */}
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ import hourglass from '../asset/images/hourglass.png'
 import learn from '../asset/images/learn.png'
 import w from '../asset/images/w.png'
 
-export const BASE_URL = 'http://3.35.47.171:3535'
+export const BASE_URL = 'http://3.34.144.245:3535'
 
 export const HTTP_STATUS = {
   OK: 200,

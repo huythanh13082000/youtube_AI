@@ -9,8 +9,12 @@ import {
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
+import axios from 'axios'
 import React, {useState} from 'react'
+import {ORDER_PROJECT} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
+import CustomizedSnackbars from '../../components/snackbar'
+import {BASE_URL} from '../../constants'
 import {OrderProjectType} from '../../types/orderProject.type'
 
 const useStyles = makeStyles({
@@ -163,7 +167,24 @@ const DevelopmentInquiry = () => {
     position: '',
     projectName: '',
     description: '',
+    presenter: '',
   })
+  const [snackbar, setSnackbar] = useState<{
+    content: string
+    type?: 'error' | 'warning' | 'success' | 'info'
+  }>({content: ''})
+  const [open, setOpen] = useState<boolean>(false)
+
+  const handleCreateOrderProject = async () => {
+    const res = await axios.post(`${BASE_URL}${ORDER_PROJECT}`, data)
+    if (res.data.code === 0) {
+      setOpen(true)
+      setSnackbar({content: 'success', type: 'success'})
+    } else {
+      setOpen(true)
+      setSnackbar({content: 'error', type: 'error'})
+    }
+  }
 
   return (
     <div className={classes.container_development_inquiry}>
@@ -206,7 +227,7 @@ const DevelopmentInquiry = () => {
         <div>
           <InputBase
             value={data.maximumBudget}
-            onChange={(e) => setData({...data, maximumBudget: e})}
+            onChange={(e) => setData({...data, maximumBudget: Number(e)})}
             placeholder='최대 예상'
             label='최대 예상'
             type='number'
@@ -327,18 +348,28 @@ const DevelopmentInquiry = () => {
         </div>
         <div>
           <InputBase
-            onChange={() => console.log(11)}
+            onChange={(e) => setData({...data, presenter: e})}
+            value={data.presenter}
             placeholder='들어 오세요 '
             label='추천인 또는 인썸니아를 알게 된 경로'
           />
         </div>
-        <Button variant='contained' color='primary'>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={handleCreateOrderProject}
+        >
           제출하기
         </Button>
         <span>
           제출하기를 누르면 <span>개인정보수집</span> 에 동의한 것으로 됩니다
         </span>
       </div>
+      <CustomizedSnackbars
+        {...snackbar}
+        open={open}
+        setOpen={() => setOpen(false)}
+      />
     </div>
   )
 }
