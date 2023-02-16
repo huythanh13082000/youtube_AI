@@ -119,7 +119,7 @@ const Header = () => {
   return (
     <div className={classes.container_header}>
       <div>
-        <span>Greenapp</span>
+        <span onClick={() => navigate('/')}>Greenapp</span>
         <ul>
           <li
             style={{
@@ -159,7 +159,7 @@ const Header = () => {
         <span>프로젝트 생성</span>
       </div>
       <div>
-        <span>Greenapp</span>
+        <span onClick={() => navigate('/')}>Greenapp</span>
         <img src={menu} alt='' onClick={() => setOpen(true)} />
       </div>
       <DialogMenuHeader open={open} setOpen={() => setOpen(false)} />

@@ -611,10 +611,10 @@ const Home = () => {
             </span>
           </div>
           <div>
-            <img src={homeRobot} alt='' />
+            <img src={homeRobot} alt='' loading="lazy"/>
           </div>
         </div>
-        <img src={homeScrollDown} alt='' />
+        <img src={homeScrollDown} alt='' loading="lazy"/>
         <div>
           <div>
             <p>4+</p>

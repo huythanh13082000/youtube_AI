@@ -9,6 +9,7 @@ import facebook from '../../asset/images/footer-facebook.png'
 import linked from '../../asset/images/footer-linked.png'
 import twitter from '../../asset/images/footer-twitter.png'
 import instagram from '../../asset/images/footer-instagram.png'
+import {useNavigate} from 'react-router-dom'
 
 const useStyles = makeStyles({
   container_footer: {
@@ -279,11 +280,12 @@ const useStyles = makeStyles({
 
 const Footer = () => {
   const classes = useStyles()
+  const navigate = useNavigate()
   return (
     <Grid className={classes.container_footer}>
       <Grid item xs={12} container>
         <Grid item xs={4}>
-          <p>Greenapp</p>
+          <p onClick={() => navigate('/')}>Greenapp</p>
           <span>
             Similarly, a loan taken out to buy a car may be secured by the car.
             The duration of the loan.
