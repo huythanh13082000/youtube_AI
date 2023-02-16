@@ -192,7 +192,10 @@ const DevelopmentInquiry = () => {
       resetForm()
     } else {
       setOpen(true)
-      setSnackbar({content: 'error', type: 'error'})
+      setSnackbar({
+        content: `${res.data.errors[0].rule} 잘못된 형식`,
+        type: 'error',
+      })
     }
   }
   const resetForm = () => {
