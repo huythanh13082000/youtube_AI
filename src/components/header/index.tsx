@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {makeStyles} from '@mui/styles'
+import {makeStyles} from '@material-ui/core'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {ROUTE} from '../../router/routes'
 import menu from '../../asset/images/menu.png'

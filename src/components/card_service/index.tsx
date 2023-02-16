@@ -1,5 +1,5 @@
 import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined'
-import {makeStyles} from '@mui/styles'
+import {makeStyles} from '@material-ui/core'
 
 const useStyles = makeStyles({
   container_card_service: {
