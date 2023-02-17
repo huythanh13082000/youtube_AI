@@ -31,6 +31,53 @@ const useStyles = makeStyles({
       background: '#FFFFFF',
       boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.2)',
       borderRadius: '6px',
+      '&>div:nth-child(1)': {
+        width: '100%',
+        display: 'inherit',
+        padding: '0 2rem',
+        boxSizing: 'border-box',
+        borderRadius: '4px',
+        border: '1px solid #78BDF2',
+        '&>p': {
+          fontWeight: 700,
+          fontSize: '20px',
+          lineHeight: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          color: '#111827',
+          justifyContent: 'space-between',
+        },
+        '&>div': {
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '18px',
+            lineHeight: '27px',
+            display: 'flex',
+            color: '#111827',
+            justifyContent: 'space-between',
+            '&>span': {
+              fontWeight: 500,
+              fontSize: '16px',
+              lineHeight: '24px',
+              color: '#4B5563',
+            },
+          },
+        },
+      },
+      '&>div:nth-child(2)': {
+        margin: '16px auto 0',
+        width: '85%',
+        padding: '8px 16px',
+        background: '#FFFFFF',
+        boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.2)',
+        borderRadius: '6px',
+        '&>p': {
+          fontWeight: 700,
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+        },
+      },
       '&>p': {
         fontWeight: 700,
         fontSize: '24px',
@@ -96,12 +143,40 @@ const useStyles = makeStyles({
         padding: '8px 16px',
         background: '#FFFFFF',
         boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.2)',
-        borderRadius: '6px',
+
         '&>p': {
           fontWeight: 700,
           fontSize: '20px',
           lineHeight: '30px',
           textAlign: 'center',
+        },
+        '&>div:nth-child(1)': {
+          width: '100%',
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '20px',
+            lineHeight: '30px',
+            display: 'flex',
+            alignItems: 'center',
+            color: '#111827',
+            justifyContent: 'space-between',
+          },
+          '&>div': {
+            '&>p': {
+              fontWeight: 700,
+              fontSize: '18px',
+              lineHeight: '27px',
+              display: 'flex',
+              color: '#111827',
+              justifyContent: 'space-between',
+              '&>span': {
+                fontWeight: 500,
+                fontSize: '16px',
+                lineHeight: '24px',
+                color: '#4B5563',
+              },
+            },
+          },
         },
         '&>div': {
           display: 'inherit',
@@ -219,6 +294,43 @@ const DevelopmentInquiry = () => {
     <div className={classes.container_development_inquiry}>
       <div></div>
       <div>
+        <div>
+          <p>견적</p>
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
+            <span>총 금액</span> <span>450,000원</span>
+          </p>
+        </div>
         <p>문의 내용</p>
         <div>
           <InputBase

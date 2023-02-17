@@ -1,555 +1,206 @@
 import {
+  Button,
   Checkbox,
-  FormControl,
+  CheckboxProps,
   FormControlLabel,
-  FormGroup,
-  makeStyles,
-  Paper,
-  Tab,
-  Tabs,
 } from '@material-ui/core'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
+import {green} from '@material-ui/core/colors'
+import {makeStyles, withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import React from 'react'
-import sumIcon from '../../asset/images/+.png'
-import minimizeIcon from '../../asset/images/-.png'
-import estimateCalculationBackground from '../../asset/images/estimate_calculation_background.png'
-import {LIST_DATA_SERVICE} from '../../constants'
-import CloseIcon from '@material-ui/icons/Close'
-
-import reviewLogin from '../../asset/images/review-login.png'
-import reviewProfile from '../../asset/images/review-profile.png'
-import reviewAction from '../../asset/images/review-action.png'
+import eyeScan from '../../asset/images/eye-scan.png'
 
 const useStyles = makeStyles({
   container_portfolio: {
+    background: '#F3F4F6',
+    paddingBottom: '2rem',
+    '& .MuiTypography-body1': {
+      fontFamily: 'Pretendard',
+      fontStyle: 'normal',
+      fontWeight: 500,
+      fontSize: '18px',
+      lineHeight: '27px',
+      color: '#000000',
+    },
+    '& .MuiAccordionDetails-root': {
+      '&>div': {
+        display: 'flex',
+        alignItems: 'center',
+      },
+    },
+    '& .MuiButton-containedPrimary': {
+      background: '#3B71FE',
+      boxShadow: '0px 2px 8px rgba(59, 113, 254, 0.25)',
+      borderRadius: '8px',
+      width: '100%',
+      padding: '12px 10px',
+      fontFamily: 'Pretendard',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      fontSize: '16px',
+      lineHeight: '24px',
+      color: '#FFFFFF',
+    },
+    '& .MuiFormControlLabel-label': {
+      fontWeight: 400,
+      fontSize: '16px',
+      lineHeight: '24px',
+      color: '#4B5563',
+    },
     '&>div:nth-child(1)': {
-      background: `url(${estimateCalculationBackground})`,
-      backgroundSize: 'cover',
-      position: 'relative',
-      height: '800px',
-      '&>div:nth-child(1)': {
-        position: 'absolute',
-        top: '40%',
-        width: '100%',
-        '&>p': {
-          textAlign: 'center',
-          fontWeight: 700,
-          fontSize: '44px',
-          lineHeight: '66px',
-          color: '#FFFFFF',
-          margin: '5px 0',
-        },
-        '&>p:nth-child(2)': {
-          fontWeight: 500,
-          fontSize: '20px',
-          lineHeight: '30px',
-        },
-      },
+      background: 'black',
+      height: '120px',
     },
-    '&>div:nth-child(2)': {
-      padding: '0 140px',
-      boxShadow: '0px 2px 16px rgba(78, 78, 78, 0.16)',
-      '& .MuiPaper-elevation1': {
-        boxShadow: 'none',
-      },
-      '& .MuiTabs-flexContainer': {
-        justifyContent: 'center',
-        padding: '12px 0',
-        '& .MuiTab-wrapper': {
-          fontFamily: 'Pretendard',
-          fontStyle: 'normal',
-          fontWeight: 500,
-          fontSize: '24px',
-          lineHeight: '36px',
-          '&>div': {
-            '&>img': {
-              width: '60px',
-              height: '60px',
-            },
-          },
-        },
-      },
-      '& .MuiTab-textColorPrimary.Mui-selected': {
-        background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
-        WebkitBackgroundClip: 'text',
-        webkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        textFillColor: 'transparent',
-      },
+
+    '&>p': {
+      textAlign: 'center',
     },
-    '&>div:nth-child(3)': {
+
+    '&>p:nth-child(2)': {
+      fontWeight: 700,
+      fontSize: '44px',
+      lineHeight: '50px',
+      color: '#000000',
+    },
+    '&>p:nth-child(3)': {
+      fontWeight: 500,
+      fontSize: '20px',
+      lineHeight: '20px',
+      color: '#000000',
+    },
+    '&>div:nth-child(4)': {
+      padding: '0 130px',
       display: 'flex',
       justifyContent: 'space-between',
-      background: '#F9FAFB',
-      padding: '60px 130px 80px 130px',
-      '&>div:nth-child(1)': {
-        boxSizing: 'border-box',
-        width: '20%',
-        padding: '30px 4%',
-        background: '#FFFFFF',
+      '&>div': {
         borderRadius: '4px',
-        '&>p': {
+        background: 'white',
+      },
+      '&>div:nth-child(1)': {
+        width: '16%',
+        maxHeight: '186px',
+        '&>div': {
+          padding: '8px 16px',
           fontWeight: 700,
           fontSize: '20px',
           lineHeight: '30px',
-          color: '#000000',
+          display: 'flex',
+          alignItems: 'center',
+          textAlign: 'center',
+        },
+        '&>div:nth-child(1)': {
+          color: '#215DFC',
+          background: '#C8E4FA',
         },
       },
       '&>div:nth-child(2)': {
+        width: '52%',
         boxSizing: 'border-box',
-        width: '50%',
-        padding: '30px 4%',
-        background: '#FFFFFF',
+        padding: '0 2rem',
         '&>p': {
           fontWeight: 700,
           fontSize: '20px',
           lineHeight: '30px',
           color: '#000000',
-        },
-        '& .MuiPaper-elevation1': {
-          boxShadow: 'none',
-        },
-        '&>div': {
-          '&>p': {
-            fontWeight: '500',
-            fontSize: '18px',
-            lineHeight: '27px',
-            color: '#000000',
-          },
-          '&>span': {
-            border: '1px solid  #9CA3AF',
-            fontWeight: 500,
-            fontSize: '18px',
-            display: 'flex',
-            alignItems: 'center',
-          },
-        },
-        '&>div:nth-child(2)': {
-          display: 'flex',
-          justifyContent: 'space-between',
-          margin: '2rem 0',
-          '&>span': {
-            border: '1px solid  #9CA3AF',
-            fontWeight: 500,
-            fontSize: '18px',
-            display: 'flex',
-            alignItems: 'center',
-            '&>span': {
-              margin: '0 6px',
-            },
-          },
         },
       },
       '&>div:nth-child(3)': {
+        width: '30%',
+        padding: '1rem 2rem',
         boxSizing: 'border-box',
-        width: '28%',
-        padding: '30px 4%',
-        background: '#FFFFFF',
-        '&>p:nth-child(1)': {
+        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.12)',
+        '&>p': {
           fontWeight: 700,
           fontSize: '20px',
           lineHeight: '30px',
-          color: '#000000',
-        },
-        '&>p': {
           display: 'flex',
           alignItems: 'center',
+          color: '#111827',
           justifyContent: 'space-between',
-          '&>span:nth-child(2)': {
-            display: 'flex',
-            alignItems: 'center',
-            color: '#EF4444',
-            background: '#FEF2F2',
-            borderRadius: '100px',
-            padding: '6px 16px',
-          },
         },
-        '&>img': {
-          width: '100%',
+        '&>div': {
+          '&>p': {
+            fontWeight: 700,
+            fontSize: '18px',
+            lineHeight: '27px',
+            display: 'flex',
+            color: '#111827',
+            justifyContent: 'space-between',
+            '&>span': {
+              fontWeight: 500,
+              fontSize: '16px',
+              lineHeight: '24px',
+              color: '#4B5563',
+            },
+          },
         },
       },
     },
   },
   '@media (max-width: 740px)': {
-    container_portfolio: {
-      '&>div:nth-child(1)': {
-        background: `url(${estimateCalculationBackground})`,
-        backgroundSize: 'cover',
-        position: 'relative',
-        height: '550px',
-        '&>div:nth-child(1)': {
-          position: 'absolute',
-          top: '40%',
-          width: '100%',
-          '&>p': {
-            textAlign: 'center',
-            fontWeight: 700,
-            fontSize: '28px',
-            lineHeight: '42px',
-            color: '#FFFFFF',
-            margin: '5px 0',
-          },
-          '&>p:nth-child(2)': {
-            fontWeight: 500,
-            fontSize: '16px',
-            lineHeight: '24px',
-          },
-        },
-      },
-      '&>div:nth-child(2)': {
-        padding: '1rem 0',
-        boxShadow: '0px 2px 16px rgba(78, 78, 78, 0.16)',
-        '& .MuiPaper-elevation1': {
-          boxShadow: 'none',
-        },
-        '& .MuiTabs-flexContainer': {
-          justifyContent: 'center',
-          padding: '12px 0',
-          '& .MuiTab-wrapper': {
-            fontFamily: 'Pretendard',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            fontSize: '24px',
-            lineHeight: '36px',
-            '&>div': {
-              '&>img': {
-                width: '40px',
-                height: '40px',
-              },
-              '&>p': {
-                fontSize: '16px',
-                lineHeight: '24px',
-                color: '#9CA3AF',
-              },
-            },
-          },
-        },
-        '& .MuiTab-textColorPrimary.Mui-selected': {
-          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
-          WebkitBackgroundClip: 'text',
-          webkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textFillColor: 'transparent',
-        },
-      },
-      '&>div:nth-child(3)': {
-        display: 'inherit',
-        justifyContent: 'space-between',
-        background: '#F9FAFB',
-        padding: '1rem',
-        '&>div:nth-child(1)': {
-          boxSizing: 'border-box',
-          width: '100%',
-          padding: '30px 4%',
-          background: '#FFFFFF',
-          borderRadius: '4px',
-          '&>p': {
-            fontWeight: 700,
-            fontSize: '16px',
-            lineHeight: '30px',
-            color: '#000000',
-          },
-        },
-        '&>div:nth-child(2)': {
-          boxSizing: 'border-box',
-          width: '100%',
-          padding: '1rem',
-          background: '#FFFFFF',
-          '&>p': {
-            fontWeight: 700,
-            fontSize: '16px',
-            lineHeight: '30px',
-            color: '#000000',
-          },
-          '& .MuiPaper-elevation1': {
-            boxShadow: 'none',
-          },
-          '&>div': {
-            '&>p': {
-              fontWeight: '500',
-              fontSize: '16px',
-              lineHeight: '24px',
-              color: '#000000',
-            },
-            '&>span': {
-              border: '1px solid  #9CA3AF',
-              fontWeight: 500,
-              fontSize: '16px',
-              display: 'flex',
-              alignItems: 'center',
-            },
-          },
-          '&>div:nth-child(2)': {
-            display: 'flex',
-            justifyContent: 'space-between',
-            margin: '2rem 0',
-            '&>span': {
-              border: '1px solid  #9CA3AF',
-              fontWeight: 500,
-              fontSize: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              '&>span': {
-                margin: '0 6px',
-              },
-            },
-          },
-        },
-        '&>div:nth-child(3)': {
-          boxSizing: 'border-box',
-          width: '100%',
-          padding: '30px 4%',
-          background: '#FFFFFF',
-          '&>p:nth-child(1)': {
-            fontWeight: 700,
-            fontSize: '16px',
-            lineHeight: '30px',
-            color: '#000000',
-          },
-          '&>p': {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            '&>span:nth-child(2)': {
-              display: 'flex',
-              alignItems: 'center',
-              color: '#EF4444',
-              background: '#FEF2F2',
-              borderRadius: '100px',
-              padding: '6px 16px',
-            },
-          },
-          '&>img': {
-            width: '100%',
-          },
-        },
-      },
-    },
+    container_portfolio: {},
   },
 })
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    '&$checked': {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props: CheckboxProps) => <Checkbox color='default' {...props} />)
 
 const EstimateCalculation = () => {
   const classes = useStyles()
-  const [value, setValue] = React.useState(2)
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue)
-  }
   return (
     <div className={classes.container_portfolio}>
+      <div></div>
+      <p>개발 비용 문의</p>
+      <p>
+        프로젝트 착수시 상세 개발 견적을 받을 수 있습니다 담당 개발자가 배정되어
+        빠르게 개발이 진행됩니다
+      </p>
       <div>
         <div>
-          <p>개발 비용 문의</p>
-          <p>
-            실시간 프로토타이핑으로 응대를 해드리고 프로젝트 착수시 상세 개발
-            견적을 받을 수 있습니다 담당 개발자가 배정되어 빠르게 개발이
-            진행됩니다
-          </p>
-        </div>
-      </div>
-      <div>
-        <Paper square>
-          <Tabs
-            value={value}
-            indicatorColor='primary'
-            textColor='primary'
-            onChange={handleChange}
-            aria-label='disabled tabs example'
-          >
-            {LIST_DATA_SERVICE.map((item) => (
-              <Tab
-                label={
-                  <div>
-                    <img
-                      src={item.url}
-                      alt=''
-                      // style={{width: '60px', height: '60px'}}
-                    />
-                    <p style={{margin: '0'}}>{item.name}</p>
-                  </div>
-                }
-              />
-            ))}
-          </Tabs>
-        </Paper>
-      </div>
-      <div>
-        <div>
-          <p>Dev language</p>
-          <FormControl component='fieldset'>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={gilad}
-                    // onChange={handleChange}
-                    name='PHP'
-                  />
-                }
-                label='PHP'
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={jason}
-                    // onChange={handleChange}
-                    name='Python'
-                  />
-                }
-                label='Python'
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={antoine}
-                    // onChange={handleChange}
-                    name='Java'
-                  />
-                }
-                label='Java'
-              />
-            </FormGroup>
-          </FormControl>
-
-          <p>Flatform</p>
-          <FormControl component='fieldset'>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={gilad}
-                    // onChange={handleChange}
-                    name='Android'
-                  />
-                }
-                label='Android'
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={jason}
-                    // onChange={handleChange}
-                    name='IOS'
-                  />
-                }
-                label='IOS'
-              />
-            </FormGroup>
-          </FormControl>
-
-          <p>Reponsive</p>
-          <FormControl component='fieldset'>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={gilad}
-                    // onChange={handleChange}
-                    name='Desktop'
-                  />
-                }
-                label='Desktop'
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={jason}
-                    // onChange={handleChange}
-                    name='Tablet'
-                  />
-                }
-                label='Tablet'
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={jason}
-                    // onChange={handleChange}
-                    name='Mobile'
-                  />
-                }
-                label='Mobile'
-              />
-            </FormGroup>
-          </FormControl>
+          <div>UI/UX 디자인</div>
+          <div>APP</div>
+          <div>WEB</div>
+          <div>관리자 페이지</div>
         </div>
         <div>
           <p>Page & Future</p>
-          <div>
-            <p style={{margin: 0}}>Flash creen</p>
-            <span>
-              <img
-                style={{width: '14px', padding: '0 6px'}}
-                src={minimizeIcon}
-                alt=''
-              />
-              <div style={{height: '100%', border: '1px solid #9CA3AF'}}></div>
-              <span>0</span>
-              <div style={{height: '100%', border: '1px solid #9CA3AF'}}></div>
-              <img
-                style={{width: '14px', padding: '0 6px'}}
-                src={sumIcon}
-                alt=''
-              />
-            </span>
-          </div>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Sign in
-              </Typography>
+              <Typography>구현할 UI 페이지 분량</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                <FormControl component='fieldset'>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={gilad}
-                          // onChange={handleChange}
-                          name='Basic (ID_PASSWORD)'
-                        />
-                      }
-                      label='Basic (ID_PASSWORD)'
+              <div>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      // checked={state.checkedG}
+                      // onChange={handleChange}
+                      name='checkedG'
                     />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Socical'
-                        />
-                      }
-                      label='Socical'
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Phone Number'
-                        />
-                      }
-                      label='Phone Number'
-                    />
-                  </FormGroup>
-                </FormControl>
-              </Typography>
+                  }
+                  style={{fontSize: '14px'}}
+                  label='10 페이지 이하'
+                />
+                <img
+                  src={eyeScan}
+                  alt=''
+                  style={{width: '25px', height: '25px'}}
+                />
+              </div>
             </AccordionDetails>
           </Accordion>
 
@@ -559,53 +210,27 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Register
-              </Typography>
+              <Typography>Register</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                <FormControl component='fieldset'>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={gilad}
-                          // onChange={handleChange}
-                          name='Basic (ID_PASSWORD)'
-                        />
-                      }
-                      label='Basic (ID_PASSWORD)'
+              <div>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      // checked={state.checkedG}
+                      // onChange={handleChange}
+                      name='checkedG'
                     />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Socical'
-                        />
-                      }
-                      label='Socical'
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Phone Number'
-                        />
-                      }
-                      label='Phone Number'
-                    />
-                  </FormGroup>
-                </FormControl>
-              </Typography>
+                  }
+                  style={{fontSize: '14px'}}
+                  label='Basic (ID_PASSWORD)'
+                />
+                <img
+                  src={eyeScan}
+                  alt=''
+                  style={{width: '25px', height: '25px'}}
+                />
+              </div>
             </AccordionDetails>
           </Accordion>
 
@@ -615,53 +240,27 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Profile page
-              </Typography>
+              <Typography>Profile page</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                <FormControl component='fieldset'>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={gilad}
-                          // onChange={handleChange}
-                          name='Avatar'
-                        />
-                      }
-                      label='Avatar'
+              <div>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      // checked={state.checkedG}
+                      // onChange={handleChange}
+                      name='checkedG'
                     />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Email'
-                        />
-                      }
-                      label='Email'
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          // checked={jason}
-                          // onChange={handleChange}
-                          name='Phone Number'
-                        />
-                      }
-                      label='Phone Number'
-                    />
-                  </FormGroup>
-                </FormControl>
-              </Typography>
+                  }
+                  style={{fontSize: '14px'}}
+                  label='Avatar'
+                />
+                <img
+                  src={eyeScan}
+                  alt=''
+                  style={{width: '25px', height: '25px'}}
+                />
+              </div>
             </AccordionDetails>
           </Accordion>
 
@@ -671,19 +270,9 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Home page
-              </Typography>
+              <Typography>Home page</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography></Typography>
-            </AccordionDetails>
+            <AccordionDetails></AccordionDetails>
           </Accordion>
 
           <Accordion>
@@ -692,19 +281,9 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Payment page
-              </Typography>
+              <Typography>Payment page</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography></Typography>
-            </AccordionDetails>
+            <AccordionDetails></AccordionDetails>
           </Accordion>
 
           <Accordion>
@@ -713,19 +292,9 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Message
-              </Typography>
+              <Typography>Message</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography></Typography>
-            </AccordionDetails>
+            <AccordionDetails></AccordionDetails>
           </Accordion>
 
           <Accordion>
@@ -734,44 +303,50 @@ const EstimateCalculation = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <Typography
-                style={{
-                  fontFamily: 'Pretendard',
-                  color: '#000000',
-                  fontSize: '18px',
-                }}
-              >
-                Setting page
-              </Typography>
+              <Typography>Setting page</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography></Typography>
-            </AccordionDetails>
+            <AccordionDetails></AccordionDetails>
           </Accordion>
         </div>
         <div>
-          <p>Review</p>
-          <p>
-            <span>1.로그인 및 프로필 화면</span>
-            <span>
-              <CloseIcon /> 제거됨
-            </span>
+          <p>견적</p>
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <div>
+            <p>UI/UX 디자인</p>
+            <p>
+              <span>20페이지</span> <span>100,000원</span>
+            </p>
+          </div>
+
+          <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
+            <span>총 금액</span> <span>450,000원</span>
           </p>
-          <img src={reviewLogin} alt='' />
-          <p>
-            <span>1.로그인 및 프로필 화면</span>
-            <span>
-              <CloseIcon /> 제거됨
-            </span>
-          </p>
-          <img src={reviewProfile} alt='' />
-          <p>
-            <span>1.로그인 및 프로필 화면</span>
-            <span>
-              <CloseIcon /> 제거됨
-            </span>
-          </p>
-          <img src={reviewAction} alt='' />
+          <Button variant='contained' color='primary'>
+            견적 신청하기
+          </Button>
         </div>
       </div>
     </div>
