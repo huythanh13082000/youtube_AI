@@ -14,17 +14,30 @@ import CardSuccessCase from '../../components/card_success_case'
 import axios from 'axios'
 import {PORTFOLIO} from '../../apis/urlConfig'
 import {PortfolioType} from '../../types/portfolio.type'
+// import myVideo from '../../asset/videos/KakaoTalk_20230206_145232544.mp4'
 
 const useStyles = makeStyles({
   home_container: {
     '&>div:nth-child(1)': {
-      background: `url(${background})`,
+      // background: `url(${background})`,
       backgroundSize: 'cover',
       position: 'relative',
+      height: '90vh',
+      '&>video': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '90vh',
+        width: '100%',
+        objectFit: 'cover',
+      },
       '&>div:nth-child(1)': {
         display: 'flex',
         justifyContent: 'space-between',
         padding: '160px 130px 40px 130px',
+        position: 'relative',
+        zIndex: 1000,
         '&>div:nth-child(1)': {
           width: '40%',
           '&>p:nth-child(1)': {
@@ -77,6 +90,7 @@ const useStyles = makeStyles({
         position: 'absolute',
         bottom: 110,
         left: 'calc(50% - 31px)',
+        zIndex: 200,
       },
       '&>div:nth-child(3)': {
         boxSizing: 'border-box',
@@ -92,6 +106,7 @@ const useStyles = makeStyles({
         position: 'absolute',
         bottom: '-80px',
         left: '120px',
+        zIndex: 1000,
         '&>div': {
           '&>p': {
             fontFamily: 'Anton',
@@ -327,6 +342,16 @@ const useStyles = makeStyles({
   '@media (max-width: 740px)': {
     home_container: {
       '&>div:nth-child(1)': {
+        height: '40vh',
+        '&>video': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '40vh',
+          width: '100%',
+          objectFit: 'cover',
+        },
         '&>div:nth-child(1)': {
           display: 'inherit',
           padding: '64px 32px',
@@ -369,7 +394,7 @@ const useStyles = makeStyles({
         },
         '&>div:nth-child(3)': {
           boxSizing: 'border-box',
-          padding: '32px',
+          padding: '16px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -379,13 +404,13 @@ const useStyles = makeStyles({
           boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
           borderRadius: '24px',
           position: 'absolute',
-          bottom: '-80px',
+          bottom: '-45px',
           left: '16px',
           '&>div': {
             '&>p': {
               fontFamily: 'Anton',
               fontWeight: 400,
-              fontSize: '24px',
+              fontSize: '18px',
               lineHeight: '24px',
               display: 'flex',
               alignItems: 'center',
@@ -601,20 +626,21 @@ const Home = () => {
       <div>
         <div>
           <div>
-            <p>세계 최고 기술기업 목표 달성</p>
+            {/* <p>세계 최고 기술기업 목표 달성</p>
             <p>
               기술과 더불어 다양한 분야 및 산업에 개발 연구하는 기업
               지엠포컴퍼니 입니다.
             </p>
             <span>
               Explore Now <img src={homeCircleTopRight} alt='' />
-            </span>
+            </span> */}
           </div>
           <div>
-            <img src={homeRobot} alt='' loading="lazy"/>
+            <img src='' alt='' loading='lazy' />
           </div>
         </div>
-        <img src={homeScrollDown} alt='' loading="lazy"/>
+        {/* <img src='' alt='' loading='lazy' /> */}
+        <div></div>
         <div>
           <div>
             <p>4+</p>
@@ -633,6 +659,12 @@ const Home = () => {
             <span>고객 </span>
           </div>
         </div>
+        <video autoPlay muted loop id='myVideo'>
+          <source
+            src='/videos/KakaoTalk_20230206_145232544.mp4'
+            type='video/mp4'
+          />
+        </video>
       </div>
       <div>
         <p>Our Services</p>
