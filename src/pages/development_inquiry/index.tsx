@@ -152,9 +152,11 @@ const useStyles = makeStyles({
         },
         '&>div:nth-child(1)': {
           width: '100%',
+          padding: '0',
+          border: 'none',
           '&>p': {
             fontWeight: 700,
-            fontSize: '20px',
+            fontSize: '18px',
             lineHeight: '30px',
             display: 'flex',
             alignItems: 'center',
@@ -164,7 +166,7 @@ const useStyles = makeStyles({
           '&>div': {
             '&>p': {
               fontWeight: 700,
-              fontSize: '18px',
+              fontSize: '16px',
               lineHeight: '27px',
               display: 'flex',
               color: '#111827',

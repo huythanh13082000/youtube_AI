@@ -38,9 +38,7 @@ const HeaderMobile = () => {
   const classes = useStyles()
   return (
     <div className={classes.container_header_mobile}>
-      <div>
-        <span>Greenapp</span>
-      </div>
+      <div>{/* <span>Greenapp</span> */}</div>
     </div>
   )
 }

@@ -4,6 +4,8 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import {ROUTE} from '../../router/routes'
 import menu from '../../asset/images/menu.png'
 import DialogMenuHeader from './dialog'
+import CloseIcon from '@material-ui/icons/Close'
+import logo from '../../asset/images/logo.png'
 
 const useStyles = makeStyles({
   container_header: {
@@ -26,13 +28,18 @@ const useStyles = makeStyles({
       '&>:nth-child(1)': {
         fontFamily: 'Anton',
         fontStyle: 'normal',
-        fontWeight: 400,
-        fontSize: '32px',
+        fontWeight: 600,
+        fontSize: '28px',
         lineHeight: '66px',
         display: 'flex',
         alignItems: 'center',
         color: '#FFFFFF',
         cursor: 'pointer',
+        '&>img': {
+          width: '104px',
+          height: '67px',
+          marginRight: '1rem',
+        },
       },
       '&>:nth-child(2)': {
         display: 'flex',
@@ -83,13 +90,18 @@ const useStyles = makeStyles({
         '&>:nth-child(1)': {
           fontFamily: 'Anton',
           fontStyle: 'normal',
-          fontWeight: 400,
-          fontSize: '24px',
+          fontWeight: 600,
+          fontSize: '18px',
           lineHeight: '36px',
           display: 'flex',
           alignItems: 'center',
           color: '#FFFFFF',
           cursor: 'pointer',
+          '&>img': {
+            width: '60px',
+            height: '38.65px',
+            marginRight: '8px',
+          },
         },
         '&>img:nth-child(2)': {
           width: '24px',
@@ -119,7 +131,10 @@ const Header = () => {
   return (
     <div className={classes.container_header}>
       <div>
-        <span onClick={() => navigate('/')}>Greenapp</span>
+        <span onClick={() => navigate('/')}>
+          <img src={logo} alt='' />
+          지엠포컴퍼니
+        </span>
         <ul>
           <li
             style={
@@ -177,8 +192,18 @@ const Header = () => {
         {/* <span>프로젝트 생성</span> */}
       </div>
       <div>
-        <span onClick={() => navigate('/')}>Greenapp</span>
-        <img src={menu} alt='' onClick={() => setOpen(true)} />
+        <span onClick={() => navigate('/')}>
+          {' '}
+          <img src={logo} alt='' />
+          지엠포컴퍼니
+        </span>
+        {open ? (
+          <span onClick={() => setOpen(false)}>
+            <CloseIcon />
+          </span>
+        ) : (
+          <img src={menu} alt='' onClick={() => setOpen(true)} />
+        )}
       </div>
       <DialogMenuHeader open={open} setOpen={() => setOpen(false)} />
     </div>

@@ -99,7 +99,7 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
               개발문의
             </li>
           </ul>
-          <span>프로젝트 생성</span>
+          {/* <span>프로젝트 생성</span> */}
         </div>
       </Dialog>
     </div>
