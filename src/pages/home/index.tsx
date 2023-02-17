@@ -660,10 +660,7 @@ const Home = () => {
           </div>
         </div>
         <video autoPlay muted loop id='myVideo'>
-          <source
-            src='/videos/KakaoTalk_20230206_145232544.mp4'
-            type='video/mp4'
-          />
+          <source src='/videos/background.mp4' type='video/mp4' />
         </video>
       </div>
       <div>
