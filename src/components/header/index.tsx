@@ -148,6 +148,19 @@ const Header = () => {
             }
             onClick={() => navigate(ROUTE.HOME)}
           >
+            Home
+          </li>
+          <li
+            style={
+              location.pathname === '/intro'
+                ? {
+                    fontWeight: 700,
+                    borderBottom: '2px solid white',
+                  }
+                : {fontWeight: 400}
+            }
+            onClick={() => navigate(ROUTE.INTRO)}
+          >
             회사소개
           </li>
           <li

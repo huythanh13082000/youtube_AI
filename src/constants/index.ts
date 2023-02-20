@@ -9,6 +9,28 @@ import database from '../asset/images/database.png'
 import hourglass from '../asset/images/hourglass.png'
 import learn from '../asset/images/learn.png'
 import w from '../asset/images/w.png'
+import intro from '../asset/images/intro.png'
+import intro1 from '../asset/images/intro1.png'
+import intro2 from '../asset/images/intro2.png'
+import intro3 from '../asset/images/intro3.png'
+import intro4 from '../asset/images/intro4.png'
+import intro5 from '../asset/images/intro5.png'
+import intro6 from '../asset/images/intro6.png'
+import intro7 from '../asset/images/intro7.png'
+import intro8 from '../asset/images/intro8.png'
+import intro9 from '../asset/images/intro9.png'
+import intro10 from '../asset/images/intro10.png'
+import intro11 from '../asset/images/intro11.png'
+import intro12 from '../asset/images/intro12.png'
+import intro13 from '../asset/images/intro13.png'
+import intro14 from '../asset/images/intro14.png'
+import intro15 from '../asset/images/intro15.png'
+import intro16 from '../asset/images/intro16.png'
+import intro17 from '../asset/images/intro17.png'
+import intro18 from '../asset/images/intro18.png'
+import intro19 from '../asset/images/intro19.png'
+import intro20 from '../asset/images/intro20.png'
+import intro21 from '../asset/images/intro21.png'
 
 export const BASE_URL = 'http://3.34.144.245:3535'
 
@@ -83,4 +105,29 @@ export const LIST_DATA_STRENGTH = [
     description:
       '안정화된 개발 라이브러리와 디자인 테마, UX 패턴을 최대한 활용하여 생산성을 극 대화하고 리스크를 즐입니다',
   },
+]
+
+export const LIST_IMAGE_INTRO: string[] = [
+  intro,
+  intro1,
+  intro2,
+  intro3,
+  intro4,
+  intro5,
+  intro6,
+  intro7,
+  intro8,
+  intro9,
+  intro10,
+  intro11,
+  intro12,
+  intro13,
+  intro14,
+  intro15,
+  intro16,
+  intro17,
+  intro18,
+  intro19,
+  intro20,
+  intro21,
 ]

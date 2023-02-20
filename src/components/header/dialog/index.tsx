@@ -65,35 +65,66 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
         <div>
           <ul>
             <li
-              style={{
-                fontWeight: location.pathname === '/' ? 700 : 400,
-              }}
+              style={
+                location.pathname === '/'
+                  ? {
+                      fontWeight: 700,
+                      borderBottom: '2px solid white',
+                    }
+                  : {fontWeight: 400}
+              }
               onClick={() => navigate(ROUTE.HOME)}
+            >
+              Home
+            </li>
+            <li
+              style={
+                location.pathname === '/intro'
+                  ? {
+                      fontWeight: 700,
+                      borderBottom: '2px solid white',
+                    }
+                  : {fontWeight: 400}
+              }
+              onClick={() => navigate(ROUTE.INTRO)}
             >
               회사소개
             </li>
             <li
-              style={{
-                fontWeight: location.pathname === '/portfolio' ? 700 : 400,
-              }}
+              style={
+                location.pathname === '/portfolio'
+                  ? {
+                      fontWeight: 700,
+                      borderBottom: '2px solid white',
+                    }
+                  : {fontWeight: 400}
+              }
               onClick={() => navigate(ROUTE.PORTFOLIO)}
             >
               포트폴리오
             </li>
             <li
-              style={{
-                fontWeight:
-                  location.pathname === '/estimate_calculation' ? 700 : 400,
-              }}
+              style={
+                location.pathname === '/estimate_calculation'
+                  ? {
+                      fontWeight: 700,
+                      borderBottom: '2px solid white',
+                    }
+                  : {fontWeight: 400}
+              }
               onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}
             >
               견적계산
             </li>
             <li
-              style={{
-                fontWeight:
-                  location.pathname === '/development_inquiry' ? 700 : 400,
-              }}
+              style={
+                location.pathname === '/development_inquiry'
+                  ? {
+                      fontWeight: 700,
+                      borderBottom: '2px solid white',
+                    }
+                  : {fontWeight: 400}
+              }
               onClick={() => navigate(ROUTE.DEVELOPMENT_INQUIRY)}
             >
               개발문의
