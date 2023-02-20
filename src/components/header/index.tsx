@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {makeStyles} from '@material-ui/core'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {ROUTE} from '../../router/routes'
@@ -129,6 +129,9 @@ const Header = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
   return (
     <div className={classes.container_header}>
       <div>

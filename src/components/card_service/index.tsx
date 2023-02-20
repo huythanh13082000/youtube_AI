@@ -1,5 +1,7 @@
 import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined'
 import {makeStyles} from '@material-ui/core'
+import {useNavigate} from 'react-router-dom'
+import {ROUTE} from '../../router/routes'
 
 const useStyles = makeStyles({
   container_card_service: {
@@ -117,6 +119,7 @@ const CardService = (props: {
   description: string
 }) => {
   const classes = useStyles()
+  const navigate = useNavigate()
   return (
     <div className={classes.container_card_service}>
       <div>
@@ -124,7 +127,7 @@ const CardService = (props: {
       </div>
       <p>{props.name} </p>
       <p>{props.description}</p>
-      <span>
+      <span onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}>
         프로젝트 생성{' '}
         <ArrowRightAltOutlinedIcon style={{width: '15%', margin: '0'}} />
       </span>

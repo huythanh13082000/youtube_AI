@@ -1,8 +1,10 @@
 import {makeStyles} from '@material-ui/core'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {BASE_URL} from '../../constants'
 import {PortfolioDetail} from '../../pages/portfolio/portfolio_detail'
+import {ROUTE} from '../../router/routes'
 import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
@@ -103,9 +105,13 @@ const useStyles = makeStyles({
 
 const CardSuccessCase = (props: {data: PortfolioType}) => {
   const classes = useStyles()
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   return (
-    <div className={classes.container_card_success_case}>
+    <div
+      className={classes.container_card_success_case}
+      onClick={() => navigate(ROUTE.PORTFOLIO)}
+    >
       <img src={`${BASE_URL}/${props.data.logo}`} alt='' />
       <p>{props.data.title}</p>
       <p>{props.data.programming_language}</p>
