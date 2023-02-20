@@ -68,6 +68,7 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         '&>img': {
           width: '30%',
+          height: '30%',
           margin: '0 auto',
         },
       },

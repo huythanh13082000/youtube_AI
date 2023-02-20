@@ -91,7 +91,7 @@ const useStyles = makeStyles({
           alignItems: 'center',
           textAlign: 'center',
         },
-        '&>div:nth-child(1)': {
+        '&>div:hover': {
           color: '#215DFC',
           background: '#C8E4FA',
         },
@@ -224,16 +224,16 @@ const useStyles = makeStyles({
             fontSize: '14px',
             marginRight: '1px',
           },
-          '&>div:nth-child(1)': {
+          '&>div:hover': {
             color: '#215DFC',
             background: '#C8E4FA',
-            width: '120px',
+            // width: '120px',
           },
-          '&>div:nth-child(4)': {
-            color: '#215DFC',
-            background: '#C8E4FA',
-            width: '120px',
-          },
+          // '&>div:nth-child(4)': {
+          //   color: '#215DFC',
+          //   background: '#C8E4FA',
+          //   width: '120px',
+          // },
         },
         '&>div:nth-child(2)': {
           width: '100%',

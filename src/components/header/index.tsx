@@ -33,6 +33,7 @@ const useStyles = makeStyles({
         lineHeight: '66px',
         display: 'flex',
         alignItems: 'center',
+        flexWrap: 'wrap',
         color: '#FFFFFF',
         cursor: 'pointer',
         '&>img': {
