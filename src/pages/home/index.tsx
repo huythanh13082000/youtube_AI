@@ -655,7 +655,7 @@ const Home = () => {
             <span>고객 </span>
           </div>
         </div>
-        <video autoPlay muted loop id='myVideo'>
+        <video autoPlay loop id='myVideo'>
           <source src='/videos/background.mp4' type='video/mp4' />
         </video>
       </div>
