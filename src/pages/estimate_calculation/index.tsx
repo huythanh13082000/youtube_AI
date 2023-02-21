@@ -11,7 +11,13 @@ import {green} from '@material-ui/core/colors'
 import {makeStyles, withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import axios from 'axios'
+import {useEffect, useState} from 'react'
+import {OPTION, TAG} from '../../apis/urlConfig'
 import eyeScan from '../../asset/images/eye-scan.png'
+import {BASE_URL} from '../../constants'
+import {numberWithCommas, sum} from '../../utils'
+import DialogImg from './dialog_img'
 
 const useStyles = makeStyles({
   container_portfolio: {
@@ -293,6 +299,93 @@ const GreenCheckbox = withStyles({
 
 const EstimateCalculation = () => {
   const classes = useStyles()
+  const [type, setType] = useState<'UX_UI' | 'APP' | 'WEB' | 'ADMIN_PAGE'>(
+    'UX_UI'
+  )
+  const [tag, setTag] = useState<string>('UI_PAGE')
+  const [listTag, setListTag] = useState<
+    {name: string; type?: string; id?: number}[]
+  >([])
+  const [open, setOpen] = useState(false)
+  const [img, setImg] = useState<string>('')
+  const [listOption, setListOption] = useState<
+    {
+      nameOption: string
+      image: string | File | FormData
+      type?: string
+      tag?: string
+      price: number
+      schedule: number
+      id?: number
+    }[]
+  >([])
+  const [options, setOptions] = useState<
+    {
+      type?: string
+      nameOption: string
+      price: number
+    }[]
+  >([])
+  useEffect(() => {
+    const getTag = async () => {
+      const data: {
+        data: {
+          code: number
+          data: {listTags: {name: string; type?: string; id?: number}[]}
+        }
+      } = await axios.get(`${BASE_URL}${TAG}`, {
+        params: {type: type},
+      })
+      if (data && data.data.code === 0)
+        data && setListTag(data.data.data.listTags)
+    }
+    getTag()
+  }, [type])
+
+  useEffect(() => {
+    const getOption = async () => {
+      const data: {
+        data: {
+          code: number
+          data: {
+            listOption: {
+              nameOption: string
+              image: string | File | FormData
+              type?: string
+              tag?: string
+              price: number
+              schedule: number
+              id?: number
+            }[]
+          }
+        }
+      } = await axios.get(`${BASE_URL}${OPTION}`, {
+        params: {type: type},
+      })
+      if (data && data.data.code === 0)
+        data && setListOption(data.data.data.listOption)
+    }
+    getOption()
+  }, [type])
+  const handleOption = (item: {
+    type?: string
+    nameOption: string
+    price: number
+  }) => {
+    if (
+      options.filter((option) => option.nameOption === item.nameOption).length >
+      0
+    ) {
+      setOptions([
+        ...options.filter((option) => option.nameOption !== item.nameOption),
+      ])
+    } else {
+      setOptions([
+        ...options,
+        {nameOption: item.nameOption, price: item.price, type: item.type},
+      ])
+    }
+  }
 
   return (
     <div className={classes.container_portfolio}>
@@ -304,188 +397,107 @@ const EstimateCalculation = () => {
       </p>
       <div>
         <div>
-          <div>UI/UX 디자인</div>
-          <div>APP</div>
-          <div>WEB</div>
-          <div>관리자 페이지</div>
+          <div
+            style={
+              type === 'UX_UI' ? {background: '#C8E4FA', color: '#215DFC'} : {}
+            }
+            onClick={() => setType('UX_UI')}
+          >
+            UI/UX 디자인
+          </div>
+          <div
+            style={
+              type === 'APP' ? {background: '#C8E4FA', color: '#215DFC'} : {}
+            }
+            onClick={() => setType('APP')}
+          >
+            APP
+          </div>
+          <div
+            style={
+              type === 'WEB' ? {background: '#C8E4FA', color: '#215DFC'} : {}
+            }
+            onClick={() => setType('WEB')}
+          >
+            WEB
+          </div>
+          <div
+            style={
+              type === 'ADMIN_PAGE'
+                ? {background: '#C8E4FA', color: '#215DFC'}
+                : {}
+            }
+            onClick={() => setType('ADMIN_PAGE')}
+          >
+            관리자 페이지
+          </div>
         </div>
         <div>
           <p>Page & Future</p>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>구현할 UI 페이지 분량</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      // checked={state.checkedG}
-                      // onChange={handleChange}
-                      name='checkedG'
-                    />
-                  }
-                  style={{fontSize: '14px'}}
-                  label='10 페이지 이하'
-                />
-                <img
-                  src={eyeScan}
-                  alt=''
-                  style={{width: '25px', height: '25px'}}
-                />
-              </div>
-            </AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Register</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      // checked={state.checkedG}
-                      // onChange={handleChange}
-                      name='checkedG'
-                    />
-                  }
-                  style={{fontSize: '14px'}}
-                  label='Basic (ID_PASSWORD)'
-                />
-                <img
-                  src={eyeScan}
-                  alt=''
-                  style={{width: '25px', height: '25px'}}
-                />
-              </div>
-            </AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Profile page</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      // checked={state.checkedG}
-                      // onChange={handleChange}
-                      name='checkedG'
-                    />
-                  }
-                  style={{fontSize: '14px'}}
-                  label='Avatar'
-                />
-                <img
-                  src={eyeScan}
-                  alt=''
-                  style={{width: '25px', height: '25px'}}
-                />
-              </div>
-            </AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Home page</Typography>
-            </AccordionSummary>
-            <AccordionDetails></AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Payment page</Typography>
-            </AccordionSummary>
-            <AccordionDetails></AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Message</Typography>
-            </AccordionSummary>
-            <AccordionDetails></AccordionDetails>
-          </Accordion>
-
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>Setting page</Typography>
-            </AccordionSummary>
-            <AccordionDetails></AccordionDetails>
-          </Accordion>
+          {listTag.map((item) => (
+            <Accordion key={item.id} onClick={() => setTag(item.name)}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+              >
+                <Typography>{item.name}</Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{display: 'initial'}}>
+                {listOption.map(
+                  (itemOption) =>
+                    itemOption.tag === item.name && (
+                      <div key={itemOption.id} style={{paddingLeft: '1rem'}}>
+                        <FormControlLabel
+                          control={
+                            <GreenCheckbox
+                              // checked={state.checkedG}
+                              // onChange={handleChange}
+                              name='checkedG'
+                              onClick={() => handleOption(itemOption)}
+                            />
+                          }
+                          style={{fontSize: '14px', width: '35%'}}
+                          label={itemOption.nameOption}
+                        />
+                        <img
+                          src={eyeScan}
+                          alt=''
+                          style={{width: '25px', height: '25px'}}
+                          onClick={() => {
+                            itemOption.image &&
+                              setImg(itemOption.image as string)
+                            setOpen(true)
+                          }}
+                        />
+                      </div>
+                    )
+                )}
+              </AccordionDetails>
+            </Accordion>
+          ))}
         </div>
         <div>
           <p>견적</p>
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
+          {options.map((item) => (
+            <div>
+              <p>{item.type}</p>
+              <p>
+                <span>{item.nameOption}</span>{' '}
+                <span>{numberWithCommas(item.price)}원</span>
+              </p>
+            </div>
+          ))}
 
           <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
-            <span>총 금액</span> <span>450,000원</span>
+            <span>총 금액</span> <span>{numberWithCommas(sum(options))}원</span>
           </p>
           <Button variant='contained' color='primary'>
             견적 신청하기
           </Button>
         </div>
       </div>
+      <DialogImg open={open} img={img} setOpen={() => setOpen(false)} />
     </div>
   )
 }

@@ -15,3 +15,11 @@ export const PORTFOLIO = '/portfolio'
 export const ORDER_PROJECT = '/order-project'
 
 export const UPLOAD_fILES = '/system/multiple-file'
+
+//option
+
+export const OPTION = '/option'
+
+//tag
+
+export const TAG = '/tag'

@@ -1,6 +1,6 @@
 import {makeStyles} from '@material-ui/styles'
 import axios from 'axios'
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {PORTFOLIO} from '../../apis/urlConfig'
 import backgroundWord from '../../asset/images/background_word.png'
 import users from '../../asset/images/users.png'
@@ -605,7 +605,9 @@ const useStyles = makeStyles({
 
 const Home = () => {
   let classes: any = useStyles()
+  const vidRef = useRef<HTMLVideoElement>(null)
   const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
+  const [muted, setMuted] = useState<boolean>(false)
   useEffect(() => {
     const getListPortfolio = async () => {
       const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
@@ -655,7 +657,14 @@ const Home = () => {
             <span>고객 </span>
           </div>
         </div>
-        <video autoPlay loop id='myVideo'>
+        <video
+          ref={vidRef}
+          autoPlay={true}
+          loop
+          id='myVideo'
+          controls
+          muted={muted}
+        >
           <source src='/videos/background.mp4' type='video/mp4' />
         </video>
       </div>
