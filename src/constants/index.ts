@@ -45,27 +45,26 @@ export const HTTP_STATUS = {
 export const LIST_DATA_SERVICE = [
   {
     url: multiscreen,
-    name: '반응형 웹',
-    description:
-      '디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.',
+    name: 'UI/UX 디자인',
+    description: '이용자에게 더욱 편하고 즐거운 방문을 유도하는 디자인 필수',
   },
   {
     url: landingPage,
-    name: '방문 페이지',
+    name: '반응형 웹',
     description:
-      '디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.',
+      '이용자들은 PC와 휴대폰으로 접속하여, 디바이스에 맞는 편리함을 제공!',
   },
   {
     url: application,
     name: '애플리케이션',
     description:
-      '디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.',
+      '구글플레이와 앱스토어를 출시하여, 전문적인 APP을 출시해보세요.',
   },
   {
     url: coding,
-    name: '관리 웹',
+    name: '관리자 페이지',
     description:
-      '디자인 감각이 없어도 훌륭한 반응형 웹사이트를 만들 수 있습니다.',
+      '사이트와 APP을 관리하고, 고객관리를 할수있는 시스템에 필수요소',
   },
 ]
 export const LIST_DATA_STRENGTH = [

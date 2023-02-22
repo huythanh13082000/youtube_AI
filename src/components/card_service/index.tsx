@@ -128,7 +128,7 @@ const CardService = (props: {
       <p>{props.name} </p>
       <p>{props.description}</p>
       <span onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}>
-        프로젝트 생성{' '}
+        견적내기 생성{' '}
         <ArrowRightAltOutlinedIcon style={{width: '15%', margin: '0'}} />
       </span>
     </div>

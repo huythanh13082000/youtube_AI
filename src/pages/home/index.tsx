@@ -1,15 +1,15 @@
-import { makeStyles } from '@material-ui/styles'
+import {makeStyles} from '@material-ui/styles'
 import axios from 'axios'
-import { useEffect, useRef, useState } from 'react'
-import { PORTFOLIO } from '../../apis/urlConfig'
+import {useEffect, useRef, useState} from 'react'
+import {PORTFOLIO} from '../../apis/urlConfig'
 import backgroundWord from '../../asset/images/background_word.png'
 import users from '../../asset/images/users.png'
 import CardService from '../../components/card_service'
 import CardStrength from '../../components/card_strength'
 import CardSuccessCase from '../../components/card_success_case'
-import { Slideshow } from '../../components/slide'
-import { BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH } from '../../constants'
-import { PortfolioType } from '../../types/portfolio.type'
+import {Slideshow} from '../../components/slide'
+import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
+import {PortfolioType} from '../../types/portfolio.type'
 // import myVideo from '../../asset/videos/KakaoTalk_20230206_145232544.mp4'
 
 const useStyles = makeStyles({
@@ -623,8 +623,7 @@ const Home = () => {
     <div className={classes.home_container}>
       <div>
         <div>
-          <div>
-          </div>
+          <div></div>
           <div>
             <img src='' alt='' loading='lazy' />
           </div>
@@ -653,7 +652,7 @@ const Home = () => {
           autoPlay={true}
           loop
           id='myVideo'
-          controls
+          // controls
           muted={muted}
         >
           <source src='/videos/background.mp4' type='video/mp4' />
