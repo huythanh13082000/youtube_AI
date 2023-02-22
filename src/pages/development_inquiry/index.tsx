@@ -3,20 +3,19 @@ import {
   FormControl,
   FormControlLabel,
   makeStyles,
-  TextareaAutosize,
+  TextareaAutosize
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import {useState} from 'react'
-import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
+import { useEffect, useState } from 'react'
+import { ORDER_PROJECT, UPLOAD_fILES } from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import {BASE_URL, LIST_TYPE} from '../../constants'
-import {OrderProjectType} from '../../types/orderProject.type'
-import React, {useEffect} from 'react'
-import {numberWithCommas, sum} from '../../utils'
+import { BASE_URL, LIST_TYPE } from '../../constants'
+import { OrderProjectType } from '../../types/orderProject.type'
+import { numberWithCommas, sum } from '../../utils'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -279,6 +278,7 @@ const DevelopmentInquiry = () => {
       setOpen(true)
       setSnackbar({content: 'success', type: 'success'})
       resetForm()
+      localStorage.removeItem('options')
     } else {
       setOpen(true)
       setSnackbar({
@@ -307,34 +307,44 @@ const DevelopmentInquiry = () => {
   useEffect(() => {
     localStorage.getItem('options') &&
       setOptions(JSON.parse(localStorage.getItem('options') || ''))
-    console.log(JSON.parse(localStorage.getItem('options') || ''))
   }, [])
+  useEffect(() => {
+    return function cleanUp() {
+      localStorage.removeItem('options')
+    }
+  })
 
   return (
     <div className={classes.container_development_inquiry}>
       <div></div>
       <div>
-        <div>
-          <p>견적</p>
-          {LIST_TYPE.map((item) => (
-            <div key={item}>
-              <p>{item}</p>
-              {options.map(
-                (option) =>
-                  option.type === item && (
-                    <p key={option.nameOption}>
-                      <span>{option.nameOption}</span>{' '}
-                      <span>{numberWithCommas(option.price)}원</span>
-                    </p>
-                  )
-              )}
-            </div>
-          ))}
+        {options.length > 0 ? (
+          <div>
+            <p>견적</p>
+            {LIST_TYPE.map((item) => (
+              <div key={item}>
+                <p>{item}</p>
+                {options.map(
+                  (option) =>
+                    option.type === item && (
+                      <p key={option.nameOption}>
+                        <span>{option.nameOption}</span>{' '}
+                        <span>{numberWithCommas(option.price)}원</span>
+                      </p>
+                    )
+                )}
+              </div>
+            ))}
 
-          <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
-            <span>총 금액</span> <span>{numberWithCommas(sum(options))}원</span>
-          </p>
-        </div>
+            <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
+              <span>총 금액</span>{' '}
+              <span>{numberWithCommas(sum(options))}원</span>
+            </p>
+          </div>
+        ) : (
+          <div style={{border: 'none'}}></div>
+        )}
+
         <p>문의 내용</p>
         <div>
           <InputBase

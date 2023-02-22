@@ -1,6 +1,5 @@
-import React from 'react'
-import {makeStyles} from '@material-ui/styles'
-import {LIST_IMAGE_INTRO} from '../../constants'
+import { makeStyles } from '@material-ui/styles'
+import { LIST_IMAGE_INTRO } from '../../constants'
 
 const useStyles = makeStyles({
   intro_container: {

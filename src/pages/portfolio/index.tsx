@@ -1,12 +1,11 @@
 import {makeStyles, Paper, Tab, Tabs} from '@material-ui/core'
 import axios from 'axios'
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {PORTFOLIO} from '../../apis/urlConfig'
 import background from '../../asset/images/portfolio_background.png'
 import CardSuccessCase from '../../components/card_success_case'
 import {BASE_URL} from '../../constants'
-import {ROUTE} from '../../router/routes'
 import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
@@ -62,7 +61,6 @@ const useStyles = makeStyles({
     },
     '&>div:nth-child(3)': {
       display: 'flex',
-      justifyContent: 'space-between',
       flexWrap: 'wrap',
       background: '#F9FAFB',
       padding: '60px 130px 80px 130px',
@@ -111,7 +109,6 @@ const useStyles = makeStyles({
       },
       '&>div:nth-child(3)': {
         display: 'flex',
-        justifyContent: 'space-between',
         flexWrap: 'wrap',
         background: '#F9FAFB',
         padding: '30px 16px 30px 16px',
@@ -123,7 +120,6 @@ const useStyles = makeStyles({
 const Portfolio = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
-  const navigate = useNavigate()
   const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
   useEffect(() => {
     const getListPortfolio = async () => {
@@ -140,10 +136,7 @@ const Portfolio = () => {
     setValue(newValue)
   }
   return (
-    <div
-      className={classes.container_portfolio}
-     
-    >
+    <div className={classes.container_portfolio}>
       <div>
         <div>
           <p>포트폴리오</p>

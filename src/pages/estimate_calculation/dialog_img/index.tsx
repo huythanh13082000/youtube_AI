@@ -1,6 +1,6 @@
-import {makeStyles} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
-import {BASE_URL} from '../../../constants'
+import { BASE_URL } from '../../../constants'
 
 const useStyles = makeStyles({
   container_dialog_create: {},

@@ -1,15 +1,15 @@
-import {makeStyles} from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import axios from 'axios'
-import {useEffect, useRef, useState} from 'react'
-import {PORTFOLIO} from '../../apis/urlConfig'
+import { useEffect, useRef, useState } from 'react'
+import { PORTFOLIO } from '../../apis/urlConfig'
 import backgroundWord from '../../asset/images/background_word.png'
 import users from '../../asset/images/users.png'
 import CardService from '../../components/card_service'
 import CardStrength from '../../components/card_strength'
 import CardSuccessCase from '../../components/card_success_case'
-import {Slideshow} from '../../components/slide'
-import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
-import {PortfolioType} from '../../types/portfolio.type'
+import { Slideshow } from '../../components/slide'
+import { BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH } from '../../constants'
+import { PortfolioType } from '../../types/portfolio.type'
 // import myVideo from '../../asset/videos/KakaoTalk_20230206_145232544.mp4'
 
 const useStyles = makeStyles({
@@ -624,20 +624,11 @@ const Home = () => {
       <div>
         <div>
           <div>
-            {/* <p>세계 최고 기술기업 목표 달성</p>
-            <p>
-              기술과 더불어 다양한 분야 및 산업에 개발 연구하는 기업
-              지엠포컴퍼니 입니다.
-            </p>
-            <span>
-              Explore Now <img src={homeCircleTopRight} alt='' />
-            </span> */}
           </div>
           <div>
             <img src='' alt='' loading='lazy' />
           </div>
         </div>
-        {/* <img src='' alt='' loading='lazy' /> */}
         <div></div>
         <div>
           <div>
@@ -715,12 +706,6 @@ const Home = () => {
           {listPortfolio.map((item) => (
             <CardSuccessCase data={item} key={item.portfolio_id} />
           ))}
-
-          {/* <CardSuccessCase />
-          <CardSuccessCase />
-          <CardSuccessCase />
-          <CardSuccessCase />
-          <CardSuccessCase /> */}
         </div>
       </div>
     </div>

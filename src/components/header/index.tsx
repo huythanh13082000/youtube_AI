@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {makeStyles} from '@material-ui/core'
-import {useLocation, useNavigate} from 'react-router-dom'
-import {ROUTE} from '../../router/routes'
-import menu from '../../asset/images/menu.png'
-import DialogMenuHeader from './dialog'
+import { makeStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../asset/images/logo.png'
+import menu from '../../asset/images/menu.png'
+import { ROUTE } from '../../router/routes'
+import DialogMenuHeader from './dialog'
 
 const useStyles = makeStyles({
   container_header: {
