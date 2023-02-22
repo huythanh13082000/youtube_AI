@@ -3,19 +3,20 @@ import {
   FormControl,
   FormControlLabel,
   makeStyles,
-  TextareaAutosize
+  TextareaAutosize,
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { ORDER_PROJECT, UPLOAD_fILES } from '../../apis/urlConfig'
+import {useEffect, useState} from 'react'
+import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
+import Loading from '../../components/loading'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import { BASE_URL, LIST_TYPE } from '../../constants'
-import { OrderProjectType } from '../../types/orderProject.type'
-import { numberWithCommas, sum } from '../../utils'
+import {BASE_URL, LIST_TYPE} from '../../constants'
+import {OrderProjectType} from '../../types/orderProject.type'
+import {numberWithCommas, sum} from '../../utils'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -250,6 +251,7 @@ const DevelopmentInquiry = () => {
     type?: 'error' | 'warning' | 'success' | 'info'
   }>({content: ''})
   const [open, setOpen] = useState<boolean>(false)
+  const [openLoading, setOpenLoading] = useState<boolean>(false)
   const [options, setOptions] = useState<
     {
       type?: string
@@ -274,13 +276,16 @@ const DevelopmentInquiry = () => {
       options: options,
       estimatedCost: sum(options),
     })
+    setOpenLoading(true)
     if (res.data.code === 0) {
       setOpen(true)
+      setOpenLoading(false)
       setSnackbar({content: 'success', type: 'success'})
       resetForm()
       localStorage.removeItem('options')
     } else {
       setOpen(true)
+      setOpenLoading(false)
       setSnackbar({
         content: `${res.data.errors[0].rule} 잘못된 형식`,
         type: 'error',
@@ -544,6 +549,7 @@ const DevelopmentInquiry = () => {
         open={open}
         setOpen={() => setOpen(false)}
       />
+      <Loading open={openLoading} />
     </div>
   )
 }
