@@ -238,7 +238,7 @@ const DevelopmentInquiry = () => {
     companyName: '',
     customerName: '',
     email: '',
-    governmentSupport: false,
+    governmentSupport: '',
     phone: '',
     position: '',
     projectName: '',
@@ -298,7 +298,7 @@ const DevelopmentInquiry = () => {
       companyName: '',
       customerName: '',
       email: '',
-      governmentSupport: false,
+      governmentSupport: '',
       phone: '',
       position: '',
       projectName: '',
@@ -398,9 +398,10 @@ const DevelopmentInquiry = () => {
         </div>
         <div>
           <InputBase
-            onChange={() => console.log(11)}
+            onChange={(e) => setData({...data, governmentSupport: e})}
             placeholder='예: 예비창업패키지 사업비'
             label='정부지원사업 집행 여부'
+            value={data.governmentSupport}
           />
         </div>
         <FormControl>
