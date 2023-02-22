@@ -16,4 +16,9 @@ export interface OrderProjectType {
   orderId?: number
   created_at?: string
   presenter?: string
+  options?: {
+    type?: string
+    nameOption: string
+    price: 0
+  }[]
 }

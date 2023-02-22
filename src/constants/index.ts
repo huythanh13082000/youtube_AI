@@ -131,3 +131,5 @@ export const LIST_IMAGE_INTRO: string[] = [
   intro20,
   intro21,
 ]
+
+export const LIST_TYPE = ['UX_UI', 'APP', 'WEB', 'ADMIN_PAGE']

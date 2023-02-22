@@ -13,9 +13,11 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {OPTION, TAG} from '../../apis/urlConfig'
 import eyeScan from '../../asset/images/eye-scan.png'
-import {BASE_URL} from '../../constants'
+import {BASE_URL, LIST_TYPE} from '../../constants'
+import {ROUTE} from '../../router/routes'
 import {numberWithCommas, sum} from '../../utils'
 import DialogImg from './dialog_img'
 
@@ -48,7 +50,6 @@ const useStyles = makeStyles({
       fontWeight: 700,
       fontSize: '16px',
       lineHeight: '24px',
-      color: '#FFFFFF',
     },
     '& .MuiFormControlLabel-label': {
       fontWeight: 400,
@@ -175,7 +176,7 @@ const useStyles = makeStyles({
         fontWeight: 700,
         fontSize: '16px',
         lineHeight: '24px',
-        color: '#FFFFFF',
+        // color: '#FFFFFF',
       },
       '& .MuiFormControlLabel-label': {
         fontWeight: 400,
@@ -299,6 +300,7 @@ const GreenCheckbox = withStyles({
 
 const EstimateCalculation = () => {
   const classes = useStyles()
+  const navigate = useNavigate()
   const [type, setType] = useState<'UX_UI' | 'APP' | 'WEB' | 'ADMIN_PAGE'>(
     'UX_UI'
   )
@@ -324,6 +326,7 @@ const EstimateCalculation = () => {
       type?: string
       nameOption: string
       price: number
+      // tag?: string
     }[]
   >([])
   useEffect(() => {
@@ -371,6 +374,7 @@ const EstimateCalculation = () => {
     type?: string
     nameOption: string
     price: number
+    tag?: string
   }) => {
     if (
       options.filter((option) => option.nameOption === item.nameOption).length >
@@ -382,9 +386,18 @@ const EstimateCalculation = () => {
     } else {
       setOptions([
         ...options,
-        {nameOption: item.nameOption, price: item.price, type: item.type},
+        {
+          nameOption: item.nameOption,
+          price: item.price,
+          type: item.type,
+          // tag: item.tag,
+        },
       ])
     }
+  }
+  const handleClick = () => {
+    localStorage.setItem('options', JSON.stringify(options))
+    navigate(ROUTE.DEVELOPMENT_INQUIRY)
   }
 
   return (
@@ -451,7 +464,12 @@ const EstimateCalculation = () => {
                         <FormControlLabel
                           control={
                             <GreenCheckbox
-                              // checked={state.checkedG}
+                              checked={
+                                options.filter(
+                                  (option) =>
+                                    option.nameOption === itemOption.nameOption
+                                ).length > 0
+                              }
                               // onChange={handleChange}
                               name='checkedG'
                               onClick={() => handleOption(itemOption)}
@@ -479,20 +497,30 @@ const EstimateCalculation = () => {
         </div>
         <div>
           <p>견적</p>
-          {options.map((item) => (
-            <div>
-              <p>{item.type}</p>
-              <p>
-                <span>{item.nameOption}</span>{' '}
-                <span>{numberWithCommas(item.price)}원</span>
-              </p>
+          {LIST_TYPE.map((item) => (
+            <div key={item}>
+              <p>{item}</p>
+              {options.map(
+                (option) =>
+                  option.type === item && (
+                    <p key={option.nameOption}>
+                      <span>{option.nameOption}</span>{' '}
+                      <span>{numberWithCommas(option.price)}원</span>
+                    </p>
+                  )
+              )}
             </div>
           ))}
 
           <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
             <span>총 금액</span> <span>{numberWithCommas(sum(options))}원</span>
           </p>
-          <Button variant='contained' color='primary'>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={handleClick}
+            disabled={options.length === 0}
+          >
             견적 신청하기
           </Button>
         </div>

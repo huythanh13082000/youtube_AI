@@ -13,8 +13,10 @@ import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import {BASE_URL} from '../../constants'
+import {BASE_URL, LIST_TYPE} from '../../constants'
 import {OrderProjectType} from '../../types/orderProject.type'
+import React, {useEffect} from 'react'
+import {numberWithCommas, sum} from '../../utils'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -249,6 +251,14 @@ const DevelopmentInquiry = () => {
     type?: 'error' | 'warning' | 'success' | 'info'
   }>({content: ''})
   const [open, setOpen] = useState<boolean>(false)
+  const [options, setOptions] = useState<
+    {
+      type?: string
+      nameOption: string
+      price: number
+      // tag?: string
+    }[]
+  >([])
 
   const handleCreateOrderProject = async () => {
     const formdataFile = new FormData()
@@ -262,6 +272,8 @@ const DevelopmentInquiry = () => {
     const res = await axios.post(`${BASE_URL}${ORDER_PROJECT}`, {
       ...data,
       planFile: resUploadFiles.data.data,
+      options: options,
+      estimatedCost: sum(options),
     })
     if (res.data.code === 0) {
       setOpen(true)
@@ -292,45 +304,35 @@ const DevelopmentInquiry = () => {
     })
   }
 
+  useEffect(() => {
+    localStorage.getItem('options') &&
+      setOptions(JSON.parse(localStorage.getItem('options') || ''))
+    console.log(JSON.parse(localStorage.getItem('options') || ''))
+  }, [])
+
   return (
     <div className={classes.container_development_inquiry}>
       <div></div>
       <div>
         <div>
           <p>견적</p>
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
-
-          <div>
-            <p>UI/UX 디자인</p>
-            <p>
-              <span>20페이지</span> <span>100,000원</span>
-            </p>
-          </div>
+          {LIST_TYPE.map((item) => (
+            <div key={item}>
+              <p>{item}</p>
+              {options.map(
+                (option) =>
+                  option.type === item && (
+                    <p key={option.nameOption}>
+                      <span>{option.nameOption}</span>{' '}
+                      <span>{numberWithCommas(option.price)}원</span>
+                    </p>
+                  )
+              )}
+            </div>
+          ))}
 
           <p style={{borderTop: '1px dashed #000000', padding: '1rem 0'}}>
-            <span>총 금액</span> <span>450,000원</span>
+            <span>총 금액</span> <span>{numberWithCommas(sum(options))}원</span>
           </p>
         </div>
         <p>문의 내용</p>
