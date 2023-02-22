@@ -14,7 +14,7 @@ import InputBase from '../../components/input'
 import Loading from '../../components/loading'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import {BASE_URL, LIST_TYPE} from '../../constants'
+import {BASE_URL, LIST_TYPE, LIST_TYPE_FORMAT} from '../../constants'
 import {OrderProjectType} from '../../types/orderProject.type'
 import {numberWithCommas, sum} from '../../utils'
 
@@ -328,7 +328,7 @@ const DevelopmentInquiry = () => {
             <p>견적</p>
             {LIST_TYPE.map((item) => (
               <div key={item}>
-                <p>{item}</p>
+                <p>{LIST_TYPE_FORMAT[item]}</p>
                 {options.map(
                   (option) =>
                     option.type === item && (

@@ -2,23 +2,23 @@ import {
   Button,
   Checkbox,
   CheckboxProps,
-  FormControlLabel
+  FormControlLabel,
 } from '@material-ui/core'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
-import { green } from '@material-ui/core/colors'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import {green} from '@material-ui/core/colors'
+import {makeStyles, withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { OPTION, TAG } from '../../apis/urlConfig'
+import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {OPTION, TAG} from '../../apis/urlConfig'
 import eyeScan from '../../asset/images/eye-scan.png'
-import { BASE_URL, LIST_TYPE } from '../../constants'
-import { ROUTE } from '../../router/routes'
-import { numberWithCommas, sum } from '../../utils'
+import {BASE_URL, LIST_TYPE, LIST_TYPE_FORMAT} from '../../constants'
+import {ROUTE} from '../../router/routes'
+import {numberWithCommas, sum} from '../../utils'
 import DialogImg from './dialog_img'
 
 const useStyles = makeStyles({
@@ -499,7 +499,7 @@ const EstimateCalculation = () => {
           <p>견적</p>
           {LIST_TYPE.map((item) => (
             <div key={item}>
-              <p>{item}</p>
+              <p>{LIST_TYPE_FORMAT[`${item}`]}</p>
               {options.map(
                 (option) =>
                   option.type === item && (

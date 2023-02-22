@@ -132,3 +132,9 @@ export const LIST_IMAGE_INTRO: string[] = [
 ]
 
 export const LIST_TYPE = ['UX_UI', 'APP', 'WEB', 'ADMIN_PAGE']
+export const LIST_TYPE_FORMAT: any = {
+  UX_UI: 'UI/UX 디자인',
+  APP: 'APP',
+  WEB: 'WEB',
+  ADMIN_PAGE: '관리자 페이지',
+}
