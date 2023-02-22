@@ -20,7 +20,7 @@ export default function CustomizedSnackbars(props: {
   content: string
   type?: 'error' | 'warning' | 'success' | 'info'
   open: boolean
-  setOpen:()=>void
+  setOpen: () => void
 }) {
   const classes = useStyles()
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
@@ -38,6 +38,7 @@ export default function CustomizedSnackbars(props: {
         autoHideDuration={2000}
         onClose={handleClose}
         anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+        style={{zIndex: 10000}}
       >
         <Alert onClose={handleClose} severity={props.type}>
           {props.content}
