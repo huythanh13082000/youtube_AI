@@ -619,9 +619,7 @@ const Home = () => {
   const vidRef = useRef<HTMLVideoElement>(null)
   const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
   const [muted, setMuted] = useState<boolean>(true)
-  const refP = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
-    // refP && refP.current && refP.current.click()
     const getListPortfolio = async () => {
       const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
         params: {sort: 'DESC'},
@@ -644,9 +642,7 @@ const Home = () => {
         <div></div>
         <div>
           <div>
-            <p ref={refP} onClick={() => setMuted(false)}>
-              4+
-            </p>
+            <p>4+</p>
             <span>경험의 해 </span>
           </div>
           <div>
