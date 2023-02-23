@@ -1,6 +1,5 @@
 import {Grid, makeStyles} from '@material-ui/core'
 
-
 import iconInput from '../../asset/images/footer-circle.png'
 import RoomIcon from '@material-ui/icons/Room'
 import PhoneInTalkOutlinedIcon from '@material-ui/icons/PhoneInTalkOutlined'
@@ -124,7 +123,7 @@ const useStyles = makeStyles({
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '1rem 0',
-      '&>div': {
+      '&>a': {
         '&>img': {
           width: '24px',
           height: '24px',
@@ -327,12 +326,16 @@ const Footer = () => {
       </Grid>
       <div>
         <p>Copyright© 2022 GREENAPP. All rights reserved</p>
-        <div>
+        <a
+          href='https://www.youtube.com/@gm4company102'
+          target='_blank'
+          rel='noreferrer'
+        >
           <img src={facebook} alt='facebook' />
           <img src={linked} alt='linked' />
           <img src={twitter} alt='twitter' />
           <img src={instagram} alt='instagram' />
-        </div>
+        </a>
       </div>
     </Grid>
   )

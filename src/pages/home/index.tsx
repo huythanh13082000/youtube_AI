@@ -19,15 +19,15 @@ const useStyles = makeStyles({
       // background: `url(${background})`,
       backgroundSize: 'cover',
       position: 'relative',
-      height: '90vh',
+      height: '100vh',
       '&>video': {
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
-        height: '90vh',
         width: '100%',
         objectFit: 'cover',
+        height: '100vh',
       },
       '&>span': {
         position: 'absolute',
@@ -99,20 +99,20 @@ const useStyles = makeStyles({
         zIndex: 200,
       },
       '&>div:nth-child(3)': {
-        boxSizing: 'border-box',
-        padding: '32px 120px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '10px',
-        width: 'calc(100% - 240px)',
-        background: '#FFFFFF',
-        boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
-        borderRadius: '24px',
-        position: 'absolute',
-        bottom: '-80px',
-        left: '120px',
-        zIndex: 1000,
+        // boxSizing: 'border-box',
+        // padding: '32px 120px',
+        // display: 'flex',
+        // justifyContent: 'space-between',
+        // alignItems: 'center',
+        // gap: '10px',
+        // width: 'calc(100% - 240px)',
+        // background: '#FFFFFF',
+        // boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
+        // borderRadius: '24px',
+        // position: 'absolute',
+        // bottom: '-80px',
+        // left: '120px',
+        // zIndex: 1000,
         '&>div': {
           '&>p': {
             fontFamily: 'Anton',
@@ -139,7 +139,7 @@ const useStyles = makeStyles({
       },
     },
     '&>div:nth-child(2)': {
-      paddingTop: '150px',
+      paddingTop: '4rem',
       background: '#F9FAFB',
       paddingBottom: '80px',
       '&>p:nth-child(1)': {
@@ -400,19 +400,19 @@ const useStyles = makeStyles({
           display: 'none',
         },
         '&>div:nth-child(3)': {
-          boxSizing: 'border-box',
-          padding: '16px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '10px',
-          width: 'calc(100% - 32px)',
-          background: '#FFFFFF',
-          boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
-          borderRadius: '24px',
-          position: 'absolute',
-          bottom: '-45px',
-          left: '16px',
+          // boxSizing: 'border-box',
+          // padding: '16px',
+          // display: 'flex',
+          // justifyContent: 'space-between',
+          // alignItems: 'center',
+          // gap: '10px',
+          // width: 'calc(100% - 32px)',
+          // background: '#FFFFFF',
+          // boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
+          // borderRadius: '24px',
+          // position: 'absolute',
+          // bottom: '-45px',
+          // left: '16px',
           '&>div': {
             '&>p': {
               fontFamily: 'Anton',
@@ -439,7 +439,7 @@ const useStyles = makeStyles({
         },
       },
       '&>div:nth-child(2)': {
-        padding: '100px 0 16px 0',
+        padding: '30px 0 16px 0',
         '&>p:nth-child(3)': {
           fontWeight: 700,
           fontSize: '28px',
@@ -641,7 +641,7 @@ const Home = () => {
         </div>
         <div></div>
         <div>
-          <div>
+          {/* <div>
             <p>4+</p>
             <span>경험의 해 </span>
           </div>
@@ -656,7 +656,7 @@ const Home = () => {
           <div>
             <p>1,2k</p>
             <span>고객 </span>
-          </div>
+          </div> */}
         </div>
         <video
           ref={vidRef}
@@ -679,8 +679,8 @@ const Home = () => {
       <div>
         <p>Our Services</p>
         <p></p>
-        <p>뭐가 필요하세요?</p>
-        <p>쉬우면서도 딱 맞는 기능과 감각적인 디자인</p>
+        <p>어떤게 필요하세요?</p>
+        <p>견적을 통해 기능과 필수요소 및 견적을 계산해보세요.</p>
       </div>
       <div>
         {LIST_DATA_SERVICE.map((item) => {
@@ -691,7 +691,7 @@ const Home = () => {
         <p>Strengths</p>
         <p></p>
         <p>지엠포컴퍼니의 강점</p>
-        <p>우리의 전문성, 나는 각 프로젝트를 통해 보여줄 수 있습니다</p>
+        <p>전문성과 프로젝트의 완성을 위해 최선을 다 하겠습니다.</p>
       </div>
       <div>
         {LIST_DATA_STRENGTH.map((item) => {
@@ -716,7 +716,7 @@ const Home = () => {
         <div>
           <p>Success Case</p>
           <p></p>
-          <p>우리의 인기 프로젝트 중 일부</p>
+          <p>포트폴리오를 안내해드립니다.</p>
           <p>산업, 분야 및 주제가 다양해졌습니다.</p>
         </div>
         <div>

@@ -517,7 +517,7 @@ const DevelopmentInquiry = () => {
           <InputBase
             onChange={(e) => setData({...data, presenter: e})}
             value={data.presenter}
-            placeholder='들어 오세요 '
+            placeholder='유입경로 '
             label='추천인 또는 인썸니아를 알게 된 경로'
             require
           />
