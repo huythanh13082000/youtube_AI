@@ -10,7 +10,8 @@ import CardSuccessCase from '../../components/card_success_case'
 import {Slideshow} from '../../components/slide'
 import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
 import {PortfolioType} from '../../types/portfolio.type'
-// import myVideo from '../../asset/videos/KakaoTalk_20230206_145232544.mp4'
+import VolumeOffIcon from '@material-ui/icons/VolumeOff'
+import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 
 const useStyles = makeStyles({
   home_container: {
@@ -27,6 +28,15 @@ const useStyles = makeStyles({
         height: '90vh',
         width: '100%',
         objectFit: 'cover',
+      },
+      '&>span': {
+        position: 'absolute',
+        bottom: '1rem',
+        // left: 0,
+        borderRadius: '50%',
+        right: '1rem',
+        // background: 'black',
+        zIndex: 10000,
       },
       '&>div:nth-child(1)': {
         display: 'flex',
@@ -348,6 +358,7 @@ const useStyles = makeStyles({
           width: '100%',
           objectFit: 'cover',
         },
+        '&>span': {position: 'absolute', top: 0, left: 0, right: 0},
         '&>div:nth-child(1)': {
           display: 'inherit',
           padding: '64px 32px',
@@ -607,8 +618,10 @@ const Home = () => {
   let classes: any = useStyles()
   const vidRef = useRef<HTMLVideoElement>(null)
   const [listPortfolio, setListPortfolio] = useState<PortfolioType[]>([])
-  const [muted, setMuted] = useState<boolean>(false)
+  const [muted, setMuted] = useState<boolean>(true)
+  const refP = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
+    // refP && refP.current && refP.current.click()
     const getListPortfolio = async () => {
       const data = await axios.get(`${BASE_URL}${PORTFOLIO}`, {
         params: {sort: 'DESC'},
@@ -631,7 +644,9 @@ const Home = () => {
         <div></div>
         <div>
           <div>
-            <p>4+</p>
+            <p ref={refP} onClick={() => setMuted(false)}>
+              4+
+            </p>
             <span>경험의 해 </span>
           </div>
           <div>
@@ -653,13 +668,17 @@ const Home = () => {
           loop
           id='myVideo'
           // controls
-          muted
+          muted={muted}
         >
-          <source
-            src='/videos/background.mp4'
-            type='video/mp4'
-          />
+          <source src='/videos/background.mp4' type='video/mp4' />
         </video>
+        <span onClick={() => setMuted(!muted)}>
+          {muted ? (
+            <VolumeOffIcon style={{color: 'white', background: 'black'}} />
+          ) : (
+            <VolumeUpIcon style={{color: 'white', background: 'black'}} />
+          )}
+        </span>
       </div>
       <div>
         <p>Our Services</p>
