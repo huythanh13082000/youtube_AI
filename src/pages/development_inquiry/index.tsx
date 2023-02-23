@@ -262,6 +262,7 @@ const DevelopmentInquiry = () => {
   >([])
 
   const handleCreateOrderProject = async () => {
+    setOpenLoading(true)
     const formdataFile = new FormData()
     data.planFile?.forEach((item) => {
       formdataFile.append('files', item)
@@ -276,7 +277,7 @@ const DevelopmentInquiry = () => {
       options: options,
       estimatedCost: sum(options),
     })
-    setOpenLoading(true)
+
     if (res.data.code === 0) {
       setOpen(true)
       setOpenLoading(false)
