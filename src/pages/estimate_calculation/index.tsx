@@ -446,7 +446,7 @@ const EstimateCalculation = () => {
           </div>
         </div>
         <div>
-          <p>Page & Future</p>
+          <p>Page & Function</p>
           {listTag.map((item) => (
             <Accordion key={item.id} onClick={() => setTag(item.name)}>
               <AccordionSummary
