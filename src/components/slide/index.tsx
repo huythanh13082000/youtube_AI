@@ -11,21 +11,21 @@ const LIST_DATA_SLIDE = [
     star: 4,
     comment:
       "We are very satisfied when using greenapp's service, excellent quality, dedicated support.",
-    name: 'Thomas Edison',
+    name: 'Jonson',
   },
   {
     url: 'https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80',
     star: 5,
     comment:
-      "We are very satisfied when using greenapp's service, excellent quality, dedicated support.1",
-    name: 'Thomas Edison1',
+      "We are very satisfied when using greenapp's service, excellent quality, dedicated support.",
+    name: 'huy thanh',
   },
   {
     url: 'https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
     star: 3,
     comment:
-      "We are very satisfied when using greenapp's service, excellent quality, dedicated support.2",
-    name: 'Thomas Edison2',
+      "We are very satisfied when using greenapp's service, excellent quality, dedicated support.",
+    name: 'ana',
   },
 ]
 
