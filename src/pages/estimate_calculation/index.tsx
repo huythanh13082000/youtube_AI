@@ -337,7 +337,7 @@ const EstimateCalculation = () => {
           data: {listTags: {name: string; type?: string; id?: number}[]}
         }
       } = await axios.get(`${BASE_URL}${TAG}`, {
-        params: {type: type},
+        params: {type: type, page: 1, perPage: 100, sort: 'DESC'},
       })
       if (data && data.data.code === 0)
         data && setListTag(data.data.data.listTags)
@@ -363,7 +363,7 @@ const EstimateCalculation = () => {
           }
         }
       } = await axios.get(`${BASE_URL}${OPTION}`, {
-        params: {type: type},
+        params: {type: type, page: 1, perPage: 100, sort: 'DESC'},
       })
       if (data && data.data.code === 0)
         data && setListOption(data.data.data.listOption)
@@ -399,7 +399,7 @@ const EstimateCalculation = () => {
     localStorage.setItem('options', JSON.stringify(options))
     navigate(ROUTE.DEVELOPMENT_INQUIRY)
   }
-
+  console.log(11, listOption)
   return (
     <div className={classes.container_portfolio}>
       <div></div>
