@@ -74,7 +74,7 @@ const useStyles = makeStyles({
     },
   },
   '@media (max-width: 740px)': {
-    container_input_base: {
+    container_upload_file: {
       width: '100%',
       '&>label': {
         display: 'inline-block',
@@ -90,7 +90,7 @@ const useStyles = makeStyles({
       },
       '&>input': {
         width: '100%',
-        height: '42px',
+        height: '84px',
         fontFamily: 'Pretendard',
         paddingLeft: '10px',
         border: '1px solid #9CA3AF',
@@ -100,8 +100,9 @@ const useStyles = makeStyles({
       '&>div': {
         width: 'calc(100% - 66px)',
         display: 'flex',
+        minHeight: '40px',
         position: 'absolute',
-        flexWrap: 'wrap',
+        // flexWrap: 'wrap',
         top: '50px',
         left: '3px',
         '&>span': {
@@ -153,7 +154,7 @@ const UploadFile = (props: {
     <div className={classes.container_upload_file}>
       <label htmlFor={props.label}>{props.label}</label>
       <br />
-      <input id={props.label} placeholder={props.placeholder} />
+      <input id={props.label} placeholder={''} />
       <input
         ref={refInput}
         type='file'
