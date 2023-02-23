@@ -36,7 +36,7 @@ const useStyles = makeStyles({
         borderRadius: '50%',
         right: '1rem',
         // background: 'black',
-        zIndex: 10000,
+        zIndex: 1000,
       },
       '&>div:nth-child(1)': {
         display: 'flex',
@@ -99,20 +99,6 @@ const useStyles = makeStyles({
         zIndex: 200,
       },
       '&>div:nth-child(3)': {
-        // boxSizing: 'border-box',
-        // padding: '32px 120px',
-        // display: 'flex',
-        // justifyContent: 'space-between',
-        // alignItems: 'center',
-        // gap: '10px',
-        // width: 'calc(100% - 240px)',
-        // background: '#FFFFFF',
-        // boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
-        // borderRadius: '24px',
-        // position: 'absolute',
-        // bottom: '-80px',
-        // left: '120px',
-        // zIndex: 1000,
         '&>div': {
           '&>p': {
             fontFamily: 'Anton',
@@ -400,19 +386,6 @@ const useStyles = makeStyles({
           display: 'none',
         },
         '&>div:nth-child(3)': {
-          // boxSizing: 'border-box',
-          // padding: '16px',
-          // display: 'flex',
-          // justifyContent: 'space-between',
-          // alignItems: 'center',
-          // gap: '10px',
-          // width: 'calc(100% - 32px)',
-          // background: '#FFFFFF',
-          // boxShadow: '0px 4px 30px rgba(78, 78, 78, 0.2)',
-          // borderRadius: '24px',
-          // position: 'absolute',
-          // bottom: '-45px',
-          // left: '16px',
           '&>div': {
             '&>p': {
               fontFamily: 'Anton',
@@ -594,7 +567,6 @@ const useStyles = makeStyles({
         },
         '&>div:nth-child(2)': {
           display: 'flex',
-          // justifyContent: 'space-between',
           flexWrap: 'wrap',
           boxSizing: 'border-box',
         },
@@ -641,22 +613,6 @@ const Home = () => {
         </div>
         <div></div>
         <div>
-          {/* <div>
-            <p>4+</p>
-            <span>경험의 해 </span>
-          </div>
-          <div>
-            <p>99+</p>
-            <span>파트너 </span>
-          </div>
-          <div>
-            <p>2,9k</p>
-            <span>작업 완료 </span>
-          </div>
-          <div>
-            <p>1,2k</p>
-            <span>고객 </span>
-          </div> */}
         </div>
         <video
           ref={vidRef}

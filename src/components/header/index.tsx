@@ -9,7 +9,7 @@ import DialogMenuHeader from './dialog'
 
 const useStyles = makeStyles({
   container_header: {
-    position: 'absolute',
+    position: 'fixed',
     zIndex: 2000,
     top: 0,
     left: 0,
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    transition: '0.4s',
     '&>:nth-child(1)': {
       display: 'flex',
       width: '100%',
@@ -129,11 +130,24 @@ const Header = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
+  const [scroll, setScroll] = useState(false)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        setScroll(true)
+      } else {
+        setScroll(false)
+      }
+    })
+  }, [])
   return (
-    <div className={classes.container_header}>
+    <div
+      className={classes.container_header}
+      style={{background: scroll ? 'black' : 'none'}}
+    >
       <div>
         <span onClick={() => navigate('/')}>
           <img src={logo} alt='' />
