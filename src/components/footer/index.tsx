@@ -9,6 +9,7 @@ import linked from '../../asset/images/footer-linked.png'
 import twitter from '../../asset/images/footer-twitter.png'
 import instagram from '../../asset/images/footer-instagram.png'
 import {useNavigate} from 'react-router-dom'
+import {ROUTE} from '../../router/routes'
 
 const useStyles = makeStyles({
   container_footer: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
           backgroundClip: 'text',
           textFillColor: 'transparent',
           marginTop: 0,
-          width: '100px',
+          width: '350px',
         },
         '&>span': {
           fontWeight: 400,
@@ -95,6 +96,7 @@ const useStyles = makeStyles({
           display: 'flex',
           alignItems: 'center',
           color: '#4B5563',
+          cursor: 'pointer',
         },
         '&>:nth-child(1)': {
           color: '#111827',
@@ -156,7 +158,7 @@ const useStyles = makeStyles({
             backgroundClip: 'text',
             textFillColor: 'transparent',
             margin: '5px 0',
-            width: '100px',
+            width: '350px',
           },
           '&>span': {
             fontWeight: 400,
@@ -300,7 +302,7 @@ const useStyles = makeStyles({
             backgroundClip: 'text',
             textFillColor: 'transparent',
             margin: '5px 0',
-            width: '100px',
+            width: '350px',
           },
           '&>span': {
             fontWeight: 400,
@@ -430,39 +432,37 @@ const Footer = () => {
     <Grid className={classes.container_footer}>
       <Grid item xs={12} container>
         <Grid item xs={4}>
-          <p onClick={() => navigate('/')}>Greenapp</p>
-          <span>
-            Similarly, a loan taken out to buy a car may be secured by the car.
-            The duration of the loan.
-          </span>
-          <div>
+          <p onClick={() => navigate('/')}>Greenapp x Gm4company</p>
+          <span>린스타트업 전문 아웃소싱 개발회사</span>
+          {/* <div>
             <input type='text' placeholder='Enter your email' />
             <img src={iconInput} alt='' />
-          </div>
+          </div> */}
         </Grid>
         <Grid item xs={4}>
-          <p>연락해주세요</p>
-          <p>대표 이성훈</p>
-          <p>사업자등록번호 326-81-00644</p>
+          <p>회사정보</p>
+          <p>회사명:지엠포컴퍼니 주식회사 | 대표 이승우</p>
+          <p>사업자등록번호 491-87-02258</p>
           <p>
             <RoomIcon />
-            서울 성동구 아차산로 17길 48 성수 SK V1 CENTER 1동 718-719
+            서울시 강남구 테헤란로4길 15 메가시티 811호
           </p>
           <p>
             <PhoneInTalkOutlinedIcon />
-            010 - 1234 - 5678
+            010 -6752 - 56666
           </p>
           <p>
             <MailOutlineOutlinedIcon />
-            greenapp@naver.com
+            greenappsblog@naver.com
           </p>
         </Grid>
         <Grid item xs={2}>
-          <p>연락해주세요</p>
-          <p>메인</p>
-          <p>포트폴리오</p>
-          <p>자주묻는질문</p>
-          <p>문의하기</p>
+          <p>메뉴</p>
+          <p onClick={() => navigate(ROUTE.HOME)}>Home</p>
+          <p onClick={() => navigate(ROUTE.INTRO)}>회사소개</p>
+          <p onClick={() => navigate(ROUTE.PORTFOLIO)}>포트폴리오</p>
+          <p onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}>견적계산</p>
+          <p onClick={() => navigate(ROUTE.DEVELOPMENT_INQUIRY)}>개발문의</p>
         </Grid>
         <Grid item xs={2}>
           <p>서비스 정책</p>
