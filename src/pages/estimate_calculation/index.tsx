@@ -621,16 +621,18 @@ const EstimateCalculation = () => {
                           style={{fontSize: '14px', width: '200px'}}
                           label={itemOption.nameOption}
                         />
-                        <img
-                          src={eyeScan}
-                          alt=''
-                          style={{width: '25px', height: '25px'}}
-                          onClick={() => {
-                            itemOption.image &&
-                              setImg(itemOption.image as string)
-                            setOpen(true)
-                          }}
-                        />
+                        {itemOption.image && (
+                          <img
+                            src={eyeScan}
+                            alt=''
+                            style={{width: '25px', height: '25px'}}
+                            onClick={() => {
+                              itemOption.image &&
+                                setImg(itemOption.image as string)
+                              setOpen(true)
+                            }}
+                          />
+                        )}
                       </div>
                     )
                 )}

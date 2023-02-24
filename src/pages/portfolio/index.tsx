@@ -1,7 +1,6 @@
-import {makeStyles, Paper, Tab, Tabs} from '@material-ui/core'
+import {makeStyles} from '@material-ui/core'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
 import {PORTFOLIO} from '../../apis/urlConfig'
 import background from '../../asset/images/portfolio_background.png'
 import CardSuccessCase from '../../components/card_success_case'
@@ -201,7 +200,7 @@ const Portfolio = () => {
         </div>
       </div>
       <div>
-        <Paper square>
+        {/* <Paper square>
           <Tabs
             value={value}
             indicatorColor='primary'
@@ -211,12 +210,11 @@ const Portfolio = () => {
           >
             <Tab label='과학 기술' />
             <Tab label='쇼핑' />
-            {/* <Tab label='자동차' disabled /> */}
             <Tab label='여행하다' />
             <Tab label='패션' />
             <Tab label='마케팅' />
           </Tabs>
-        </Paper>
+        </Paper> */}
       </div>
       <div>
         {listPortfolio.map((item) => (
