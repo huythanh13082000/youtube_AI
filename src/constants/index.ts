@@ -44,12 +44,12 @@ export const HTTP_STATUS = {
 }
 export const LIST_DATA_SERVICE = [
   {
-    url: multiscreen,
+    url: landingPage,
     name: 'UI/UX 디자인',
     description: '이용자에게 더욱 편하고 즐거운 방문을 유도하는 디자인 필수',
   },
   {
-    url: landingPage,
+    url: multiscreen,
     name: '반응형 웹',
     description:
       '이용자들은 PC와 휴대폰으로 접속하여, 디바이스에 맞는 편리함을 제공!',
@@ -100,7 +100,7 @@ export const LIST_DATA_STRENGTH = [
   },
   {
     url: database,
-    name: '바퀴를 재발명하지 않음',
+    name: '저희의 경험으로 최적화된 서비스를 제공하세요.',
     description:
       '안정화된 개발 라이브러리 디자인 테마, UX 패턴을 최대한 활용하여 생산성을 극 대화하고 리스크를 줄입니다',
   },
