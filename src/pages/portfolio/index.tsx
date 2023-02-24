@@ -104,6 +104,7 @@ const useStyles = makeStyles({
             fontWeight: 500,
             fontSize: '16px',
             lineHeight: '25px',
+            color: 'black',
           },
         },
       },

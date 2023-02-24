@@ -475,7 +475,7 @@ const EstimateCalculation = () => {
                               onClick={() => handleOption(itemOption)}
                             />
                           }
-                          style={{fontSize: '14px', width: '35%'}}
+                          style={{fontSize: '14px', width: '200px'}}
                           label={itemOption.nameOption}
                         />
                         <img
