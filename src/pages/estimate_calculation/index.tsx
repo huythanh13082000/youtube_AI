@@ -543,7 +543,6 @@ const EstimateCalculation = () => {
     localStorage.setItem('options', JSON.stringify(options))
     navigate(ROUTE.DEVELOPMENT_INQUIRY)
   }
-  console.log(11, listOption)
   return (
     <div className={classes.container_portfolio}>
       <div></div>
