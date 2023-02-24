@@ -134,11 +134,7 @@ export const PortfolioDetail = (props: {
         </div>
         <p>{props.data.description}</p>
         {(props.data.images as string[]).map((item) => (
-          <img
-            style={{width: '100%'}}
-            src={`${BASE_URL}/${item}`}
-            alt=''
-          />
+          <img style={{width: '100%'}} src={`${BASE_URL}/${item}`} alt='' />
         ))}
       </div>
     </Dialog>

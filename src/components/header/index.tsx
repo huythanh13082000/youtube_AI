@@ -10,7 +10,7 @@ import DialogMenuHeader from './dialog'
 const useStyles = makeStyles({
   container_header: {
     position: 'fixed',
-    zIndex: 2000,
+    zIndex: 1300,
     top: 0,
     left: 0,
     right: 0,
