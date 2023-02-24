@@ -107,6 +107,7 @@ const useStyles = makeStyles({
         width: '52%',
         boxSizing: 'border-box',
         padding: '0 2rem',
+        paddingBottom: '2rem',
         '&>p': {
           fontWeight: 700,
           fontSize: '20px',
