@@ -114,7 +114,7 @@ const useStyles = makeStyles({
     },
   },
 
-  '@media (min-width: 740px) and (max-width: 1116px)': {
+  '@media (min-width: 740px) and (max-width: 1185px)': {
     container_header: {
       position: 'fixed',
       zIndex: 1300,
@@ -122,7 +122,7 @@ const useStyles = makeStyles({
       left: 0,
       right: 0,
       color: 'white',
-      height: 120,
+      height: 65,
       padding: '0 50px',
       display: 'flex',
       justifyContent: 'space-between',

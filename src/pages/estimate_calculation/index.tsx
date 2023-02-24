@@ -290,7 +290,7 @@ const useStyles = makeStyles({
     },
   },
 
-  '@media (min-width: 740px) and (max-width: 1024px)': {
+  '@media (min-width: 740px) and (max-width: 1185px)': {
     container_portfolio: {
       background: '#F3F4F6',
       paddingBottom: '2rem',

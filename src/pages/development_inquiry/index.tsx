@@ -229,8 +229,12 @@ const useStyles = makeStyles({
       },
     },
   },
-  '@media (min-width: 740px) and (max-width: 1024px)': {
+  '@media (min-width: 740px) and (max-width: 1116px)': {
     container_development_inquiry: {
+      '&>div:nth-child(1)': {
+        background: 'black',
+        height: '65px',
+      },
       '&>div:nth-child(2)': {
         margin: '60px auto 0',
         width: '70%',
