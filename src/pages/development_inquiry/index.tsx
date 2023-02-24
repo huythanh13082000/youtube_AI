@@ -229,6 +229,14 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (min-width: 740px) and (max-width: 1024px)': {
+    container_development_inquiry: {
+      '&>div:nth-child(2)': {
+        margin: '60px auto 0',
+        width: '70%',
+      },
+    },
+  },
 })
 
 const DevelopmentInquiry = () => {

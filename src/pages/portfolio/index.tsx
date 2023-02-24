@@ -68,6 +68,9 @@ const useStyles = makeStyles({
   },
   '@media (max-width: 740px)': {
     container_portfolio: {
+      '& .MuiTab-root': {
+        minWidth: '0',
+      },
       '&>div:nth-child(1)': {
         background: `url(${background})`,
         backgroundSize: 'cover',
@@ -103,6 +106,59 @@ const useStyles = makeStyles({
             fontStyle: 'normal',
             fontWeight: 500,
             fontSize: '16px',
+            lineHeight: '25px',
+            color: 'black',
+          },
+        },
+      },
+      '&>div:nth-child(3)': {
+        display: 'flex',
+        flexWrap: 'wrap',
+        background: '#F9FAFB',
+        padding: '30px 16px 30px 16px',
+      },
+    },
+  },
+  '@media (min-width: 740px) and (max-width: 1024px)': {
+    container_portfolio: {
+      '&>div:nth-child(1)': {
+        background: `url(${background})`,
+        backgroundSize: 'cover',
+        position: 'relative',
+        height: '350px',
+        '&>div:nth-child(1)': {
+          position: 'absolute',
+          top: '40%',
+          width: '100%',
+          '&>p': {
+            textAlign: 'center',
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '42px',
+            color: '#FFFFFF',
+            margin: '5px 0',
+          },
+          '&>p:nth-child(2)': {
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '24px',
+          },
+        },
+      },
+      '&>div:nth-child(2)': {
+        padding: '16px 0 ',
+        '& .MuiButtonBase-root': {
+          minWidth: '100px',
+        },
+        '& .MuiTabs-flexContainer': {
+          justifyContent: 'center',
+          padding: '0',
+          overflow: 'auto',
+          '& .MuiTab-wrapper': {
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            fontSize: '20px',
             lineHeight: '25px',
             color: 'black',
           },
