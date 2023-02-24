@@ -137,7 +137,7 @@ const useStyles = makeStyles({
       paddingBottom: '40px',
       '&>div:nth-child(1)': {
         background: 'black',
-        height: '120px',
+        height: '65px',
       },
       '&>div:nth-child(2)': {
         margin: '16px auto 0',

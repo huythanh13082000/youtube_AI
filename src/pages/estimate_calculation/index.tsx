@@ -186,7 +186,7 @@ const useStyles = makeStyles({
       },
       '&>div:nth-child(1)': {
         background: 'black',
-        height: '120px',
+        height: '65px',
       },
 
       '&>p': {

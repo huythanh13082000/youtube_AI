@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/styles'
-import { LIST_IMAGE_INTRO } from '../../constants'
+import {makeStyles} from '@material-ui/styles'
+import {LIST_IMAGE_INTRO} from '../../constants'
 
 const useStyles = makeStyles({
   intro_container: {
@@ -16,6 +16,10 @@ const useStyles = makeStyles({
   },
   '@media (max-width: 740px)': {
     intro_container: {
+      '&>div:nth-child(1)': {
+        height: '65px',
+        background: 'black',
+      },
       '&>div:nth-child(2)': {
         padding: '20px 16px',
         '&>img': {
