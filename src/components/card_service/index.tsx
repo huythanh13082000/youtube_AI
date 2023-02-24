@@ -111,6 +111,16 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (min-width: 740px) and (max-width: 1116px)': {
+    container_card_service: {
+      boxSizing: 'border-box',
+      margin: '0 1rem',
+      padding: '32px 24px',
+      gap: '10px',
+      width: 'calc(50% - 32px)',
+      marginBottom: '1.5rem',
+    },
+  },
 })
 
 const CardService = (props: {

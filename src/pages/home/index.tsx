@@ -1,15 +1,15 @@
 import VolumeOffIcon from '@material-ui/icons/VolumeOff'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
-import { makeStyles } from '@material-ui/styles'
+import {makeStyles} from '@material-ui/styles'
 import axios from 'axios'
-import { useEffect, useRef, useState } from 'react'
-import { PORTFOLIO } from '../../apis/urlConfig'
+import {useEffect, useRef, useState} from 'react'
+import {PORTFOLIO} from '../../apis/urlConfig'
 import users from '../../asset/images/users.png'
 import CardService from '../../components/card_service'
 import CardStrength from '../../components/card_strength'
 import CardSuccessCase from '../../components/card_success_case'
-import { BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH } from '../../constants'
-import { PortfolioType } from '../../types/portfolio.type'
+import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
+import {PortfolioType} from '../../types/portfolio.type'
 
 const useStyles = makeStyles({
   home_container: {
@@ -587,16 +587,325 @@ const useStyles = makeStyles({
     },
   },
 
-  // '@media (min-width: 740px) and (max-width: 1024px)': {
-  //   container_header: {
-  //     '&>div:nth-child(1)': {
-  //       // display: 'none',
-  //       '&>div:nth-child(1)': {
-  //         padding: '1rem',
-  //       },
-  //     },
-  //   },
-  // },
+  '@media (min-width: 740px) and (max-width: 1024px)': {
+    home_container: {
+      '&>div:nth-child(1)': {
+        backgroundSize: 'cover',
+        position: 'relative',
+        height: '100vh',
+        '&>video': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          objectFit: 'cover',
+          height: '100vh',
+        },
+        '&>span': {
+          position: 'absolute',
+          bottom: '1rem',
+          borderRadius: '50%',
+          right: '1rem',
+          zIndex: 1000,
+        },
+        '&>div:nth-child(1)': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          padding: '160px 130px 40px 130px',
+          position: 'relative',
+          zIndex: 1000,
+          '&>div:nth-child(1)': {
+            width: '40%',
+            '&>p:nth-child(1)': {
+              fontWeight: 700,
+              fontSize: '44px',
+              lineHeight: '66px',
+              color: '#FFFFFF',
+            },
+            '&>p:nth-child(2)': {
+              fontWeight: 500,
+              fontSize: '20px',
+              lineHeight: '160%',
+              display: 'flex',
+              alignItems: 'center',
+              color: '#FFFFFF',
+            },
+            '&>span': {
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0px',
+              gap: '24px',
+              width: '230px',
+              height: '64px',
+              background: 'linear-gradient(180deg, #0DC074 0%, #0EADC3 100%)',
+              border: '1px solid #FFFFFF',
+              boxShadow: '-16px 22px 42px rgba(4, 80, 193, 0.8)',
+              borderRadius: '100px',
+              color: '#FFFFFF',
+              fontWeight: 500,
+              fontSize: '20px',
+              cursor: 'pointer',
+              '&>img': {
+                width: '36px',
+                height: '36px',
+              },
+            },
+          },
+          '&>div:nth-child(2)': {
+            width: '60%',
+            '&>img': {
+              width: '100%',
+            },
+          },
+        },
+        '&>:nth-child(2)': {
+          width: '62px',
+          height: '78px',
+          position: 'absolute',
+          bottom: 110,
+          left: 'calc(50% - 31px)',
+          zIndex: 200,
+        },
+        '&>div:nth-child(3)': {
+          '&>div': {
+            '&>p': {
+              fontFamily: 'Anton',
+              fontWeight: 400,
+              fontSize: '44px',
+              lineHeight: '66px',
+              display: 'flex',
+              alignItems: 'center',
+              textAlign: 'center',
+              color: '#000000',
+              marginBottom: '10px',
+              marginTop: '0px',
+            },
+            '&>span': {
+              fontWeight: 400,
+              fontSize: '18px',
+              lineHeight: '27px',
+              display: 'flex',
+              alignItems: 'center',
+              textAlign: 'center',
+              color: '#1F2937',
+            },
+          },
+        },
+      },
+      '&>div:nth-child(2)': {
+        paddingTop: '4rem',
+        background: '#F9FAFB',
+        paddingBottom: '80px',
+        '&>p:nth-child(1)': {
+          fontFamily: 'Anton',
+          fontWeight: '400',
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+          margin: '0',
+        },
+        '&>p:nth-child(2)': {
+          width: '106px',
+          height: '10px',
+          margin: '0 auto',
+          background:
+            'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+          filter: 'blur(2px)',
+        },
+        '&>p:nth-child(3)': {
+          fontWeight: 700,
+          fontSize: '30px',
+          lineHeight: '66px',
+          textAlign: 'center',
+          color: '#000000',
+          margin: '10px',
+        },
+        '&>p:nth-child(4)': {
+          fontWeight: 500,
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          color: '#4B5563',
+          margin: 0,
+        },
+      },
+      '&>div:nth-child(3)': {
+        padding: '0 60px 60px 60px',
+        display: 'flex',
+        boxSizing: 'border-box',
+        background: '#F9FAFB',
+        flexWrap: 'wrap',
+      },
+      '&>div:nth-child(4)': {
+        background: 'white',
+        marginTop: '60px',
+        '&>p:nth-child(1)': {
+          fontFamily: 'Anton',
+          fontWeight: '400',
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+          margin: '0',
+        },
+        '&>p:nth-child(2)': {
+          width: '106px',
+          height: '10px',
+          margin: '0 auto',
+          background:
+            'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+          filter: 'blur(2px)',
+        },
+        '&>p:nth-child(3)': {
+          fontWeight: 700,
+          fontSize: '30px',
+          lineHeight: '66px',
+          textAlign: 'center',
+          color: '#000000',
+          margin: '10px',
+        },
+        '&>p:nth-child(4)': {
+          fontWeight: 500,
+          fontSize: '20px',
+          lineHeight: '30px',
+          textAlign: 'center',
+          color: '#4B5563',
+          margin: 0,
+          paddingBottom: '30px',
+        },
+      },
+      '&>div:nth-child(5)': {
+        padding: '0 60px',
+        paddingBottom: '4rem',
+        display: 'flex',
+        flexWrap: 'wrap',
+        boxSizing: 'border-box',
+        justifyContent: 'space-between',
+      },
+      '&>div:nth-child(6)': {
+        // boxSizing: 'border-box',
+        // height: '673px',
+        // background: `url(${backgroundWord})`,
+        // backgroundSize: 'cover',
+        // padding: '0 130px',
+        // display: 'flex',
+        // margin: '60px 0 0 0',
+        // justifyContent: 'space-between',
+        // alignItems: 'center',
+        '&>div:nth-child(1)': {
+          width: '35%',
+          '&>p:nth-child(1)': {
+            fontFamily: 'Anton',
+            fontWeight: '400',
+            fontSize: '20px',
+            lineHeight: '30px',
+            background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            margin: 0,
+          },
+          '&>p:nth-child(2)': {
+            width: '75px',
+            height: '10px',
+            margin: 0,
+            background:
+              'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+            filter: 'blur(2px)',
+          },
+          '&>p:nth-child(3)': {
+            fontWeight: 700,
+            fontSize: '32px',
+            lineHeight: '48px',
+            display: 'flex',
+            alignItems: 'center',
+            color: '#000000',
+            margin: '16px 0',
+          },
+          '&>p:nth-child(4)': {
+            fontStyle: 'normal',
+            fontWeight: '500',
+            fontSize: '20px',
+            lineHeight: '160%',
+            display: 'flex',
+            alignItems: 'center',
+            color: '#1F2937',
+          },
+        },
+        '&>div:nth-child(2)': {
+          height: '100%',
+          width: '60%',
+          background: `url(${users})`,
+          backgroundSize: 'cover',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+      },
+      '&>div:nth-child(7)': {
+        background: '#EDF2FF',
+        padding: '60px 60px 80px 60px',
+        '&>div:nth-child(1)': {
+          '&>p:nth-child(1)': {
+            fontFamily: 'Anton',
+            fontWeight: '400',
+            fontSize: '20px',
+            lineHeight: '30px',
+            textAlign: 'center',
+            background: 'linear-gradient(180deg, #2E88FF 0%, #004EC7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            margin: '0',
+          },
+          '&>p:nth-child(2)': {
+            width: '106px',
+            height: '10px',
+            margin: '0 auto',
+            background:
+              'linear-gradient(0deg, #CFCFCF 14.36%, rgba(217, 217, 217, 0) 100%)',
+            filter: 'blur(2px)',
+          },
+          '&>p:nth-child(3)': {
+            fontWeight: 700,
+            fontSize: '30px',
+            lineHeight: '66px',
+            textAlign: 'center',
+            color: '#000000',
+            margin: '10px',
+          },
+          '&>p:nth-child(4)': {
+            fontWeight: 500,
+            fontSize: '20px',
+            lineHeight: '30px',
+            textAlign: 'center',
+            color: '#4B5563',
+            margin: 0,
+            marginBottom: '2rem',
+          },
+        },
+        '&>div:nth-child(2)': {
+          display: 'flex',
+          flexWrap: 'wrap',
+          boxSizing: 'border-box',
+        },
+      },
+    },
+  },
 })
 
 const Home = () => {
