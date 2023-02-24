@@ -28,6 +28,20 @@ const useStyles = makeStyles({
       },
     },
   },
+  '@media (min-width: 740px) and (max-width: 1185px)': {
+    intro_container: {
+      '&>div:nth-child(1)': {
+        height: '65px',
+        background: 'black',
+      },
+      '&>div:nth-child(2)': {
+        padding: '20px 60px',
+        '&>img': {
+          width: '100%',
+        },
+      },
+    },
+  },
 })
 
 const Intro = () => {
