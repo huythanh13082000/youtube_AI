@@ -31,6 +31,7 @@ const useStyles = makeStyles({
           backgroundClip: 'text',
           textFillColor: 'transparent',
           marginTop: 0,
+          width: '100px',
         },
         '&>span': {
           fontWeight: 400,
@@ -155,6 +156,7 @@ const useStyles = makeStyles({
             backgroundClip: 'text',
             textFillColor: 'transparent',
             margin: '5px 0',
+            width: '100px',
           },
           '&>span': {
             fontWeight: 400,
@@ -277,7 +279,7 @@ const useStyles = makeStyles({
   },
   '@media (min-width: 740px) and (max-width: 1024px)': {
     container_footer: {
-      padding: '0 130px',
+      padding: '0 60px',
       marginTop: '3rem',
       backgroundColor: 'white',
       '&>:nth-child(1)': {
@@ -298,6 +300,7 @@ const useStyles = makeStyles({
             backgroundClip: 'text',
             textFillColor: 'transparent',
             margin: '5px 0',
+            width: '100px',
           },
           '&>span': {
             fontWeight: 400,
