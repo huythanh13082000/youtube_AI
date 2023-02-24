@@ -518,7 +518,7 @@ const DevelopmentInquiry = () => {
             onChange={(e) => setData({...data, presenter: e})}
             value={data.presenter}
             placeholder='유입경로 '
-            label='추천인 또는 인썸니아를 알게 된 경로'
+            label='추천인 또는 지엠포컴퍼니를 알게 된 경로'
             require
           />
         </div>

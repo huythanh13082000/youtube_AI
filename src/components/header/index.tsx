@@ -81,6 +81,7 @@ const useStyles = makeStyles({
   '@media (max-width: 740px)': {
     container_header: {
       padding: '0 16px',
+      height: '65px',
       '&>div:nth-child(1)': {
         display: 'none',
       },

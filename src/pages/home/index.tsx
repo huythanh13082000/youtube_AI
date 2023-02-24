@@ -216,21 +216,22 @@ const useStyles = makeStyles({
     },
     '&>div:nth-child(5)': {
       padding: '0 180px',
+      paddingBottom: '4rem',
       display: 'flex',
       flexWrap: 'wrap',
       boxSizing: 'border-box',
       justifyContent: 'space-between',
     },
     '&>div:nth-child(6)': {
-      boxSizing: 'border-box',
-      height: '673px',
-      background: `url(${backgroundWord})`,
-      backgroundSize: 'cover',
-      padding: '0 130px',
-      display: 'flex',
-      margin: '60px 0 0 0',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      // boxSizing: 'border-box',
+      // height: '673px',
+      // background: `url(${backgroundWord})`,
+      // backgroundSize: 'cover',
+      // padding: '0 130px',
+      // display: 'flex',
+      // margin: '60px 0 0 0',
+      // justifyContent: 'space-between',
+      // alignItems: 'center',
       '&>div:nth-child(1)': {
         width: '35%',
         '&>p:nth-child(1)': {
@@ -322,6 +323,7 @@ const useStyles = makeStyles({
           textAlign: 'center',
           color: '#4B5563',
           margin: 0,
+          marginBottom: '2rem',
         },
       },
       '&>div:nth-child(2)': {
@@ -344,7 +346,15 @@ const useStyles = makeStyles({
           width: '100%',
           objectFit: 'cover',
         },
-        '&>span': {position: 'absolute', top: 0, left: 0, right: 0},
+        '&>span': {
+          position: 'absolute',
+          bottom: '1rem',
+          // left: 0,
+          borderRadius: '50%',
+          right: '1rem',
+          // background: 'black',
+          zIndex: 1000,
+        },
         '&>div:nth-child(1)': {
           display: 'inherit',
           padding: '64px 32px',
@@ -458,17 +468,21 @@ const useStyles = makeStyles({
           justifyContent: 'center',
         },
       },
-      '&>div:nth-child(5)': {display: 'wrap', padding: '0 16px'},
+      '&>div:nth-child(5)': {
+        display: 'wrap',
+        padding: '0 16px',
+        paddingBottom: '4rem',
+      },
       '&>div:nth-child(6)': {
-        boxSizing: 'border-box',
-        height: '673px',
-        background: `url(${backgroundWord})`,
-        backgroundSize: 'cover',
-        padding: '16px 16px 0 16px',
-        display: 'inherit',
-        margin: '60px 0 0 0',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        // boxSizing: 'border-box',
+        // height: '673px',
+        // background: `url(${backgroundWord})`,
+        // backgroundSize: 'cover',
+        // padding: '16px 16px 0 16px',
+        // display: 'inherit',
+        // margin: '60px 0 0 0',
+        // justifyContent: 'space-between',
+        // alignItems: 'center',
         '&>div:nth-child(1)': {
           width: '100%',
           '&>p:nth-child(1)': {
@@ -563,6 +577,7 @@ const useStyles = makeStyles({
             textAlign: 'center',
             color: '#4B5563',
             margin: 0,
+            marginBottom: '1rem',
           },
         },
         '&>div:nth-child(2)': {
@@ -612,8 +627,7 @@ const Home = () => {
           </div>
         </div>
         <div></div>
-        <div>
-        </div>
+        <div></div>
         <video
           ref={vidRef}
           autoPlay={true}
@@ -655,7 +669,7 @@ const Home = () => {
         })}
       </div>
       <div>
-        <div>
+        {/* <div>
           <p>Welcome</p>
           <p></p>
           <p>고객이 우리에 대해 뭐라고 말합니까?</p>
@@ -666,7 +680,7 @@ const Home = () => {
         </div>
         <div>
           <Slideshow />
-        </div>
+        </div> */}
       </div>
       <div>
         <div>
