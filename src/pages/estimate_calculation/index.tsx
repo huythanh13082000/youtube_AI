@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {OPTION, TAG} from '../../apis/urlConfig'
+import {OPTION, TAG, TYPE} from '../../apis/urlConfig'
 import eyeScan from '../../asset/images/eye-scan.png'
 import {BASE_URL, LIST_TYPE, LIST_TYPE_FORMAT} from '../../constants'
 import {ROUTE} from '../../router/routes'
@@ -88,19 +88,21 @@ const useStyles = makeStyles({
       },
       '&>div:nth-child(1)': {
         width: '16%',
-        maxHeight: '186px',
+        // minHeight: '0',
         '&>div': {
-          padding: '8px 16px',
-          fontWeight: 700,
-          fontSize: '20px',
-          lineHeight: '30px',
-          display: 'flex',
-          alignItems: 'center',
-          textAlign: 'center',
-        },
-        '&>div:hover': {
-          color: '#215DFC',
-          background: '#C8E4FA',
+          '&>div': {
+            padding: '8px 16px',
+            fontWeight: 700,
+            fontSize: '20px',
+            lineHeight: '30px',
+            display: 'flex',
+            alignItems: 'center',
+            textAlign: 'center',
+          },
+          '&>div:hover': {
+            color: '#215DFC',
+            background: '#C8E4FA',
+          },
         },
       },
       '&>div:nth-child(2)': {
@@ -215,12 +217,12 @@ const useStyles = makeStyles({
           background: 'white',
         },
         '&>div:nth-child(1)': {
-          // width: '400px',
           display: 'flex',
-          // flexWrap: 'wrap',
-          width: '100%',
-          paddingTop: '1rem',
-          justifyContent: 'center',
+          padding: '1rem 1rem',
+          width: '100vw',
+          justifyContent: 'inherit',
+          boxSizing: 'border-box',
+          overflow: 'auto',
           '&>div': {
             boxSizing: 'border-box',
             display: 'flex',
@@ -359,10 +361,11 @@ const useStyles = makeStyles({
         '&>div:nth-child(1)': {
           // width: '400px',
           display: 'flex',
-          // flexWrap: 'wrap',
-          paddingTop: '1rem',
+          padding: '1rem 1rem',
           width: '100%',
-          justifyContent: 'center',
+          justifyContent: 'inherit',
+          boxSizing: 'border-box',
+          overflow: 'auto',
           '&>div': {
             boxSizing: 'border-box',
             display: 'flex',
@@ -445,9 +448,7 @@ const GreenCheckbox = withStyles({
 const EstimateCalculation = () => {
   const classes = useStyles()
   const navigate = useNavigate()
-  const [type, setType] = useState<'UX_UI' | 'APP' | 'WEB' | 'ADMIN_PAGE'>(
-    'UX_UI'
-  )
+  const [type, setType] = useState<string>('UX_UI')
   const [tag, setTag] = useState<string>('UI_PAGE')
   const [listTag, setListTag] = useState<
     {name: string; type?: string; id?: number}[]
@@ -465,6 +466,7 @@ const EstimateCalculation = () => {
       id?: number
     }[]
   >([])
+  const [listType, setListType] = useState<{name: string; id?: number}[]>([])
   const [options, setOptions] = useState<
     {
       type?: string
@@ -481,13 +483,29 @@ const EstimateCalculation = () => {
           data: {listTags: {name: string; type?: string; id?: number}[]}
         }
       } = await axios.get(`${BASE_URL}${TAG}`, {
-        params: {type: type, page: 1, perPage: 100, sort: 'DESC'},
+        params: {type: type, page: 1, perPage: 50, sort: 'DESC'},
       })
       if (data && data.data.code === 0)
         data && setListTag(data.data.data.listTags)
     }
     getTag()
   }, [type])
+
+  useEffect(() => {
+    const getType = async () => {
+      const data: {
+        data: {
+          code: number
+          data: {listTypes: {name: string; id?: number}[]}
+        }
+      } = await axios.get(`${BASE_URL}${TYPE}`, {
+        params: {page: 1, perPage: 50},
+      })
+      if (data && data.data.code === 0)
+        data && setListType(data.data.data.listTypes)
+    }
+    getType()
+  }, [])
 
   useEffect(() => {
     const getOption = async () => {
@@ -507,7 +525,7 @@ const EstimateCalculation = () => {
           }
         }
       } = await axios.get(`${BASE_URL}${OPTION}`, {
-        params: {type: type, page: 1, perPage: 100, sort: 'DESC'},
+        params: {type: type, page: 1, perPage: 150, sort: 'DESC'},
       })
       if (data && data.data.code === 0)
         data && setListOption(data.data.data.listOption)
@@ -553,39 +571,20 @@ const EstimateCalculation = () => {
       </p>
       <div>
         <div>
-          <div
-            style={
-              type === 'UX_UI' ? {background: '#C8E4FA', color: '#215DFC'} : {}
-            }
-            onClick={() => setType('UX_UI')}
-          >
-            UI/UX 디자인
-          </div>
-          <div
-            style={
-              type === 'APP' ? {background: '#C8E4FA', color: '#215DFC'} : {}
-            }
-            onClick={() => setType('APP')}
-          >
-            APP
-          </div>
-          <div
-            style={
-              type === 'WEB' ? {background: '#C8E4FA', color: '#215DFC'} : {}
-            }
-            onClick={() => setType('WEB')}
-          >
-            WEB
-          </div>
-          <div
-            style={
-              type === 'ADMIN_PAGE'
-                ? {background: '#C8E4FA', color: '#215DFC'}
-                : {}
-            }
-            onClick={() => setType('ADMIN_PAGE')}
-          >
-            관리자 페이지
+          <div>
+            {listType.map((item) => (
+              <div
+                style={
+                  type === item.name
+                    ? {background: '#C8E4FA', color: '#215DFC'}
+                    : {}
+                }
+                onClick={() => setType(item.name)}
+                key={item.id}
+              >
+                {item.name}
+              </div>
+            ))}
           </div>
         </div>
         <div>

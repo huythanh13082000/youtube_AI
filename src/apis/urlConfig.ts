@@ -23,3 +23,5 @@ export const OPTION = '/option'
 //tag
 
 export const TAG = '/tag'
+
+export const TYPE = '/type'
