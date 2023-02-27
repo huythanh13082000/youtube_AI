@@ -591,7 +591,11 @@ const EstimateCalculation = () => {
         <div>
           <p>Page & Function</p>
           {listTag.map((item) => (
-            <Accordion key={item.id} onClick={() => setTag(item.name)}>
+            <Accordion
+              defaultExpanded={true}
+              key={item.id}
+              onClick={() => setTag(item.name)}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls='panel1a-content'
@@ -618,7 +622,7 @@ const EstimateCalculation = () => {
                               onClick={() => handleOption(itemOption)}
                             />
                           }
-                          style={{fontSize: '14px', width: '200px'}}
+                          style={{fontSize: '14px', width: '300px'}}
                           label={itemOption.nameOption}
                         />
                         {itemOption.image && (

@@ -73,7 +73,10 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
                     }
                   : {fontWeight: 400}
               }
-              onClick={() => navigate(ROUTE.HOME)}
+              onClick={() => {
+                navigate(ROUTE.HOME)
+                handleClose()
+              }}
             >
               Home
             </li>
@@ -86,7 +89,10 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
                     }
                   : {fontWeight: 400}
               }
-              onClick={() => navigate(ROUTE.INTRO)}
+              onClick={() => {
+                navigate(ROUTE.INTRO)
+                handleClose()
+              }}
             >
               회사소개
             </li>
@@ -99,7 +105,10 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
                     }
                   : {fontWeight: 400}
               }
-              onClick={() => navigate(ROUTE.PORTFOLIO)}
+              onClick={() => {
+                navigate(ROUTE.PORTFOLIO)
+                handleClose()
+              }}
             >
               포트폴리오
             </li>
@@ -112,7 +121,10 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
                     }
                   : {fontWeight: 400}
               }
-              onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}
+              onClick={() => {
+                navigate(ROUTE.ESTIMATE_CALCULATION)
+                handleClose()
+              }}
             >
               견적계산
             </li>
@@ -125,12 +137,14 @@ const DialogMenuHeader = (props: {open: boolean; setOpen: () => void}) => {
                     }
                   : {fontWeight: 400}
               }
-              onClick={() => navigate(ROUTE.DEVELOPMENT_INQUIRY)}
+              onClick={() => {
+                navigate(ROUTE.DEVELOPMENT_INQUIRY)
+                handleClose()
+              }}
             >
               개발문의
             </li>
           </ul>
-          {/* <span>프로젝트 생성</span> */}
         </div>
       </Dialog>
     </div>
