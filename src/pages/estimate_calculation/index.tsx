@@ -98,6 +98,11 @@ const useStyles = makeStyles({
             display: 'flex',
             alignItems: 'center',
             textAlign: 'center',
+            '&>pre': {
+              margin: 0,
+              padding: 0,
+              fontFamily: 'Pretendard',
+            },
           },
           '&>div:hover': {
             color: '#215DFC',
@@ -588,7 +593,7 @@ const EstimateCalculation = () => {
                 onClick={() => setType(item.name)}
                 key={item.id}
               >
-                {item.name}
+                <pre>{item.name}</pre>
               </div>
             ))}
           </div>
