@@ -550,8 +550,10 @@ const EstimateCalculation = () => {
     tag?: string
   }) => {
     if (
-      options.filter((option) => option.nameOption === item.nameOption).length >
-      0
+      options.filter(
+        (option) =>
+          option.nameOption === item.nameOption && option.type === item.type
+      ).length > 0
     ) {
       setOptions([
         ...options.filter((option) => option.nameOption !== item.nameOption),
@@ -572,6 +574,7 @@ const EstimateCalculation = () => {
     localStorage.setItem('options', JSON.stringify(options))
     navigate(ROUTE.DEVELOPMENT_INQUIRY)
   }
+  console.log(listOption, listTag)
   return (
     <div className={classes.container_portfolio}>
       <div></div>
@@ -624,11 +627,13 @@ const EstimateCalculation = () => {
                               checked={
                                 options.filter(
                                   (option) =>
-                                    option.nameOption === itemOption.nameOption
+                                    option.nameOption ===
+                                      itemOption.nameOption &&
+                                    option.type === itemOption.type
                                 ).length > 0
                               }
                               // onChange={handleChange}
-                              name='checkedG'
+                              name={`checkedG ${itemOption.id}`}
                               onClick={() => handleOption(itemOption)}
                             />
                           }
