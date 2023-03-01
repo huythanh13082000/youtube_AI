@@ -459,7 +459,7 @@ const GreenCheckbox = withStyles({
 const EstimateCalculation = () => {
   const classes = useStyles()
   const navigate = useNavigate()
-  const [type, setType] = useState<string>('UX_UI')
+  const [type, setType] = useState<string>('UI/UX')
   const [tag, setTag] = useState<string>('UI_PAGE')
   const [listTag, setListTag] = useState<
     {name: string; type?: string; id?: number}[]
