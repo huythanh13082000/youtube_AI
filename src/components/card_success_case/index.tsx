@@ -1,7 +1,7 @@
 import {makeStyles} from '@material-ui/core'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {BASE_URL} from '../../constants'
 import {PortfolioDetail} from '../../pages/portfolio/portfolio_detail'
 import {ROUTE} from '../../router/routes'
@@ -50,8 +50,10 @@ const useStyles = makeStyles({
       justifyContent: 'center',
       cursor: 'pointer',
     },
-    '&>span:nth-child(5):hover': {
-      color: '#2C97EB',
+    '&:hover': {
+      '&>span:nth-child(5)': {
+        color: '#2C97EB',
+      },
     },
   },
   '@media (max-width: 740px)': {
@@ -96,9 +98,6 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         cursor: 'pointer',
       },
-      '&>span:nth-child(5):hover': {
-        color: '#2C97EB',
-      },
     },
   },
 })
@@ -106,25 +105,31 @@ const useStyles = makeStyles({
 const CardSuccessCase = (props: {data: PortfolioType}) => {
   const classes = useStyles()
   const navigate = useNavigate()
+  const location = useLocation()
   const [open, setOpen] = useState(false)
   return (
-    <div
-      className={classes.container_card_success_case}
-      onClick={() => navigate(ROUTE.PORTFOLIO)}
-    >
-      <img src={`${BASE_URL}/${props.data.logo}`} alt='' />
-      <p>{props.data.title}</p>
-      <p>{props.data.programming_language}</p>
-      <p>{props.data.description}</p>
-      <span onClick={() => setOpen(true)}>
-        View Detail <ArrowRightAltIcon />
-      </span>
+    <>
+      <div
+        className={classes.container_card_success_case}
+        onClick={() => {
+          if (location.pathname === ROUTE.PORTFOLIO) setOpen(true)
+          else navigate(ROUTE.PORTFOLIO)
+        }}
+      >
+        <img src={`${BASE_URL}/${props.data.logo}`} alt='' />
+        <p>{props.data.title}</p>
+        <p>{props.data.programming_language}</p>
+        <p>{props.data.description}</p>
+        <span>
+          View Detail <ArrowRightAltIcon />
+        </span>
+      </div>
       <PortfolioDetail
         open={open}
         setOpen={() => setOpen(false)}
         data={props.data}
       />
-    </div>
+    </>
   )
 }
 
