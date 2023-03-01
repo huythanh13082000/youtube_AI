@@ -660,12 +660,12 @@ const EstimateCalculation = () => {
         </div>
         <div>
           <p>견적</p>
-          {LIST_TYPE.map((item) => (
-            <div key={item}>
-              <p>{LIST_TYPE_FORMAT[`${item}`]}</p>
+          {listType.map((item) => (
+            <div key={Number(item)}>
+              <p>{item.name}</p>
               {options.map(
                 (option) =>
-                  option.type === item && (
+                  option.type === item.name && (
                     <p key={option.nameOption}>
                       <span>{option.nameOption}</span>{' '}
                       <span>{numberWithCommas(option.price)}원</span>
