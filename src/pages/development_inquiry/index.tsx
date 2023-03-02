@@ -9,7 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
-import {ORDER_PROJECT, UPLOAD_fILES} from '../../apis/urlConfig'
+import {ORDER_PROJECT, TYPE, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import Loading from '../../components/loading'
 import CustomizedSnackbars from '../../components/snackbar'
@@ -245,6 +245,7 @@ const useStyles = makeStyles({
 
 const DevelopmentInquiry = () => {
   const classes = useStyles()
+  const [listType, setListType] = useState<{name: string; id?: number}[]>([])
   const [data, setData] = useState<OrderProjectType>({
     platform: 'NOTHING',
     companyName: '',
@@ -272,6 +273,22 @@ const DevelopmentInquiry = () => {
       // tag?: string
     }[]
   >([])
+
+  useEffect(() => {
+    const getType = async () => {
+      const data: {
+        data: {
+          code: number
+          data: {listTypes: {name: string; id?: number}[]}
+        }
+      } = await axios.get(`${BASE_URL}${TYPE}`, {
+        params: {page: 1, perPage: 50},
+      })
+      if (data && data.data.code === 0)
+        data && setListType(data.data.data.listTypes)
+    }
+    getType()
+  }, [])
 
   const handleCreateOrderProject = async () => {
     setOpenLoading(true)
@@ -339,12 +356,12 @@ const DevelopmentInquiry = () => {
         {options.length > 0 ? (
           <div>
             <p>견적</p>
-            {LIST_TYPE.map((item) => (
-              <div key={item}>
-                <p>{LIST_TYPE_FORMAT[item]}</p>
+            {listType.map((item) => (
+              <div key={item.id}>
+                <p>{item.name}</p>
                 {options.map(
                   (option) =>
-                    option.type === item && (
+                    option.type === item.name && (
                       <p key={option.nameOption}>
                         <span>{option.nameOption}</span>{' '}
                         <span>{numberWithCommas(option.price)}원</span>
