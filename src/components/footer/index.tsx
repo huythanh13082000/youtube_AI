@@ -449,7 +449,12 @@ const Footer = () => {
           </p>
           <p>
             <PhoneInTalkOutlinedIcon />
-            010 -6752 - 56666
+            <a
+              href='tel:010675256666'
+              style={{textDecoration: 'none', color: 'black'}}
+            >
+              010 -6752 - 56666
+            </a>
           </p>
           <p>
             <MailOutlineOutlinedIcon />
