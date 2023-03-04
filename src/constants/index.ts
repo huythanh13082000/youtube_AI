@@ -32,7 +32,7 @@ import intro19 from '../asset/images/intro19.png'
 import intro20 from '../asset/images/intro20.png'
 import intro21 from '../asset/images/intro21.png'
 
-export const BASE_URL = 'http://3.34.144.245:3535'
+export const BASE_URL = 'https://server.greenapps.kr'
 
 export const HTTP_STATUS = {
   OK: 200,
