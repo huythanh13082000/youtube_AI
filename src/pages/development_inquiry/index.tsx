@@ -3,20 +3,20 @@ import {
   FormControl,
   FormControlLabel,
   makeStyles,
-  TextareaAutosize,
+  TextareaAutosize
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import {useEffect, useState} from 'react'
-import {ORDER_PROJECT, TYPE, UPLOAD_fILES} from '../../apis/urlConfig'
+import { useEffect, useState } from 'react'
+import { ORDER_PROJECT, TYPE, UPLOAD_fILES } from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import Loading from '../../components/loading'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import {BASE_URL, LIST_TYPE, LIST_TYPE_FORMAT} from '../../constants'
-import {OrderProjectType} from '../../types/orderProject.type'
-import {numberWithCommas, sum} from '../../utils'
+import { BASE_URL } from '../../constants'
+import { OrderProjectType } from '../../types/orderProject.type'
+import { numberWithCommas, sum } from '../../utils'
 
 const useStyles = makeStyles({
   container_development_inquiry: {

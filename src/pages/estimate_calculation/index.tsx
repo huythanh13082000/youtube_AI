@@ -15,8 +15,9 @@ import axios from 'axios'
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {OPTION, TAG, TYPE} from '../../apis/urlConfig'
+import deleteIcon from '../../asset/icons/delete.png'
 import eyeScan from '../../asset/images/eye-scan.png'
-import {BASE_URL, LIST_TYPE, LIST_TYPE_FORMAT} from '../../constants'
+import {BASE_URL} from '../../constants'
 import {ROUTE} from '../../router/routes'
 import {numberWithCommas, sum} from '../../utils'
 import DialogImg from './dialog_img'
@@ -149,6 +150,8 @@ const useStyles = makeStyles({
               fontSize: '16px',
               lineHeight: '24px',
               color: '#4B5563',
+              display: 'flex',
+              alignItem: 'center',
             },
           },
         },
@@ -483,6 +486,7 @@ const EstimateCalculation = () => {
       type?: string
       nameOption: string
       price: number
+      id?: number
       // tag?: string
     }[]
   >([])
@@ -548,16 +552,16 @@ const EstimateCalculation = () => {
     nameOption: string
     price: number
     tag?: string
+    id?: number
   }) => {
+    console.log('item', item)
     if (
       options.filter(
         (option) =>
           option.nameOption === item.nameOption && option.type === item.type
       ).length > 0
     ) {
-      setOptions([
-        ...options.filter((option) => option.nameOption !== item.nameOption),
-      ])
+      setOptions([...options.filter((option) => option.id !== item.id)])
     } else {
       setOptions([
         ...options,
@@ -565,10 +569,19 @@ const EstimateCalculation = () => {
           nameOption: item.nameOption,
           price: item.price,
           type: item.type,
-          // tag: item.tag,
+          id: item.id,
         },
       ])
     }
+  }
+  const handleDeleteOption = (item: {
+    type?: string
+    nameOption: string
+    price: number
+    tag?: string
+    id?: number
+  }) => {
+    setOptions([...options.filter((option) => option.id !== item.id)])
   }
   const handleClick = () => {
     localStorage.setItem('options', JSON.stringify(options))
@@ -667,7 +680,14 @@ const EstimateCalculation = () => {
                 (option) =>
                   option.type === item.name && (
                     <p key={option.nameOption}>
-                      <span>{option.nameOption}</span>{' '}
+                      <span>
+                        <img
+                          src={deleteIcon}
+                          alt=''
+                          onClick={() => handleDeleteOption(option)}
+                        />
+                        {option.nameOption}
+                      </span>
                       <span>{numberWithCommas(option.price)}원</span>
                     </p>
                   )
