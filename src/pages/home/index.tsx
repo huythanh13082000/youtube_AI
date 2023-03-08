@@ -941,7 +941,8 @@ const Home = () => {
           loop
           id='myVideo'
           // controls
-          muted={muted}
+          // muted={muted}
+          muted
         >
           <source src='/videos/background.mp4' type='video/mp4' />
         </video>

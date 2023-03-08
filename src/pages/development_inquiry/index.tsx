@@ -3,20 +3,20 @@ import {
   FormControl,
   FormControlLabel,
   makeStyles,
-  TextareaAutosize
+  TextareaAutosize,
 } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { ORDER_PROJECT, TYPE, UPLOAD_fILES } from '../../apis/urlConfig'
+import {useEffect, useState} from 'react'
+import {ORDER_PROJECT, TYPE, UPLOAD_fILES} from '../../apis/urlConfig'
 import InputBase from '../../components/input'
 import Loading from '../../components/loading'
 import CustomizedSnackbars from '../../components/snackbar'
 import UploadFile from '../../components/upload_file'
-import { BASE_URL } from '../../constants'
-import { OrderProjectType } from '../../types/orderProject.type'
-import { numberWithCommas, sum } from '../../utils'
+import {BASE_URL} from '../../constants'
+import {OrderProjectType} from '../../types/orderProject.type'
+import {numberWithCommas, sum} from '../../utils'
 
 const useStyles = makeStyles({
   container_development_inquiry: {
@@ -420,8 +420,8 @@ const DevelopmentInquiry = () => {
           <InputBase
             value={data.maximumBudget}
             onChange={(e) => setData({...data, maximumBudget: Number(e)})}
-            placeholder='최대 예상'
-            label='최대 예상'
+            placeholder='최대예상금액'
+            label='최대예상금액'
             type='number'
             require
           />
@@ -439,7 +439,7 @@ const DevelopmentInquiry = () => {
           <FormGroup style={{display: 'flex'}}>
             <FormControlLabel
               control={<Checkbox />}
-              label='모발일앱(하이브리드)'
+              label='모발일앱'
               checked={
                 data.platform === 'MOBILE_APP' || data.platform === 'BOTH'
                   ? true
