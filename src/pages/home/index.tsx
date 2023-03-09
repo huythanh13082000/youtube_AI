@@ -10,6 +10,7 @@ import CardStrength from '../../components/card_strength'
 import CardSuccessCase from '../../components/card_success_case'
 import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
 import {PortfolioType} from '../../types/portfolio.type'
+import {isMobile} from 'react-device-detect'
 
 const useStyles = makeStyles({
   home_container: {
@@ -940,18 +941,20 @@ const Home = () => {
           autoPlay={true}
           loop
           id='myVideo'
-          // controls
+          controls={isMobile ? true : false}
           muted={muted}
         >
           <source src='/videos/background.mp4' type='video/mp4' />
         </video>
-        <span onClick={() => setMuted(!muted)}>
-          {muted ? (
-            <VolumeOffIcon style={{color: 'white', background: 'black'}} />
-          ) : (
-            <VolumeUpIcon style={{color: 'white', background: 'black'}} />
-          )}
-        </span>
+        {!isMobile && (
+          <span onClick={() => setMuted(!muted)}>
+            {muted ? (
+              <VolumeOffIcon style={{color: 'white', background: 'black'}} />
+            ) : (
+              <VolumeUpIcon style={{color: 'white', background: 'black'}} />
+            )}
+          </span>
+        )}
       </div>
       <div>
         <p>Our Services</p>
