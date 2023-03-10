@@ -302,6 +302,7 @@ const DevelopmentInquiry = () => {
     )
     const res = await axios.post(`${BASE_URL}${ORDER_PROJECT}`, {
       ...data,
+      maximumBudget: Number(data.maximumBudget),
       planFile: resUploadFiles.data.data,
       options: options,
       estimatedCost: sum(options),
@@ -335,7 +336,7 @@ const DevelopmentInquiry = () => {
       description: '',
       presenter: '',
       planFile: [],
-      maximumBudget: 0,
+      maximumBudget: '',
     })
   }
 
@@ -419,10 +420,13 @@ const DevelopmentInquiry = () => {
         <div>
           <InputBase
             value={data.maximumBudget}
-            onChange={(e) => setData({...data, maximumBudget: Number(e)})}
+            onChange={(e) => {
+              const reg = /^\d+$/
+              reg.test(e) && setData({...data, maximumBudget: Number(e)})
+            }}
             placeholder='최대예상금액'
             label='최대예상금액'
-            type='number'
+            type='text'
             require
           />
         </div>
