@@ -242,7 +242,7 @@ const useStyles = makeStyles({
     },
   },
 })
-
+const re = /^[0-9\b]+$/
 const DevelopmentInquiry = () => {
   const classes = useStyles()
   const [listType, setListType] = useState<{name: string; id?: number}[]>([])
@@ -421,8 +421,9 @@ const DevelopmentInquiry = () => {
           <InputBase
             value={data.maximumBudget}
             onChange={(e) => {
-              const regNumber = /^\d+$/
-              regNumber.test(e) && setData({...data, maximumBudget: Number(e)})
+              if (re.test(e) || e === '') {
+                setData({...data, maximumBudget: e})
+              }
             }}
             placeholder='최대예상금액'
             label='최대예상금액'
