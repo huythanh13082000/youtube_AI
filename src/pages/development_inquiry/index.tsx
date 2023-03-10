@@ -421,8 +421,8 @@ const DevelopmentInquiry = () => {
           <InputBase
             value={data.maximumBudget}
             onChange={(e) => {
-              const reg = /^\d+$/
-              reg.test(e) && setData({...data, maximumBudget: Number(e)})
+              const regNumber = /^\d+$/
+              regNumber.test(e) && setData({...data, maximumBudget: Number(e)})
             }}
             placeholder='최대예상금액'
             label='최대예상금액'
