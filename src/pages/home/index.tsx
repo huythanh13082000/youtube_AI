@@ -11,6 +11,7 @@ import CardSuccessCase from '../../components/card_success_case'
 import {BASE_URL, LIST_DATA_SERVICE, LIST_DATA_STRENGTH} from '../../constants'
 import {PortfolioType} from '../../types/portfolio.type'
 import {isMobile} from 'react-device-detect'
+import backgroundVideo from '../../asset/images/background_video.jpg'
 
 const useStyles = makeStyles({
   home_container: {
@@ -943,6 +944,7 @@ const Home = () => {
           id='myVideo'
           controls={isMobile ? true : false}
           muted={muted}
+          poster={backgroundVideo}
         >
           <source src='/videos/background.mp4' type='video/mp4' />
         </video>
