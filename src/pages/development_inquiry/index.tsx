@@ -444,7 +444,7 @@ const DevelopmentInquiry = () => {
           <FormGroup style={{display: 'flex'}}>
             <FormControlLabel
               control={<Checkbox />}
-              label='모발일앱'
+              label='모바일앱'
               checked={
                 data.platform === 'MOBILE_APP' || data.platform === 'BOTH'
                   ? true
