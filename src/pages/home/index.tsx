@@ -3,6 +3,8 @@ import React from 'react'
 import background from '../../asset/images/background_home.png'
 import InputSearch from '../../components/input_search'
 import CloseIcon from '@material-ui/icons/Close'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 
 const useStyles = makeStyles({
   home_container: {
@@ -60,6 +62,11 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const classes = useStyles()
+  const [value, setValue] = React.useState(0)
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue)
+  }
   return (
     <div className={classes.home_container}>
       <div>
@@ -92,6 +99,21 @@ const Home = () => {
             <CloseIcon />
           </span>
         </div>
+      </div>
+      <div>
+        <p>
+          검색 키워드: <span>베트남</span>
+        </p>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor='primary'
+          textColor='primary'
+          centered
+        >
+          <Tab label={<span><img src="" alt="" /></span>} />
+          <Tab label='Item Two' />
+        </Tabs>
       </div>
     </div>
   )
