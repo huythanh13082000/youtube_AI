@@ -6,6 +6,7 @@ import {store} from './app/store'
 import reportWebVitals from './reportWebVitals'
 import './index.scss'
 import Router from './router'
+import BaseLayout from './layouts/base'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -14,9 +15,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <BaseLayout> */}
+        <BaseLayout>
           <Router />
-        {/* </BaseLayout> */}
+        </BaseLayout>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
