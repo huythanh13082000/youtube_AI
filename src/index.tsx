@@ -5,7 +5,6 @@ import {Provider} from 'react-redux'
 import {store} from './app/store'
 import reportWebVitals from './reportWebVitals'
 import './index.scss'
-import BaseLayout from './layouts/base'
 import Router from './router'
 
 const container = document.getElementById('root')!
@@ -15,9 +14,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <BaseLayout>
+        {/* <BaseLayout> */}
           <Router />
-        </BaseLayout>
+        {/* </BaseLayout> */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
