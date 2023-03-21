@@ -46,6 +46,7 @@ const TableCustom = (props: {
     sort: boolean
   }[]
   url: string
+  style?: React.CSSProperties
 }) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -56,25 +57,13 @@ const TableCustom = (props: {
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const data: {
-    id: number
-    썸네일: string
-    제목: string
-    구독자: number
-    조회수: number
-    업로드날짜: number
-    시청그래프: ''
-  }[] = [
-    {
-      id: 1,
-      썸네일:
-        'https://thcsdongphucm.edu.vn/wp-content/uploads/2022/12/1672284831_844_100-hinh-nen-chat-luong-full-HD-4k-cuc-dep.jpg',
-      제목: '[R]S/S 세인트 포켓 가디건',
-      구독자: 1233232,
-      조회수: 1960000,
-      업로드날짜: Date.now(),
-      시청그래프: '',
-    },
+  const data: any[] = [
+    // {
+    //   id: 1,
+    //   해상도: '360 (.mp4)',
+    //   파일크기: '234.333M MB',
+    //   다운로드: 1233232,
+    // },
   ]
   return (
     <div className={classes.table_container}>

@@ -3,6 +3,8 @@ import React, {useState} from 'react'
 import InputSearch from '../../components/input_search'
 import background from '../../asset/images/background_download.png'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import TableCustom from '../../components/table/tableCustom'
+import {COLUMN_TABLE_DOWNLOAD} from '../../constants/column'
 
 const useStyles = makeStyles({
   download_container: {
@@ -91,6 +93,11 @@ const useStyles = makeStyles({
               fontSize: '20px',
               cursor: 'pointer',
             },
+          },
+          '&>div:nth-of-type(2)': {
+            background: 'white',
+            marginTop: '1rem',
+            padding: '1rem',
           },
         },
       },
@@ -184,6 +191,9 @@ const Download = () => {
                 >
                   오디오
                 </div>
+              </div>
+              <div>
+                <TableCustom column={COLUMN_TABLE_DOWNLOAD} url='' />
               </div>
             </div>
           </div>

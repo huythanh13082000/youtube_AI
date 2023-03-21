@@ -123,7 +123,7 @@ const Header = () => {
           </li>
           <li
             style={
-              location.pathname === '/intro'
+              location.pathname === ROUTE.DOWNLOAD
                 ? {
                     fontWeight: 600,
                   }
@@ -135,13 +135,13 @@ const Header = () => {
           </li>
           <li
             style={
-              location.pathname === '/portfolio'
+              location.pathname === ROUTE.KEYWORD
                 ? {
                     fontWeight: 600,
                   }
                 : {fontWeight: 500}
             }
-            // onClick={() => navigate(ROUTE.PORTFOLIO)}
+            onClick={() => navigate(ROUTE.KEYWORD)}
           >
             검색 키워드 분석
           </li>

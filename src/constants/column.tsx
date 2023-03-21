@@ -1,6 +1,7 @@
 import moment from 'moment'
 import {numberWithCommas} from '../utils'
 import bieuDo from '../asset/images/bieudo.png'
+import downloadIcon from '../asset/icons/download_icon.png'
 
 export const BASE_URL = ''
 
@@ -46,5 +47,39 @@ export const COLUMN_TABLE_HOME = [
       </span>
     ),
     sort: true,
+  },
+]
+
+export const COLUMN_TABLE_DOWNLOAD = [
+  {
+    title: '해상도',
+    dataIndex: '해상도',
+    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    sort: false,
+  },
+  {
+    title: '파일 크기',
+    dataIndex: '파일크기',
+    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    sort: false,
+  },
+  {
+    title: '다운로드',
+    dataIndex: '다운로드',
+    render: (text: number) => (
+      <span style={{display: 'flex'}}>
+        <img
+          src={downloadIcon}
+          alt=''
+          style={{
+            width: '24px',
+            height: '24px',
+            marginRight: '1rem',
+          }}
+        />
+        다운로드
+      </span>
+    ),
+    sort: false,
   },
 ]
