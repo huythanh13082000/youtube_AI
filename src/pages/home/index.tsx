@@ -5,6 +5,10 @@ import InputSearch from '../../components/input_search'
 import CloseIcon from '@material-ui/icons/Close'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import VideoIcon from '../../asset/icons/video_icon'
+import Shorts from '../../asset/icons/shorts'
+import TableCustom from '../../components/table/tableCustom'
+import { COLUMN_TABLE_HOME } from '../../constants/column'
 
 const useStyles = makeStyles({
   home_container: {
@@ -41,6 +45,19 @@ const useStyles = makeStyles({
         },
       },
     },
+    '&>div:nth-of-type(2)': {
+      textAlign: 'center',
+      fontWeight: 500,
+      fontSize: '24px',
+      '&>p': {
+        '&>span': {
+          color: '#3B71FE',
+        },
+      },
+      '&>div': {
+        padding: '1rem 2rem',
+      },
+    },
   },
   span_style: {
     display: 'flex',
@@ -57,6 +74,13 @@ const useStyles = makeStyles({
     '&>svg': {
       color: '#777E90',
     },
+  },
+  span_tab_style: {
+    fontWeight: 400,
+    fontSize: '24px',
+    lineHeight: '30px',
+    display: 'flex',
+    alignItems: 'center',
   },
 })
 
@@ -108,12 +132,27 @@ const Home = () => {
           value={value}
           onChange={handleChange}
           indicatorColor='primary'
-          textColor='primary'
+          textColor='inherit'
           centered
         >
-          <Tab label={<span><img src="" alt="" /></span>} />
-          <Tab label='Item Two' />
+          <Tab
+            label={
+              <span className={classes.span_tab_style}>
+                <VideoIcon /> 영상(132개)
+              </span>
+            }
+          />
+          <Tab
+            label={
+              <span className={classes.span_tab_style}>
+                <Shorts /> 영상(132개)
+              </span>
+            }
+          />
         </Tabs>
+        <div>
+          <TableCustom column={COLUMN_TABLE_HOME} url='' />
+        </div>
       </div>
     </div>
   )

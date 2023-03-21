@@ -7,17 +7,26 @@ import reportWebVitals from './reportWebVitals'
 import './index.scss'
 import Router from './router'
 import BaseLayout from './layouts/base'
+import {createTheme, ThemeProvider} from '@material-ui/core'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ['Gothic A1'].join(','),
+  },
+})
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <BaseLayout>
-          <Router />
-        </BaseLayout>
+        <ThemeProvider theme={theme}>
+          <BaseLayout>
+            <Router />
+          </BaseLayout>
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
