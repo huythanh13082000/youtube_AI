@@ -8,7 +8,9 @@ import Tab from '@material-ui/core/Tab'
 import VideoIcon from '../../asset/icons/video_icon'
 import Shorts from '../../asset/icons/shorts'
 import TableCustom from '../../components/table/tableCustom'
-import { COLUMN_TABLE_HOME } from '../../constants/column'
+import {COLUMN_TABLE_HOME} from '../../constants/column'
+import buttonAdd from '../../asset/images/button_add.png'
+import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles({
   home_container: {
@@ -99,7 +101,15 @@ const Home = () => {
           구독자와 영상조회수를 분석하기 위해서는 키워드를 입력후에
           확인해보세요. 유튜브 채널을 운영하는데 필수 분석툴 입니다.
         </p>
-        <InputSearch />
+        <InputSearch
+          onChange={() => {}}
+          placeholder='검색창.......'
+          buttonSend={
+            <span style={{color: 'white'}}>
+              <SearchIcon />
+            </span>
+          }
+        />
         <div>
           <span>검색기록</span>
           <span className={classes.span_style}>
@@ -152,6 +162,24 @@ const Home = () => {
         </Tabs>
         <div>
           <TableCustom column={COLUMN_TABLE_HOME} url='' />
+          <p>
+            <img
+              src={buttonAdd}
+              alt=''
+              style={{width: '44px', height: '44px'}}
+            />
+            <p
+              style={{
+                fontWeight: 400,
+                fontSize: '18px',
+                lineHeight: '22px',
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              참고 항목
+            </p>
+          </p>
         </div>
       </div>
     </div>

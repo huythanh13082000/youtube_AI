@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     transition: '0.4s',
     boxSizing: 'border-box',
+    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.08)',
     '&>:nth-child(1)': {
       display: 'flex',
       width: '100%',
@@ -64,6 +65,18 @@ const useStyles = makeStyles({
         height: '52px',
         borderRadius: '50%',
       },
+      '&>button': {
+        boxSizing: 'border-box',
+        width: '100px',
+        height: '43px',
+        padding: '10px 0',
+        background: '#EBF1FF',
+        border: '1px solid #3B71FE',
+        borderRadius: '100px',
+        fontWeight: 500,
+        fontSize: '18px',
+        color: '#3B71FE',
+      },
     },
   },
 })
@@ -88,12 +101,13 @@ const Header = () => {
   return (
     <div
       className={classes.container_header}
-      style={{background: scroll ? 'black' : 'none'}}
+      style={{background: scroll ? 'white' : 'white'}}
     >
       <div>
         <span onClick={() => navigate('/')}>
           <img src={logo} alt='' />
         </span>
+
         <ul>
           <li
             style={
@@ -115,7 +129,7 @@ const Header = () => {
                   }
                 : {fontWeight: 500}
             }
-            // onClick={() => navigate(ROUTE.INTRO)}
+            onClick={() => navigate(ROUTE.DOWNLOAD)}
           >
             유튜브 다운로드
           </li>
@@ -156,15 +170,18 @@ const Header = () => {
             개발문의
           </li>
         </ul>
-        {/* <span>프로젝트 생성</span> */}
       </div>
       <div>
-        <img
-          src={
-            'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80'
-          }
-          alt=''
-        />
+        {localStorage.getItem('accessToken') ? (
+          <img
+            src={
+              'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80'
+            }
+            alt=''
+          />
+        ) : (
+          <button onClick={() => navigate('/login')}>로그인</button>
+        )}
       </div>
     </div>
   )

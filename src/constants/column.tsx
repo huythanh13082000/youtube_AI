@@ -9,13 +9,7 @@ export const COLUMN_TABLE_HOME = [
     title: '썸네일',
     dataIndex: '썸네일',
     render: (url: any) => (
-      <span>
-        <img
-          style={{width: '309px', height: '193.91px', objectFit: 'cover'}}
-          src={url}
-          alt=''
-        />
-      </span>
+      <img style={{width: '309px', objectFit: 'cover'}} src={url} alt='' />
     ),
     sort: false,
   },

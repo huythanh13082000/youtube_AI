@@ -18,7 +18,7 @@ const BaseLayout: React.FC<Props> = ({children}) => {
     <div className={classes.container_layout}>
       <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

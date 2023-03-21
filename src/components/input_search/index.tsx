@@ -1,6 +1,5 @@
 import {makeStyles} from '@material-ui/core/styles'
-import React from 'react'
-import buttonSearch from '../../asset/images/button_search.png'
+import React, {ReactNode} from 'react'
 
 const useStyles = makeStyles({
   input_search_container: {
@@ -17,25 +16,36 @@ const useStyles = makeStyles({
         borderRadius: '4px',
         padding: '16px',
       },
-      '&>img': {
-        width: '60px',
+      '&>div': {
+        width: '80px',
         height: '56px',
         borderRadius: '4px',
         position: 'absolute',
         right: 0,
         top: -20,
+        background: '#3B71FE',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
     },
   },
 })
 
-const InputSearch = () => {
+const InputSearch = (props: {
+  placeholder: string
+  onChange: (e: any) => void
+  buttonSend: ReactNode
+}) => {
   const classes = useStyles()
   return (
     <div className={classes.input_search_container}>
       <span>
-        <input placeholder='검색창.......' />
-        <img src={buttonSearch} alt='' />
+        <input
+          placeholder={props.placeholder}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+        <div>{props.buttonSend}</div>
       </span>
     </div>
   )
