@@ -8,9 +8,31 @@ import Tab from '@material-ui/core/Tab'
 import VideoIcon from '../../asset/icons/video_icon'
 import Shorts from '../../asset/icons/shorts'
 import TableCustom from '../../components/table/tableCustom'
-import {COLUMN_TABLE_HOME} from '../../constants/column'
+import {COLUMN_TABLE_HOME, COLUMN_TABLE_KEYWORD} from '../../constants/column'
 import buttonAdd from '../../asset/images/button_add.png'
 import SearchIcon from '@material-ui/icons/Search'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from 'chart.js'
+import {Line} from 'react-chartjs-2'
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+)
 
 const useStyles = makeStyles({
   home_container: {
@@ -50,14 +72,28 @@ const useStyles = makeStyles({
     '&>div:nth-of-type(2)': {
       textAlign: 'center',
       fontWeight: 500,
-      fontSize: '24px',
-      '&>p': {
-        '&>span': {
-          color: '#3B71FE',
-        },
-      },
+      // fontSize: '24px',
       '&>div': {
         padding: '1rem 2rem',
+      },
+      '&>p:nth-of-type(1)': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '0 2rem',
+        fontSize: '18px',
+        '&>span:nth-of-type(1)': {
+          '&>span': {
+            color: '#3B71FE',
+            fontWeight: 600,
+          },
+        },
+        '&>span:nth-of-type(2)': {
+          border: '1px solid #B1B5C4',
+          borderRadius: '10px',
+          color: '#141416',
+          padding: '12px 16px',
+          cursor: 'pointer',
+        },
       },
     },
   },
@@ -85,6 +121,34 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 })
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: false,
+      text: 'Chart.js Line Chart',
+    },
+  },
+}
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      fill: true,
+      label: 'Dataset 2',
+      data: [5, 22, 22, 22.5, 23, 22, 22],
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+}
 
 const Keyword = () => {
   const classes = useStyles()
@@ -135,33 +199,15 @@ const Keyword = () => {
         </div>
       </div>
       <div>
+        <Line options={options} data={data} />
         <p>
-          검색 키워드: <span>베트남</span>
+          <span>
+            검색 키워드: <span>베트남 </span>
+          </span>{' '}
+          <span>커뮤니티 추가 요청</span>
         </p>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor='primary'
-          textColor='inherit'
-          centered
-        >
-          <Tab
-            label={
-              <span className={classes.span_tab_style}>
-                <VideoIcon /> 영상(132개)
-              </span>
-            }
-          />
-          <Tab
-            label={
-              <span className={classes.span_tab_style}>
-                <Shorts /> 영상(132개)
-              </span>
-            }
-          />
-        </Tabs>
         <div>
-          <TableCustom column={COLUMN_TABLE_HOME} url='' />
+          <TableCustom column={COLUMN_TABLE_KEYWORD} url='' />
           <p>
             <img
               src={buttonAdd}

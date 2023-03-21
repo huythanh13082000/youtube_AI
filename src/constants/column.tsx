@@ -83,3 +83,43 @@ export const COLUMN_TABLE_DOWNLOAD = [
     sort: false,
   },
 ]
+export const COLUMN_TABLE_KEYWORD = [
+  {
+    title: '제목',
+    dataIndex: '제목',
+    render: (text: string) => <span>{text}</span>,
+    sort: false,
+  },
+  {
+    title: '조회수',
+    dataIndex: '조회수',
+    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    sort: true,
+  },
+  {
+    title: '게시자',
+    dataIndex: '게시자',
+    render: (text: string) => <span>{text}</span>,
+    sort: false,
+  },
+  {
+    title: '게시일',
+    dataIndex: '게시일',
+    render: (text: string) => <span>{moment(text).format('YYYY.MM.DD')}</span>,
+    sort: true,
+  },
+  {
+    title: 'Platform',
+    dataIndex: 'Platform',
+    render: (text: string) => (
+      <div
+        style={{
+          width: '35px',
+          height: '35px',
+          background: '#16C24C',
+        }}
+      ></div>
+    ),
+    sort: false,
+  },
+]

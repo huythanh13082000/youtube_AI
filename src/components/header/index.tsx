@@ -114,6 +114,7 @@ const Header = () => {
               location.pathname === '/'
                 ? {
                     fontWeight: 600,
+                    color: '#3B71FE',
                   }
                 : {fontWeight: 500}
             }
@@ -126,6 +127,7 @@ const Header = () => {
               location.pathname === ROUTE.DOWNLOAD
                 ? {
                     fontWeight: 600,
+                    color: '#3B71FE',
                   }
                 : {fontWeight: 500}
             }
@@ -138,6 +140,7 @@ const Header = () => {
               location.pathname === ROUTE.KEYWORD
                 ? {
                     fontWeight: 600,
+                    color: '#3B71FE',
                   }
                 : {fontWeight: 500}
             }
@@ -150,24 +153,13 @@ const Header = () => {
               location.pathname === '/estimate_calculation'
                 ? {
                     fontWeight: 600,
+                    color: '#3B71FE',
                   }
                 : {fontWeight: 500}
             }
             // onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}
           >
             고객센터
-          </li>
-          <li
-            style={
-              location.pathname === '/development_inquiry'
-                ? {
-                    fontWeight: 600,
-                  }
-                : {fontWeight: 500}
-            }
-            // onClick={() => navigate(ROUTE.DEVELOPMENT_INQUIRY)}
-          >
-            개발문의
           </li>
         </ul>
       </div>
