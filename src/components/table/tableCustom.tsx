@@ -1,9 +1,11 @@
 import {makeStyles} from '@material-ui/styles'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SortDown from '../../asset/icons/sort_down'
 import SortUp from '../../asset/icons/sort_up'
 import DialogChart from './dialog'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
+import axiosClient from '../../apis/axiosClient'
+import {BASE_URL} from '../../constants'
 
 const useStyles = makeStyles({
   table_container: {
@@ -50,6 +52,7 @@ const TableCustom = (props: {
 }) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [data, setData] = useState<any[]>([])
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -57,15 +60,12 @@ const TableCustom = (props: {
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const data: any[] = [
-    // {
-    //   id: 1,
-    //   제목: '[R]S/S 세인트 포켓 가디건',
-    //   조회수: 123312321,
-    //   게시자: '최민서',
-    //   Platform: '',
-    // },
-  ]
+  useEffect(() => {
+    const getData = async () => {
+      await axiosClient.get(`admin/analytics/list?page=1&perPage=20`)
+    }
+    getData()
+  }, [])
   return (
     <div className={classes.table_container}>
       <table>
