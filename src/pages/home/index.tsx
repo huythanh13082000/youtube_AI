@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/styles'
-import React from 'react'
+import React, {useState} from 'react'
 import background from '../../asset/images/background_home.png'
 import InputSearch from '../../components/input_search'
 import CloseIcon from '@material-ui/icons/Close'
@@ -9,8 +9,9 @@ import VideoIcon from '../../asset/icons/video_icon'
 import Shorts from '../../asset/icons/shorts'
 import TableCustom from '../../components/table/tableCustom'
 import {COLUMN_TABLE_HOME} from '../../constants/column'
-import buttonAdd from '../../asset/images/button_add.png'
+
 import SearchIcon from '@material-ui/icons/Search'
+import {ANALYTICS} from '../../apis/urlConfig'
 
 const useStyles = makeStyles({
   home_container: {
@@ -89,6 +90,10 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
+  const [params, setParams] = useState<any>({
+    'x-custom-lang': 'en',
+    keyword: 'trend',
+  })
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
@@ -102,8 +107,11 @@ const Home = () => {
           확인해보세요. 유튜브 채널을 운영하는데 필수 분석툴 입니다.
         </p>
         <InputSearch
-          onChange={() => {}}
+          onChange={(e) => {
+            setParams({...params, keyword: e})
+          }}
           placeholder='검색창.......'
+          value={params.keyword}
           buttonSend={
             <span style={{color: 'white'}}>
               <SearchIcon />
@@ -161,25 +169,13 @@ const Home = () => {
           />
         </Tabs>
         <div>
-          <TableCustom column={COLUMN_TABLE_HOME} url='' />
-          <p>
-            <img
-              src={buttonAdd}
-              alt=''
-              style={{width: '44px', height: '44px'}}
-            />
-            <p
-              style={{
-                fontWeight: 400,
-                fontSize: '18px',
-                lineHeight: '22px',
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              참고 항목
-            </p>
-          </p>
+          <TableCustom
+            column={COLUMN_TABLE_HOME}
+            url={ANALYTICS}
+            paramsGet={{...params}}
+            setParamsGet={(e: any) => setParams(e)}
+            loadMore
+          />
         </div>
       </div>
     </div>

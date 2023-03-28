@@ -36,6 +36,7 @@ const InputSearch = (props: {
   placeholder: string
   onChange: (e: any) => void
   buttonSend: ReactNode
+  value?: string
 }) => {
   const classes = useStyles()
   return (
@@ -44,6 +45,7 @@ const InputSearch = (props: {
         <input
           placeholder={props.placeholder}
           onChange={(e) => props.onChange(e.target.value)}
+          value={props.value}
         />
         <div>{props.buttonSend}</div>
       </span>

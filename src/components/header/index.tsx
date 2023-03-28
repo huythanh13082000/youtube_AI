@@ -150,14 +150,14 @@ const Header = () => {
           </li>
           <li
             style={
-              location.pathname === '/estimate_calculation'
+              location.pathname === ROUTE.CUSTOMER_SUPPORT
                 ? {
                     fontWeight: 600,
                     color: '#3B71FE',
                   }
                 : {fontWeight: 500}
             }
-            // onClick={() => navigate(ROUTE.ESTIMATE_CALCULATION)}
+            onClick={() => navigate(ROUTE.CUSTOMER_SUPPORT)}
           >
             고객센터
           </li>

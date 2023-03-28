@@ -1,10 +1,17 @@
 import {makeStyles} from '@material-ui/core'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import InputSearch from '../../components/input_search'
 import background from '../../asset/images/background_download.png'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import TableCustom from '../../components/table/tableCustom'
 import {COLUMN_TABLE_DOWNLOAD} from '../../constants/column'
+import {LINK_INFORMATION_VIDEO} from '../../apis/urlConfig'
+import axiosClient from '../../apis/axiosClient'
+import {
+  InformationVideoFormatsType,
+  InformationVideoType,
+} from '../../types/informationVideo.type'
+import moment from 'moment'
 
 const useStyles = makeStyles({
   download_container: {
@@ -118,8 +125,36 @@ const useStyles = makeStyles({
 
 const Download = () => {
   const classes = useStyles()
-  const [search, setSearch] = useState('')
-  const [tab, setTab] = useState(1)
+  const [search, setSearch] = useState(
+    'https://www.youtube.com/watch?v=xOk13qjMqXQ'
+  )
+  const [tab, setTab] = useState('mp4')
+  const [data, setData] = useState<any[]>([])
+
+  const [inforVideo, setInfoVideo] = useState<any>()
+  useEffect(() => {
+    const getData = async () => {
+      console.log(localStorage.getItem('accessToken'))
+      const token = localStorage.getItem('accessToken')
+      axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      const res = await axiosClient.get(LINK_INFORMATION_VIDEO, {
+        params: {url: search, type: tab, 'x-custom-lang': 'en'},
+      })
+
+      setData(res.data.formats)
+      setInfoVideo(res.data)
+    }
+
+    getData()
+  }, [search, tab])
+
+  const formatDuration = (params: number) => {
+    const date = new Date(0)
+    date.setSeconds(params)
+    return date.toISOString().substr(11, 8)
+  }
+  console.log(inforVideo)
+
   return (
     <div className={classes.download_container}>
       <div>
@@ -130,6 +165,7 @@ const Download = () => {
             setSearch(e)
           }}
           placeholder='Pate link'
+          value={search}
           buttonSend={
             <span
               style={{
@@ -157,44 +193,49 @@ const Download = () => {
           </>
         ) : (
           <div>
-            <div>
-              <img
-                src='https://msmobile.com.vn/upload_images/images/tai-hinh-nen-doremon-cho-may-tinh-5.jpg'
-                alt=''
-              />
-              <p>
-                [S10] 도라에몽 - 에피소드 500 - 모바일 의회, 팝콘 모자 -
-                애니메이션
-              </p>
-              <p>
-                <span style={{color: '#353945', fontWeight: 400}}>기간</span>{' '}
-                1:35:50
-              </p>
-            </div>
+            {inforVideo && (
+              <div>
+                <img src={inforVideo.thumbnail} alt='' />
+                <p>{inforVideo.title}</p>
+                <p>
+                  <span style={{color: '#353945', fontWeight: 400}}>기간</span>{' '}
+                  {formatDuration(inforVideo.duration)}
+                </p>
+              </div>
+            )}
             <div>
               <div>
                 <div
-                  className={tab === 1 ? classes.active : classes.no_active}
-                  onClick={() => setTab(1)}
+                  className={tab === 'mp4' ? classes.active : classes.no_active}
+                  onClick={() => setTab('mp4')}
                 >
                   비디오
                 </div>
                 <div
-                  className={tab === 2 ? classes.active : classes.no_active}
-                  onClick={() => setTab(2)}
+                  className={tab === 'm4a' ? classes.active : classes.no_active}
+                  onClick={() => setTab('m4a')}
                 >
                   Mp3
                 </div>
                 <div
-                  className={tab === 3 ? classes.active : classes.no_active}
-                  onClick={() => setTab(3)}
+                  className={
+                    tab === 'webm' ? classes.active : classes.no_active
+                  }
+                  onClick={() => setTab('webm')}
                 >
                   오디오
                 </div>
               </div>
-              <div>
-                <TableCustom column={COLUMN_TABLE_DOWNLOAD} url='' />
-              </div>
+              {data && (
+                <div>
+                  {/* <TableCustom
+                    column={COLUMN_TABLE_DOWNLOAD}
+                    url={LINK_INFORMATION_VIDEO}
+                    // paramsGet={{url: search, type: tab, 'x-custom-lang': 'en'}}
+                    data={data}
+                  /> */}
+                </div>
+              )}
             </div>
           </div>
         )}

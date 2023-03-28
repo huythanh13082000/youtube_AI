@@ -8,34 +8,44 @@ export const BASE_URL = ''
 export const COLUMN_TABLE_HOME = [
   {
     title: '썸네일',
-    dataIndex: '썸네일',
-    render: (url: any) => (
-      <img style={{width: '309px', objectFit: 'cover'}} src={url} alt='' />
+    dataIndex: 'thumbnails',
+    render: (thumbnails: any) => (
+      <img
+        style={{width: '309px', objectFit: 'cover'}}
+        src={thumbnails.high}
+        alt=''
+      />
     ),
     sort: false,
   },
   {
     title: '제목',
-    dataIndex: '제목',
+    dataIndex: 'title',
     render: (text: string) => <span>{text}</span>,
     sort: false,
   },
   {
     title: '구독자',
-    dataIndex: '구독자',
-    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    dataIndex: 'statisticsChannel',
+    render: (statisticsChannel: any) => (
+      <span>{numberWithCommas(Number(statisticsChannel.subscriberCount))}</span>
+    ),
     sort: true,
   },
   {
     title: '조회수',
-    dataIndex: '조회수',
-    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    dataIndex: 'statisticsVideo',
+    render: (statisticsVideo: any) => (
+      <span>{numberWithCommas(statisticsVideo.viewCount)}</span>
+    ),
     sort: true,
   },
   {
     title: '업로드 날짜',
-    dataIndex: '업로드날짜',
-    render: (text: string) => <span>{moment(text).format('YYYY.MM.DD')}</span>,
+    dataIndex: 'uploadDate',
+    render: (uploadDate: string) => (
+      <span>{moment(uploadDate).format('YYYY.MM.DD')}</span>
+    ),
     sort: true,
   },
   {

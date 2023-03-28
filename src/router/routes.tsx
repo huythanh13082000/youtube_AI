@@ -1,3 +1,4 @@
+import CustomerSupport from '../pages/customer_support'
 import Download from '../pages/download'
 import Home from '../pages/home'
 import Keyword from '../pages/keyword'
@@ -9,6 +10,7 @@ export const ROUTE = {
   LOGIN: '/login',
   DOWNLOAD: '/download',
   KEYWORD: '/keyword',
+  CUSTOMER_SUPPORT: '/customer_support',
 }
 
 const routes: Array<MyRouteProp> = [
@@ -19,5 +21,6 @@ const routes: Array<MyRouteProp> = [
   },
   {path: ROUTE.DOWNLOAD, element: <Download />},
   {path: ROUTE.KEYWORD, element: <Keyword />},
+  {path: ROUTE.CUSTOMER_SUPPORT, element: <CustomerSupport />},
 ]
 export default routes
