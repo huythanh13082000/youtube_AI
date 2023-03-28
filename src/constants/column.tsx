@@ -70,13 +70,13 @@ export const COLUMN_TABLE_DOWNLOAD = [
   {
     title: '파일 크기',
     dataIndex: 'filesize',
-    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    render: (text: string) => <span>{text}</span>,
     sort: false,
   },
   {
     title: '다운로드',
     dataIndex: 'url',
-    render: (text: number) => (
+    render: (text: any) => (
       <span style={{display: 'flex'}}>
         <img
           src={downloadIcon}
