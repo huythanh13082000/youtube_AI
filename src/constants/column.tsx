@@ -63,19 +63,19 @@ export const COLUMN_TABLE_HOME = [
 export const COLUMN_TABLE_DOWNLOAD = [
   {
     title: '해상도',
-    dataIndex: '해상도',
-    render: (text: number) => <span>{numberWithCommas(text)}</span>,
+    dataIndex: 'format_note',
+    render: (text: string) => <span>{text}</span>,
     sort: false,
   },
   {
     title: '파일 크기',
-    dataIndex: '파일크기',
+    dataIndex: 'filesize',
     render: (text: number) => <span>{numberWithCommas(text)}</span>,
     sort: false,
   },
   {
     title: '다운로드',
-    dataIndex: '다운로드',
+    dataIndex: 'url',
     render: (text: number) => (
       <span style={{display: 'flex'}}>
         <img

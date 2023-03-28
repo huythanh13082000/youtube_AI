@@ -228,12 +228,12 @@ const Download = () => {
               </div>
               {data && (
                 <div>
-                  {/* <TableCustom
+                  <TableCustom
                     column={COLUMN_TABLE_DOWNLOAD}
-                    url={LINK_INFORMATION_VIDEO}
+                    url={''}
                     // paramsGet={{url: search, type: tab, 'x-custom-lang': 'en'}}
                     data={data}
-                  /> */}
+                  />
                 </div>
               )}
             </div>
