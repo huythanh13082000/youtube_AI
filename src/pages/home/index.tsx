@@ -90,9 +90,10 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
+  const [keyword, setKeyword] = useState('')
   const [params, setParams] = useState<any>({
     'x-custom-lang': 'en',
-    keyword: 'trend',
+    keyword: '',
   })
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -108,12 +109,15 @@ const Home = () => {
         </p>
         <InputSearch
           onChange={(e) => {
-            setParams({...params, keyword: e})
+            setKeyword(e)
           }}
           placeholder='검색창.......'
-          value={params.keyword}
+          value={keyword}
           buttonSend={
-            <span style={{color: 'white'}}>
+            <span
+              style={{color: 'white'}}
+              onClick={() => setParams({...params, keyword: keyword})}
+            >
               <SearchIcon />
             </span>
           }

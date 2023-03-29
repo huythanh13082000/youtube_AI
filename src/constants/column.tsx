@@ -63,31 +63,44 @@ export const COLUMN_TABLE_HOME = [
 export const COLUMN_TABLE_DOWNLOAD = [
   {
     title: '해상도',
-    dataIndex: 'format_note',
+    dataIndex: 'ext',
     render: (text: string) => <span>{text}</span>,
     sort: false,
   },
   {
     title: '파일 크기',
     dataIndex: 'filesize',
-    render: (text: string) => <span>{text}</span>,
+    render: (filesize: number) => <span>{Number(filesize).toFixed(3)} MB</span>,
     sort: false,
   },
   {
     title: '다운로드',
     dataIndex: 'url',
-    render: (text: any) => (
+    render: (url: any) => (
       <span style={{display: 'flex'}}>
-        <img
-          src={downloadIcon}
-          alt=''
+        <a
+          href={url}
+          download
+          target='_blank'
+          rel='noopener noreferrer'
           style={{
-            width: '24px',
-            height: '24px',
-            marginRight: '1rem',
+            textDecoration: 'none',
+            color: 'black',
+            display: 'flex',
+            alignItems: 'center',
           }}
-        />
-        다운로드
+        >
+          <img
+            src={downloadIcon}
+            alt=''
+            style={{
+              width: '24px',
+              height: '24px',
+              marginRight: '8px',
+            }}
+          />
+          다운로드
+        </a>
       </span>
     ),
     sort: false,

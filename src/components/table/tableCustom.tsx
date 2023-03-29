@@ -31,7 +31,7 @@ const useStyles = makeStyles({
         '&>tr': {
           borderBottom: '1px solid #B1B5C3',
           '&>td': {
-            padding: '8px',
+            padding: '16px 8px',
             fontWeight: 500,
             fontSize: '20px',
             textAlign: 'left',

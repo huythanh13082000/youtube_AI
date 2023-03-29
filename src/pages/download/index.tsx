@@ -57,7 +57,7 @@ const useStyles = makeStyles({
       },
       '&>div': {
         width: '1144px',
-        height: '516px',
+        minHeight: '516px',
         margin: 'auto',
         marginTop: '2rem',
         display: 'flex',
@@ -125,11 +125,14 @@ const useStyles = makeStyles({
 
 const Download = () => {
   const classes = useStyles()
-  const [search, setSearch] = useState(
-    'https://www.youtube.com/watch?v=xOk13qjMqXQ'
-  )
+  const [search, setSearch] = useState('')
   const [tab, setTab] = useState('mp4')
   const [data, setData] = useState<any[]>([])
+  const [dataSearch, setDataSearch] = useState<{
+    url: string
+    type: string
+    'x-custom-lang': 'en'
+  }>({url: '', type: 'mp4', 'x-custom-lang': 'en'})
 
   const [inforVideo, setInfoVideo] = useState<any>()
   useEffect(() => {
@@ -138,7 +141,7 @@ const Download = () => {
       const token = localStorage.getItem('accessToken')
       axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
       const res = await axiosClient.get(LINK_INFORMATION_VIDEO, {
-        params: {url: search, type: tab, 'x-custom-lang': 'en'},
+        params: {...dataSearch},
       })
 
       setData(res.data.formats)
@@ -146,7 +149,7 @@ const Download = () => {
     }
 
     getData()
-  }, [search, tab])
+  }, [dataSearch])
 
   const formatDuration = (params: number) => {
     const date = new Date(0)
@@ -174,6 +177,9 @@ const Download = () => {
                 color: 'white',
                 fontSize: '24px',
               }}
+              onClick={() =>
+                setDataSearch({url: search, type: tab, 'x-custom-lang': 'en'})
+              }
             >
               Go
               <ArrowForwardIcon />
@@ -182,7 +188,7 @@ const Download = () => {
         />
       </div>
       <div>
-        {!search ? (
+        {!inforVideo ? (
           <>
             <p>MP4에 최고의 유튜브, MP3 변환기</p>
             <p>
@@ -231,7 +237,6 @@ const Download = () => {
                   <TableCustom
                     column={COLUMN_TABLE_DOWNLOAD}
                     url={''}
-                    // paramsGet={{url: search, type: tab, 'x-custom-lang': 'en'}}
                     data={data}
                   />
                 </div>
