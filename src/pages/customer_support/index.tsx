@@ -5,6 +5,15 @@ import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 import InputTextarea from '../../components/input_textarea'
 import UploadFile from '../../components/upload_file'
+import linkRound from '../../asset/icons/link_round.svg'
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from '@material-ui/core'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import moment from 'moment'
 
 const useStyles = makeStyles({
   customer_support: {
@@ -68,6 +77,29 @@ const useStyles = makeStyles({
     fontWeight: 700,
     fontSize: '18px',
   },
+  accordion_summary_container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    '&>div:nth-of-type(1)': {
+      display: 'flex',
+      '&>div:nth-of-type(1)': {
+        width: '212px',
+        color: '#777E91',
+        fontWeight: 400,
+      },
+      '&>div:nth-of-type(2)': {
+        color: '#353945',
+      },
+    },
+    '&>div:nth-of-type(2)': {
+      color: '#2B83FE',
+    },
+  },
+  accordion_detail: {
+    paddingLeft: '212px',
+  },
+  div_child_accordion_detail: {},
 })
 
 function a11yProps(index: any) {
@@ -86,6 +118,12 @@ const CustomerSupport = () => {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
   }
+  const [expanded, setExpanded] = React.useState<string | false>(false)
+
+  const handleChangeAccordions =
+    (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false)
+    }
 
   return (
     <div className={classes.customer_support}>
@@ -166,6 +204,43 @@ const CustomerSupport = () => {
               지연될 수 있습니다.
             </p>
           </div>
+        </div>
+      )}
+      {value === 1 && (
+        <div>
+          <Accordion
+            expanded={expanded === 'panel1'}
+            onChange={handleChangeAccordions('panel1')}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel1bh-content'
+              id='panel1bh-header'
+            >
+              <div className={classes.accordion_summary_container}>
+                <div>
+                  <div>기능제안</div>
+                  <div>유튜유튜유튜유튜유튜유튜유튜유튜유튜유튜</div>
+                </div>
+                <div>확인중</div>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={classes.accordion_detail}>
+                <div className={classes.div_child_accordion_detail}>
+                  <p>튜유튜유튜유튜유튜유튜</p>
+                  <p>
+                    튜유튜유튜유튜유튜튜유튜유튜유튜유튜튜유튜유튜유튜유튜유튜
+                  </p>
+                  <p>
+                    <img src={linkRound} alt='' />
+                    11233.png
+                  </p>
+                  <p>{moment().format('LLLL')}</p>
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
         </div>
       )}
     </div>

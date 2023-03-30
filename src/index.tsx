@@ -8,6 +8,9 @@ import './index.scss'
 import Router from './router'
 import BaseLayout from './layouts/base'
 import {createTheme, ThemeProvider} from '@material-ui/core'
+import moment from 'moment'
+import 'moment/locale/ko' // without this line it didn't work
+moment.locale('ko')
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
