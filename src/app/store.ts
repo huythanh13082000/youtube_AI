@@ -6,9 +6,14 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
+import {loadingReducer} from '../components/loading/loadingSlice'
+import {userReducer} from '../feature/user/user.slice'
 import rootSaga from './rootSaga'
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+  userReducer: userReducer,
+  loadingReducer: loadingReducer,
+})
 
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [...getDefaultMiddleware({thunk: false}), sagaMiddleware]

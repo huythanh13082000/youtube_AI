@@ -1,18 +1,17 @@
+import {GoogleAuthProvider, signInWithPopup} from '@firebase/auth'
 import {makeStyles} from '@material-ui/core/styles'
-import React from 'react'
-import naver from '../../asset/images/naver.png'
-import kakao from '../../asset/images/kakao.png'
-import google from '../../asset/images/google.png'
+import {useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import axiosClient from '../../apis/axiosClient'
-import {
-  CALLBACK_GOOGLE,
-  CALLBACK_KAKAO,
-  CALLBACK_NAVER,
-  LOGIN_GOOGLE,
-  LOGIN_KAKAO,
-  LOGIN_NAVER,
-} from '../../apis/urlConfig'
+import {LOGIN_SOCIAL} from '../../apis/urlConfig'
+import google from '../../asset/images/google.png'
+import kakao from '../../asset/images/kakao.png'
+import naver from '../../asset/images/naver.png'
 import {BASE_URL} from '../../constants'
+import {userAction} from '../../feature/user/user.slice'
+import {auth} from '../../firebaseConfig'
+import {ROUTE} from '../../router/routes'
+import {setTokens} from '../../utils'
 
 const useStyles = makeStyles({
   login_container: {
@@ -55,61 +54,66 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles()
-  const fetchAuthUser = async (type: string) => {
-    const response = await axiosClient
-      .get(`${BASE_URL}${type}`, {withCredentials: true})
-      .catch((err) => {
-        console.log('Not properly authenticated')
-        // dispatch(setIsAuthenticated(false));
-        // dispatch(setAuthUser(null));
-        // history.push("/login/error");
-      })
 
-    if (response && response.data) {
-      console.log('User: ', response.data)
-      // dispatch(setIsAuthenticated(true));
-      // dispatch(setAuthUser(response.data));
-      // history.push("/welcome");
-    }
-  }
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const providerGoogle = new GoogleAuthProvider()
 
-  const redirectToSns = async (type: string) => {
-    let timer: NodeJS.Timeout | null = null
-    const googleLoginURL = `${BASE_URL}${type}`
-    const newWindow = window.open(
-      googleLoginURL,
-      '_blank',
-      'width=500,height=600'
-    )
-
-    if (newWindow) {
-      timer = setInterval(() => {
-        if (newWindow.closed) {
-          console.log("Yay we're authenticated")
-          fetchAuthUser(
-            type === LOGIN_GOOGLE
-              ? CALLBACK_GOOGLE
-              : type === LOGIN_KAKAO
-              ? CALLBACK_KAKAO
-              : CALLBACK_NAVER
-          )
-          if (timer) clearInterval(timer)
+  const signInGoogle = async (provider: 'google' | 'naver' | 'kakao') => {
+    await signInWithPopup(auth, providerGoogle)
+      .then(async (result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential?.accessToken
+        const user = result.user
+        console.log(123123, token)
+        if (token) {
+          const tokens = await axiosClient.post(BASE_URL + LOGIN_SOCIAL, {
+            accessToken: token,
+            provider,
+          })
+          if (tokens) {
+            setTokens(tokens.data)
+            dispatch(userAction.getInfo())
+            navigate(ROUTE.HOME)
+          }
         }
-      }, 500)
-    }
+        // if (user.providerData[0].email && user.providerData[0].photoURL) {
+        //   dispatch(
+        //     authActions.loginSns({
+        //       loginType: LOGIN_TYPE.GOOGLE,
+        //       snsLoginId: user.providerData[0].uid,
+        //       snsEmail: user.providerData[0].email,
+        //       photoURL: user.providerData[0].photoURL,
+        //       history: navigate,
+        //     })
+        //   )
+        // }
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code
+        const errorMessage = error.message
+        // The email of the user's account used.
+        const email = error.customData.email
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error)
+
+        // ...
+      })
   }
   return (
     <div className={classes.login_container}>
       <div>
         <p>로그인</p>
-        <p onClick={() => redirectToSns(LOGIN_NAVER)}>
+        <p onClick={() => {}}>
           <img src={naver} alt='' /> 네이버로 로그인
         </p>
-        <p onClick={() => redirectToSns(LOGIN_KAKAO)}>
+        <p onClick={() => {}}>
           <img src={kakao} alt='' />
           카카오로 로그인
         </p>
-        <p onClick={() => redirectToSns(LOGIN_GOOGLE)}>
+        <p onClick={() => signInGoogle('google')}>
           <img src={google} alt='' />
           구글로 로그인
         </p>

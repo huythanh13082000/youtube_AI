@@ -12,6 +12,8 @@ import {
   InformationVideoType,
 } from '../../types/informationVideo.type'
 import moment from 'moment'
+import {useAppDispatch} from '../../app/hooks'
+import {loadingActions} from '../../components/loading/loadingSlice'
 
 const useStyles = makeStyles({
   download_container: {
@@ -128,6 +130,7 @@ const Download = () => {
   const [search, setSearch] = useState('')
   const [tab, setTab] = useState('mp4')
   const [data, setData] = useState<any[]>([])
+  const dispatch = useAppDispatch()
   const [dataSearch, setDataSearch] = useState<{
     url: string
     type: string
@@ -137,19 +140,24 @@ const Download = () => {
   const [inforVideo, setInfoVideo] = useState<any>()
   useEffect(() => {
     const getData = async () => {
-      console.log(localStorage.getItem('accessToken'))
-      const token = localStorage.getItem('accessToken')
-      axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      const res = await axiosClient.get(LINK_INFORMATION_VIDEO, {
-        params: {...dataSearch},
-      })
+      try {
+        dispatch(loadingActions.openLoading())
+        console.log(localStorage.getItem('accessToken'))
+        const token = localStorage.getItem('accessToken')
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        const res = await axiosClient.get(LINK_INFORMATION_VIDEO, {
+          params: {...dataSearch},
+        })
 
-      setData(res.data.formats)
-      setInfoVideo(res.data)
+        setData(res.data.formats)
+        setInfoVideo(res.data)
+        dispatch(loadingActions.loadingSuccess())
+      } catch (error) {
+        dispatch(loadingActions.loadingSuccess())
+      }
     }
-
-    getData()
-  }, [dataSearch])
+    dataSearch.url && getData()
+  }, [dataSearch, dispatch])
 
   const formatDuration = (params: number) => {
     const date = new Date(0)

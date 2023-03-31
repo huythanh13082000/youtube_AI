@@ -10,6 +10,7 @@ import BaseLayout from './layouts/base'
 import {createTheme, ThemeProvider} from '@material-ui/core'
 import moment from 'moment'
 import 'moment/locale/ko' // without this line it didn't work
+import Loading from './components/loading'
 moment.locale('ko')
 
 const container = document.getElementById('root')!
@@ -45,6 +46,7 @@ root.render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <BaseLayout>
+            <Loading />
             <Router />
           </BaseLayout>
         </ThemeProvider>
