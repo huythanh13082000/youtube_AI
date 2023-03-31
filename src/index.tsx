@@ -11,6 +11,7 @@ import {createTheme, ThemeProvider} from '@material-ui/core'
 import moment from 'moment'
 import 'moment/locale/ko' // without this line it didn't work
 import Loading from './components/loading'
+import CustomizedSnackbars from './components/snackbar'
 moment.locale('ko')
 
 const container = document.getElementById('root')!
@@ -46,6 +47,7 @@ root.render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <BaseLayout>
+            <CustomizedSnackbars />
             <Loading />
             <Router />
           </BaseLayout>

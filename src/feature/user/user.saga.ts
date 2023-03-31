@@ -5,9 +5,9 @@ import {userAction} from './user.slice'
 
 function* getInfo() {
   try {
-    const user: UserType = yield call(userApi.getInfo)
-    console.log(user)
-    // yield put(userAction.getInfoSuccess(user))
+    const user: {data: UserType} = yield call(userApi.getInfo)
+    console.log(666, user.data)
+    yield put(userAction.getInfoSuccess(user.data))
   } catch (error) {
     console.log(error)
   }

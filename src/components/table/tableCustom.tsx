@@ -115,7 +115,7 @@ const TableCustom = (props: {
                           aria-controls='fade-menu'
                           aria-haspopup='true'
                           onClick={handleClick}
-                          style={{margin: 0, padding: 0}}
+                          style={{margin: 0, padding: 0, color: '#2B83FE'}}
                         >
                           <SearchOutlinedIcon />
                         </span>

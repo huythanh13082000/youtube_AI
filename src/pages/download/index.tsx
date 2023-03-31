@@ -14,6 +14,7 @@ import {
 import moment from 'moment'
 import {useAppDispatch} from '../../app/hooks'
 import {loadingActions} from '../../components/loading/loadingSlice'
+import {snackBarActions} from '../../components/snackbar/snackbarSlice'
 
 const useStyles = makeStyles({
   download_container: {
@@ -146,18 +147,24 @@ const Download = () => {
         const token = localStorage.getItem('accessToken')
         axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
         const res = await axiosClient.get(LINK_INFORMATION_VIDEO, {
-          params: {...dataSearch},
+          params: {...dataSearch, type: tab},
         })
 
         setData(res.data.formats)
         setInfoVideo(res.data)
         dispatch(loadingActions.loadingSuccess())
-      } catch (error) {
+      } catch (error: any) {
         dispatch(loadingActions.loadingSuccess())
+        dispatch(
+          snackBarActions.setStateSnackBar({
+            content: error.message,
+            type: 'error',
+          })
+        )
       }
     }
     dataSearch.url && getData()
-  }, [dataSearch, dispatch])
+  }, [dataSearch, dispatch, tab])
 
   const formatDuration = (params: number) => {
     const date = new Date(0)
@@ -221,13 +228,17 @@ const Download = () => {
               <div>
                 <div
                   className={tab === 'mp4' ? classes.active : classes.no_active}
-                  onClick={() => setTab('mp4')}
+                  onClick={() => {
+                    setTab('mp4')
+                  }}
                 >
                   비디오
                 </div>
                 <div
                   className={tab === 'm4a' ? classes.active : classes.no_active}
-                  onClick={() => setTab('m4a')}
+                  onClick={() => {
+                    setTab('m4a')
+                  }}
                 >
                   Mp3
                 </div>

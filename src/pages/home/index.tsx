@@ -176,7 +176,7 @@ const Home = () => {
           <TableCustom
             column={COLUMN_TABLE_HOME}
             url={ANALYTICS}
-            paramsGet={{...params}}
+            paramsGet={params.keyword ? {...params} : {}}
             setParamsGet={(e: any) => setParams(e)}
             loadMore
           />

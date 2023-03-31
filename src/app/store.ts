@@ -7,12 +7,14 @@ import {
 } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 import {loadingReducer} from '../components/loading/loadingSlice'
+import {snackBarReducer} from '../components/snackbar/snackbarSlice'
 import {userReducer} from '../feature/user/user.slice'
 import rootSaga from './rootSaga'
 
 const rootReducer = combineReducers({
   userReducer: userReducer,
   loadingReducer: loadingReducer,
+  snackBarReducer: snackBarReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()

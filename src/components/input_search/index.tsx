@@ -18,7 +18,7 @@ const useStyles = makeStyles({
       },
       '&>div': {
         width: '80px',
-        height: '56px',
+        height: '55px',
         borderRadius: '4px',
         position: 'absolute',
         right: 0,
