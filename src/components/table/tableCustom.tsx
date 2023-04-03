@@ -1,13 +1,15 @@
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
 import {makeStyles} from '@material-ui/styles'
 import React, {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import axiosClient from '../../apis/axiosClient'
+import {ANALYTICS_SEARCH_MORE} from '../../apis/urlConfig'
+import {useAppDispatch} from '../../app/hooks'
 import SortDown from '../../asset/icons/sort_down'
 import SortUp from '../../asset/icons/sort_up'
-import DialogChart from './dialog'
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
-import axiosClient from '../../apis/axiosClient'
-import {BASE_URL} from '../../constants'
-import axios from 'axios'
 import buttonAdd from '../../asset/images/button_add.png'
+import {ROUTE} from '../../router/routes'
+import {loadingActions} from '../loading/loadingSlice'
 
 const useStyles = makeStyles({
   table_container: {
@@ -60,16 +62,15 @@ const TableCustom = (props: {
   data?: any[]
 }) => {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [data, setData] = useState<any[]>([])
-  const [listVideo, setListVideo] = useState<string[]>([])
-  const open = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
+  const [listVideo, setListVideo] = useState<any[]>([])
+  const navigate = useNavigate()
+  const [index, setIndex] = useState(0)
+  const handleClick = () => {
+    navigate(ROUTE.ANALYTICS_DETAIL)
   }
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
     const getData = async () => {
       const token = localStorage.getItem('accessToken')
@@ -83,6 +84,16 @@ const TableCustom = (props: {
     }
     props.url && getData()
   }, [props.paramsGet, props.url])
+  const loadMore = async () => {
+    setIndex(index + 1)
+    dispatch(loadingActions.openLoading())
+    const res: any = await axiosClient.get(ANALYTICS_SEARCH_MORE, {
+      params: {videoIds: JSON.stringify(listVideo[index + 1])},
+    })
+    setData([...data, ...res.data.moreVideos])
+    dispatch(loadingActions.loadingSuccess())
+  }
+  console.log(listVideo.length)
   return (
     <div className={classes.table_container}>
       <table>
@@ -150,9 +161,14 @@ const TableCustom = (props: {
           )}
         </tbody>
       </table>
-      {props.loadMore && (
+      {props.loadMore && index < listVideo.length && (
         <p>
-          <img src={buttonAdd} alt='' style={{width: '44px', height: '44px'}} />
+          <img
+            src={buttonAdd}
+            alt=''
+            style={{width: '44px', height: '44px'}}
+            onClick={() => loadMore()}
+          />
           <p
             style={{
               fontWeight: 400,
@@ -161,13 +177,11 @@ const TableCustom = (props: {
               padding: 0,
               margin: 0,
             }}
-            // onClick={() => props.setParamsGet({})}
           >
             참고 항목
           </p>
         </p>
       )}
-      <DialogChart anchorEl={anchorEl} open={open} close={handleClose} />
     </div>
   )
 }

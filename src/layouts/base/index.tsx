@@ -12,6 +12,10 @@ const useStyles = makeStyles({
   container_layout: {
     paddingTop: '86px',
   },
+  children_container: {
+    minHeight: '80vh',
+    background: '#F8F8F8',
+  },
 })
 
 const BaseLayout: React.FC<Props> = ({children}) => {
@@ -20,7 +24,7 @@ const BaseLayout: React.FC<Props> = ({children}) => {
   return (
     <div className={classes.container_layout}>
       <Header />
-      {children}
+      <div className={classes.children_container}>{children}</div>
       <Footer />
     </div>
   )

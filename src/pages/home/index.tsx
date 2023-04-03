@@ -21,6 +21,8 @@ const useStyles = makeStyles({
       textAlign: 'center',
       padding: '60px 0',
       boxSizing: 'border-box',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
       '&>p:nth-of-type(1)': {
         fontWeight: 700,
         fontSize: '28px',
@@ -52,7 +54,10 @@ const useStyles = makeStyles({
       textAlign: 'center',
       fontWeight: 500,
       fontSize: '24px',
+      background: 'white',
       '&>p': {
+        marginTop: 0,
+        paddingTop: '1rem',
         '&>span': {
           color: '#3B71FE',
         },

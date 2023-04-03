@@ -1,3 +1,4 @@
+import AnalyticsDetail from '../pages/analytics_detail'
 import CustomerSupport from '../pages/customer_support'
 import Download from '../pages/download'
 import Home from '../pages/home'
@@ -11,6 +12,7 @@ export const ROUTE = {
   DOWNLOAD: '/download',
   KEYWORD: '/keyword',
   CUSTOMER_SUPPORT: '/customer_support',
+  ANALYTICS_DETAIL: '/analytics_detail',
 }
 
 const routes: Array<MyRouteProp> = [
@@ -22,5 +24,6 @@ const routes: Array<MyRouteProp> = [
   {path: ROUTE.DOWNLOAD, element: <Download />},
   {path: ROUTE.KEYWORD, element: <Keyword />},
   {path: ROUTE.CUSTOMER_SUPPORT, element: <CustomerSupport />},
+  {path: ROUTE.ANALYTICS_DETAIL, element: <AnalyticsDetail />},
 ]
 export default routes

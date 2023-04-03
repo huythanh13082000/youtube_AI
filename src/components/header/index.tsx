@@ -5,8 +5,8 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import logo from '../../asset/images/logo.png'
 import {ROUTE} from '../../router/routes'
 import MenuIcon from '@material-ui/icons/Menu'
-import {selectUserInfo} from '../../feature/user/user.slice'
-import {useAppSelector} from '../../app/hooks'
+import {selectUserInfo, userAction} from '../../feature/user/user.slice'
+import {useAppDispatch, useAppSelector} from '../../app/hooks'
 
 const useStyles = makeStyles({
   container_header: {
@@ -165,12 +165,16 @@ const Header = () => {
   const classes = useStyles()
   const location = useLocation()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const userInfo = useAppSelector(selectUserInfo)
   console.log('info', userInfo)
   const [scroll, setScroll] = useState(false)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
+  useEffect(() => {
+    dispatch(userAction.getInfo())
+  }, [dispatch])
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
@@ -180,15 +184,16 @@ const Header = () => {
       }
     })
   }, [])
+  console.log(userInfo?.socialPhoto)
   return (
     <div
       className={classes.container_header}
       style={{background: scroll ? 'white' : 'white'}}
     >
       <div>
-        <div>
+        {/* <div>
           <MenuIcon />
-        </div>
+        </div> */}
         <span onClick={() => navigate('/')}>
           <img src={logo} alt='' />
         </span>
@@ -249,8 +254,10 @@ const Header = () => {
         </ul>
       </div>
       <div>
-        {localStorage.getItem('accessToken') && userInfo?.socialPhoto ? (
-          <img src={`${userInfo?.socialPhoto}`} alt='' />
+        {localStorage.getItem('accessToken') &&
+        userInfo &&
+        userInfo?.socialPhoto ? (
+          <img src={userInfo.socialPhoto} alt='' />
         ) : (
           <button onClick={() => navigate('/login')}>로그인</button>
         )}

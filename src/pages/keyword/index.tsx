@@ -1,28 +1,24 @@
-import {makeStyles} from '@material-ui/styles'
-import React from 'react'
-import background from '../../asset/images/background_home.png'
-import InputSearch from '../../components/input_search'
 import CloseIcon from '@material-ui/icons/Close'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import VideoIcon from '../../asset/icons/video_icon'
-import Shorts from '../../asset/icons/shorts'
-import TableCustom from '../../components/table/tableCustom'
-import {COLUMN_TABLE_HOME, COLUMN_TABLE_KEYWORD} from '../../constants/column'
-import buttonAdd from '../../asset/images/button_add.png'
 import SearchIcon from '@material-ui/icons/Search'
+import {makeStyles} from '@material-ui/styles'
 import {
-  Chart as ChartJS,
   CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
+  Chart as ChartJS,
   Filler,
   Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
 } from 'chart.js'
+import React from 'react'
 import {Line} from 'react-chartjs-2'
+import background from '../../asset/images/background_keyword.png'
+import buttonAdd from '../../asset/images/button_add.png'
+import InputSearch from '../../components/input_search'
+import TableCustom from '../../components/table/tableCustom'
+import {COLUMN_TABLE_KEYWORD} from '../../constants/column'
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -42,6 +38,8 @@ const useStyles = makeStyles({
       textAlign: 'center',
       padding: '60px 0',
       boxSizing: 'border-box',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
       '&>p:nth-of-type(1)': {
         fontWeight: 700,
         fontSize: '28px',

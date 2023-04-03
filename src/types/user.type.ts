@@ -8,5 +8,5 @@ export interface UserType {
   password: string
   isActive: boolean
   inactiveDate?: Date
-  socialPhoto?: String
+  socialPhoto?: string
 }
